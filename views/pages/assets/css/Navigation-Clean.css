@@ -266,3 +266,11 @@
   position: relative;
 }
 
+.nav-item.purchase-menu {
+  font-size: large;
+  line-height: 40px;
+}
+
+.form-check {
+}
+
