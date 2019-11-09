@@ -173,7 +173,6 @@
 }
 
 .form-group {
-  margin: 10px auto;
 }
 
 .btn.btn-primary.btn-block {
@@ -251,6 +250,19 @@
 
 .input-group-addon {
   border: 1px solid #CCC;
-  border-right: none;
+}
+
+@media (max-width: 576px) {
+  .profile-label {
+    display: block!important;
+  }
+}
+
+.profile-label {
+  color: #5e5e5e;
+}
+
+#img {
+  position: relative;
 }
 
