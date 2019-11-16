@@ -17,6 +17,10 @@ const controllers = {
   '/': mainPage,
   '/about': aboutPage,
   '/login': LoginPage,
+  '/product-page': ProductPage,
+  '/search': SearchPage,
+  '/profile': ProfilePage,
+  '/shopping-cart': ShoppingCartPage,
   '*': () => render('<h1>Not Found</h1>')
 }
 
@@ -29,6 +33,10 @@ const route = pathname => {
     '/', 
     '/about', 
     '/login',
+    '/product-page',
+    '/search',
+    '/profile',
+    '/shopping-cart', 
     '*'
   ].forEach(
     path => page(path, controllers[path])
