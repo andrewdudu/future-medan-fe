@@ -1,0 +1,7 @@
+const mainPage = () => $('#main').load('./page/main.html')
+const aboutPage = () => $('#main').load('./page/about.html')
+const LoginPage = () => $('#main').load('./pages/login.html')
+const ProductPage = () => $('#main').load('./pages/product-page.html')
+const SearchPage = () => $('#main').load('./pages/search.html')
+const ProfilePage = () => $('#main').load('./pages/profile.html')
+const ShoppingCartPage = () => $('#main').load('./pages/shopping-cart.html')
