@@ -14,13 +14,17 @@ const serializeForm = form => {
 }
 
 const controllers = {
-  '/': mainPage,
-  '/about': aboutPage,
+  '/': MainPage,
+  '/payment-page': PaymentPage,
   '/login': LoginPage,
   '/product-page': ProductPage,
   '/search': SearchPage,
   '/profile': ProfilePage,
   '/shopping-cart': ShoppingCartPage,
+  '/admin-notfound': AdminNotFoundPage,
+  '/admin': AdminIndexPage,
+  '/admin-login': AdminLoginPage,
+  '/admin-table': AdminTablePage,
   '*': () => render('<h1>Not Found</h1>')
 }
 
@@ -30,13 +34,17 @@ const route = pathname => {
 
 (() => {
   [
-    '/', 
-    '/about', 
+    '/',
+    '/payment-page',
     '/login',
     '/product-page',
     '/search',
     '/profile',
-    '/shopping-cart', 
+    '/shopping-cart',
+    '/admin-notfound',
+    '/admin',
+    '/admin-login',
+    '/admin-table',
     '*'
   ].forEach(
     path => page(path, controllers[path])
