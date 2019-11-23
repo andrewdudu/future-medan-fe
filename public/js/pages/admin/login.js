@@ -25,6 +25,7 @@ $('#admin-login-button').click(async e => {
             $("#login-error-message").show();
         } else {
             appState = response.data.accessToken;
+            setCookie("access-token", appState, 1);
     
             window.location.href = "/admin";
         }
