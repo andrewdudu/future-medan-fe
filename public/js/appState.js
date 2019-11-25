@@ -1,4 +1,33 @@
-let accessToken;
+const api = axios.create({
+    baseURL: 'http://127.0.0.1:8080/future-medan/api',
+    timeout: 5000
+})
+
+async function validateAdminToken(token, callback) {
+    if (getCookie() !== null) {
+        try {
+            let response = await api.post('/validate-admin-token', {}, {
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            });
+    
+        } catch (err) {
+            callback(err)
+        }
+    }
+}
+
+async function validateUserToken(token) {
+    if (getCookie() !== null) {
+        try {
+            let response = await api.post('/validate-user-token', token);
+    
+        } catch (err) {
+            window.location.href = '/login'
+        }
+    }
+}
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();

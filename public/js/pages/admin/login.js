@@ -9,11 +9,6 @@ $('#admin-login-button').click(async e => {
     let usernameOrEmail = $('#usernameOrEmail').val();
     let password = $('#password').val();
 
-    const api = axios.create({
-        baseURL: 'http://127.0.0.1:8080/future-medan/api',
-        timeout: 5000
-    })
-
     try {
         const response = await api.post('/login', {
             usernameOrEmail,
@@ -24,12 +19,12 @@ $('#admin-login-button').click(async e => {
         if (!skip) {
             $("#login-error-message").show();
         } else {
-            appState = response.data.accessToken;
-            setCookie("access-token", appState, 1);
+            setCookie("access-token", response.data.accessToken, 1);
     
             window.location.href = "/admin";
         }
     } catch (err) {
+        console.log(err);
         $("#login-error-message").show();
     }
 })

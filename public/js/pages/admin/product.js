@@ -1,9 +1,9 @@
 document.title = 'Users'
-validateAdminToken(getCookie('access-token'))
+validateAdminToken(getCookie('access-token'), (err) => window.location.href = '/admin-login')
 
 async function onButtonClick(id) {
     try {
-        const response = await api.post(`/users/${id}`, {}, {
+        const response = await api.post(`/products/hide/${id}`, {}, {
             headers: {
                 "Authorization": "Bearer " + getCookie("access-token")
             }
@@ -12,22 +12,19 @@ async function onButtonClick(id) {
         if ($(`#${id}`).hasClass('btn-danger')) {
             $(`#${id}`).removeClass('btn-danger');
             $(`#${id}`).addClass('btn-primary');
-            $(`#${id}`).text('Unblock');
-            $(`#${id}-status`).text(response.data.data.status);
+            $(`#${id}`).text('Unhide');
         } else {
             $(`#${id}`).removeClass('btn-primary');
             $(`#${id}`).addClass('btn-danger');
-            $(`#${id}`).text('Block');
-            $(`#${id}-status`).text(response.data.data.status);
+            $(`#${id}`).text('Hide');
         }
     } catch (err) {
     }
-
 }
 
 $(document).ready(async function () {
     try {
-        const response = await api.get('/users', {
+        const response = await api.get('/products', {
             headers: {
                 "Authorization": "Bearer " + getCookie("access-token")
             }
@@ -37,13 +34,14 @@ $(document).ready(async function () {
         response.data.data.forEach(function(elem) {
             table.append(`
             <tr>
-                <td>${elem.name}</td>
-                <td>${elem.email}</td>
-                <td>${elem.username}</td>
-                <td id="${elem.id}-status">${elem.status}</td>
+                <td><img class="rounded-circle mr-2" width="30" height="30" src="http://localhost:8080/future-medan${elem.image}">${elem.name}</td>
+                <td>${elem.sku}</td>
+                <td>${elem.description}</td>
+                <td>${elem.price}</td>
+                <td>${elem.pdf}</td>
                 <td>
-                    <button id="${elem.id}" onclick="onButtonClick('${elem.id}')" type="button" class="btn btn-${elem.status == true ? 'danger' : 'primary'}" data-target="#deleteModal">
-                        ${elem.status == true ? 'Block' : 'Unblock'}
+                    <button id="${elem.id}" onclick="onButtonClick('${elem.id}')" type="button" class="btn btn-${!elem.hidden ? 'danger' : 'primary'}" data-target="#deleteModal">
+                        ${!elem.hidden ? 'Hide' : 'Unhide'}
                     </button>
                 </td>
             </tr>`)
