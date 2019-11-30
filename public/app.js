@@ -21,14 +21,12 @@ const controllers = {
   '/search': SearchPage,
   '/profile': ProfilePage,
   '/shopping-cart': ShoppingCartPage,
-  '/admin-notfound': AdminNotFoundPage,
-  '/admin': AdminIndexPage,
+  '/admin': AdminUserTablePage,
   '/admin-login': AdminLoginPage,
   '/admin-table': AdminTablePage,
-  '/admin-user': AdminUserTablePage,
   '/admin-product': AdminProductTablePage,
   '/admin-category': AdminCategoryTablePage,
-  '*': () => render('<h1>Not Found</h1>')
+  '*': AdminNotFoundPage
 }
 
 const route = pathname => {
@@ -44,11 +42,9 @@ const route = pathname => {
     '/search',
     '/profile',
     '/shopping-cart',
-    '/admin-notfound',
     '/admin',
     '/admin-login',
     '/admin-table',
-    '/admin-user',
     '/admin-product',
     '/admin-category',
     '*'
