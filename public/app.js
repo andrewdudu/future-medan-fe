@@ -27,6 +27,7 @@ const controllers = {
   '/admin-table': AdminTablePage,
   '/admin-user': AdminUserTablePage,
   '/admin-product': AdminProductTablePage,
+  '/admin-category': AdminCategoryTablePage,
   '*': () => render('<h1>Not Found</h1>')
 }
 
@@ -49,6 +50,7 @@ const route = pathname => {
     '/admin-table',
     '/admin-user',
     '/admin-product',
+    '/admin-category',
     '*'
   ].forEach(
     path => page(path, controllers[path])

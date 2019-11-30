@@ -34,7 +34,7 @@ $(document).ready(async function () {
         response.data.data.forEach(function(elem) {
             table.append(`
             <tr>
-                <td><img class="rounded-circle mr-2" width="30" height="30" src="http://localhost:8080/future-medan${elem.image}">${elem.name}</td>
+                <td><img class="rounded-circle mr-2" width="30" height="30" src="${APP_URL}${elem.image}">${elem.name}</td>
                 <td>${elem.sku}</td>
                 <td>${elem.description}</td>
                 <td>${elem.price}</td>

@@ -3,6 +3,8 @@ const api = axios.create({
     timeout: 5000
 })
 
+const APP_URL = 'http://localhost:8080/future-medan'
+
 async function validateAdminToken(token, callback) {
     if (getCookie() !== null) {
         try {
