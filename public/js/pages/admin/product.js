@@ -36,6 +36,7 @@ $(document).ready(async function () {
             <tr>
                 <td><img class="rounded-circle mr-2" width="30" height="30" src="${APP_URL}${elem.image}">${elem.name}</td>
                 <td>${elem.sku}</td>
+                <td>${elem.variant}</td>
                 <td>${elem.description}</td>
                 <td>${elem.price}</td>
                 <td>${elem.pdf}</td>
