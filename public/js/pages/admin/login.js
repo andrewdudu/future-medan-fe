@@ -1,10 +1,7 @@
-// $("#login-error-message").hide();
 document.title = 'Login'
 
 $('#admin-login-button').click(async e => {
     e.preventDefault();
-    
-    // $("#login-error-message").hide();
 
     let usernameOrEmail = $('#usernameOrEmail').val();
     let password = $('#password').val();
@@ -24,7 +21,6 @@ $('#admin-login-button').click(async e => {
             window.location.href = "/admin";
         }
     } catch (err) {
-        console.log(err);
         addErrorMsg()
     }
 })
