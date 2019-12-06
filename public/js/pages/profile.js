@@ -1,21 +1,49 @@
 document.title = 'Profile'
 
+async function loadProfile() {
+    try {
+        const response = await api.get(`/users/${id}`,{
+            headers: {
+                "Authorization": "Bearer " + getCookie("access-token")
+            }
+        })
+
+        const data = response.data.data
+        $('#nickname').val(data.name)
+        $('#username').val(data.username)
+        $('#email').val(data.email)
+        $('#phone-number').val(data.phoneNumber)
+        $('#address').val(data.address)
+    }
+    catch (err) {
+
+    }
+}
+
 $('#save-changes').click(async profile => {
-	profile.preventDefault()
+    try {
+        let nickname = $('#nickname').val()
+        let username = $('#username').val()
+        let phoneNumber = $('#phone-number').val()
+        let address = $('#address').val()
 
-	const path = `/users/${id}`
-	const url = 'http://127.0.0.1:8080/future-medan/api'
-    const api = axios.create({
-        baseURL: url,
-        timeout: 5000
-    })
+        const res = api.put(`/users/${id}`, {
+                nickname, 
+                username,
+                phoneNumber, 
+                address
+            })
 
-    let nickname = $('#nickname').val()
-    let username = $('#username').val()
-    let email = $('#email').val()
-    let password = $('#password').val()
-    let phoneNumber = $('#phone-number').val()
-    let address = $('#address').val()
+    }
+    catch (err) {
+        $('#edit-error-message').show()
+    }
+})
 
-    const res = api.put(path, {nickname, username, email, password, phoneNumber, address})
+$('#avatar').click(async function() {
+    
+})
+
+$(document).ready(async function () {
+    loadProfile()
 })
