@@ -86,10 +86,14 @@ $("#register-button").click(async e => {
 
 $("#show-password").click(e => {
     let passwordInput = $("#login-password");
+
     if (passwordInput.attr('type') == "password") {
         passwordInput.attr('type', 'text');
-    } else {
+        $("#show-password").css("color", "#278ACB")
+    }
+    else {
         passwordInput.attr('type', 'password');
+        $("#show-password").css("color", "#A7A7A7")
     }
 })
 
