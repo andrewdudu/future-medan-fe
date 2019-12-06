@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
-    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
@@ -60,43 +60,61 @@
                     </div>
                     <div class="col-to-row d-flex">
                         <div class="row product-cart shadow-1">
-                            <div class="col col-3 flex-center" style="padding-right: 0;"><input type="checkbox" style="width: 500px;">
-                                <div><a href="#product-page.html"><img id="product-image" class="shadow" style="border-radius: 50%;" src="assets/img/rubberplant2.jpeg"></a></div>
+                            <div class="col">
+                                <div id="product-details" class="d-flex justify-content-between pt-2 pb-2">
+                                    <div class="d-flex">
+                                        <div class="p-1 d-flex align-items-center"><input type="checkbox"><a href="#product-page.html"><img id="product-image" class="shadow" src="assets/img/rubberplant2.jpeg"></a></div>
+                                        <div class="pl-3 d-flex align-items-center flex-column">
+                                            <div>
+                                                <a href="#product-page.html">
+                                                    <p id="book-title" style="margin: 0;">Mountain&nbsp;</p>
+                                                </a>
+                                                <p id="book-writer" style="font-size: 50%;">by Andrew Wijaya</p>
+                                            </div>
+                                            <p id="book-price" class="m-0"><strong>Rp30.000</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center"><a href="#"><i class="icon ion-android-delete" style="color: #5d5d5d;font-size: xx-large;"></i></a></div>
+                                </div>
                             </div>
-                            <div class="col col-sm-7">
-                                <a href="#product-page.html">
-                                    <p id="book-title" style="margin: 0;">Mountain</p>
-                                </a>
-                                <p id="book-writer" style="font-size: 50%;">by Andrew Wijaya</p>
-                                <p id="book-price"><strong>Rp30.000</strong></p>
-                            </div>
-                            <div class="col col-sm-1 flex-center justify-content-end"><a href="#"><i class="icon ion-android-delete" style="color: #5d5d5d;font-size: xx-large;"></i></a></div>
                         </div>
                         <div class="row shadow-1 product-cart">
-                            <div class="col col-3 flex-center" style="padding-right: 0;"><input type="checkbox" style="width: 500px;">
-                                <div><a href="#product-page.html"><img id="product-image" class="shadow" style="border-radius: 50%;" src="assets/img/rubberplant2.jpeg"></a></div>
+                            <div class="col">
+                                <div id="product-details" class="d-flex justify-content-between pt-2 pb-2">
+                                    <div class="d-flex">
+                                        <div class="p-1 d-flex align-items-center"><input type="checkbox"><a href="#product-page.html"><img id="product-image" class="shadow" src="assets/img/rubberplant2.jpeg"></a></div>
+                                        <div class="pl-3 d-flex align-items-center flex-column">
+                                            <div>
+                                                <a href="#product-page.html">
+                                                    <p id="book-title" style="margin: 0;">Mountain&nbsp;</p>
+                                                </a>
+                                                <p id="book-writer" style="font-size: 50%;">by Andrew Wijaya</p>
+                                            </div>
+                                            <p id="book-price" class="m-0"><strong>Rp30.000</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center"><a href="#"><i class="icon ion-android-delete" style="color: #5d5d5d;font-size: xx-large;"></i></a></div>
+                                </div>
                             </div>
-                            <div class="col col-sm-7">
-                                <a href="#product-page.html">
-                                    <p id="book-title" style="margin: 0;">Mountain</p>
-                                </a>
-                                <p id="book-writer" style="font-size: 50%;">by Andrew Wijaya</p>
-                                <p id="book-price"><strong>Rp30.000</strong></p>
-                            </div>
-                            <div class="col col-sm-1 flex-center justify-content-end"><a href="#"><i class="icon ion-android-delete" style="color: #5d5d5d;font-size: xx-large;"></i></a></div>
                         </div>
                         <div class="row shadow-1 product-cart">
-                            <div class="col col-3 flex-center" style="padding-right: 0;"><input type="checkbox" style="width: 500px;">
-                                <div><a href="#product-page.html"><img id="product-image" class="shadow" style="border-radius: 50%;" src="assets/img/rubberplant2.jpeg"></a></div>
+                            <div class="col">
+                                <div id="product-details" class="d-flex justify-content-between pt-2 pb-2">
+                                    <div class="d-flex">
+                                        <div class="p-1 d-flex align-items-center"><input type="checkbox"><a href="#product-page.html"><img id="product-image" class="shadow" src="assets/img/rubberplant2.jpeg"></a></div>
+                                        <div class="pl-3 d-flex align-items-center flex-column">
+                                            <div>
+                                                <a href="#product-page.html">
+                                                    <p id="book-title" style="margin: 0;">Mountain&nbsp;</p>
+                                                </a>
+                                                <p id="book-writer" style="font-size: 50%;">by Andrew Wijaya</p>
+                                            </div>
+                                            <p id="book-price" class="m-0"><strong>Rp30.000</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center"><a href="#"><i class="icon ion-android-delete" style="color: #5d5d5d;font-size: xx-large;"></i></a></div>
+                                </div>
                             </div>
-                            <div class="col col-sm-7">
-                                <a href="#product-page.html">
-                                    <p id="book-title" style="margin: 0;">Mountain</p>
-                                </a>
-                                <p id="book-writer" style="font-size: 50%;">by Andrew Wijaya</p>
-                                <p id="book-price"><strong>Rp30.000</strong></p>
-                            </div>
-                            <div class="col col-sm-1 flex-center justify-content-end"><a href="#"><i class="icon ion-android-delete" style="color: #5d5d5d;font-size: xx-large;"></i></a></div>
                         </div>
                     </div>
                 </div>
@@ -108,6 +126,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
 </body>
 
 </html>

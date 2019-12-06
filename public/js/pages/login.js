@@ -5,11 +5,6 @@ document.title = 'Login'
 $('#login-button').click(async e => {
     e.preventDefault();
 
-    const api = axios.create({
-        baseURL: 'http://127.0.0.1:8080/future-medan/api',
-        timeout: 5000
-    })
-
     try {
         let usernameOrEmail = $("#username-email").val();
         let password = $("#login-password").val();
@@ -29,11 +24,6 @@ $('#login-button').click(async e => {
 
 $("#register-button").click(async e => {
     e.preventDefault();
-
-    const api = axios.create({
-        baseURL: "http://127.0.0.1:8080/future-medan/api",
-        timeout: 5000
-    })
 
     let username = $("#username").val();
     let password = $("#password").val();

@@ -182,3 +182,7 @@ html, body {
 .clean-block .block-heading {
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
