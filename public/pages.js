@@ -9,10 +9,10 @@ const BookLibraryPage = () => $('#main').load('./pages/book-library.html')
 const ForgotPasswordPage = () => $('#main').load('./pages/forgot-password.html')
 const ResetPasswordPage = () => $('#main').load('./pages/reset-password.html')
 const ReviewProductPage = () => $('#main').load('./pages/review-product.html')
-const Wishlist = () => $('#main').load('./pages/wishlist.html')
+const WishlistPage = () => $('#main').load('./pages/wishlist.html')
 
-const MerchantStorefront = () => $('#main').load('./pages/merchant-storefront.html')
-const MerchantIncomingOrder = () => $('#main').load('./pages/merchant-incoming-order.html')
+const MerchantStorefrontPage = () => $('#main').load('./pages/merchant-storefront.html')
+const MerchantIncomingOrderPage = () => $('#main').load('./pages/merchant-incoming-order.html')
 
 const AdminNotFoundPage = () => $('#main').load('./pages/404.html')
 const AdminLoginPage = () => $('#main').load('./pages/admin/login.html')
