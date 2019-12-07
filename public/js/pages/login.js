@@ -1,7 +1,4 @@
 document.title = 'Login'
-let inputWrong = "Make sure your username or email and password correct."
-let somethingWrong = "Something went wrong, please try again."
-let passwordWrong = "Password does not match."
 
 $('#login-button').click(async e => {
     e.preventDefault();
@@ -96,16 +93,3 @@ $("#show-password").click(e => {
         $("#show-password").css("color", "#A7A7A7")
     }
 })
-
-function addErrorMsg(event, msg) {
-    $(`#${event}-error`).empty()
-    $(`#${event}-error`).append(errorHTML(event, msg))
-}
-
-function errorHTML(event, msg) {
-    return `<div id="${event}-error-message" class="alert alert-danger alert-dismissible fade show">
-                <strong>Error!</strong>
-                <span id="${event}-error-message-span">${msg}</span>
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-            </div>`
-}

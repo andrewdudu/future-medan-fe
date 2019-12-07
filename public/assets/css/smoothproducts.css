@@ -179,10 +179,6 @@ html, body {
   height: 1em!important;
 }
 
-.clean-block .block-heading {
-}
-
 ::-webkit-scrollbar {
   display: none;
 }
-
