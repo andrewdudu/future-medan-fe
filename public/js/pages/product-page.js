@@ -1,22 +1,24 @@
 document.title = 'Product Details'
 
-function getCasts(){
-    const idPath = `/products/${id}`
-    const ratingPath = ''
-    const url = `http://127.0.0.1:8080/future-medan/api`
-
-    const api = axios.create({
-        baseURL: url,
-        timeout: 5000
-    })
-
-    const data = api.get(idPath, {id}).data
+function loadProducts(){
+    try {
+        const response = await api.get(`/products/${id}`,{
+            headers: {
+                "Authorization": "Bearer " + getCookie("access-token")
+            }
+        })
     
-    $('#book-title').innerHTML = data.name
-    $('#book-writer').innerHTML = `by ${data.author}`
-    $('#book-price').innerHTML = priceHtml(data.price)
-    $('#book-image').innerHTML = imageHtml(data.image)
-    $('#description').innerHTML = descHtml(data.description)
+        const data = response.data.data
+        
+        $('#book-title').innerHTML = data.name
+        $('#book-writer').innerHTML = `by ${data.author}`
+        $('#book-price').innerHTML = priceHtml(data.price)
+        $('#book-image').innerHTML = imageHtml(data.image)
+        $('#description').innerHTML = descHtml(data.description)
+    }
+    catch (err){
+        
+    }
 }
 
 function priceHtml (price) {
@@ -31,4 +33,6 @@ function descHtml (desc) {
     return `<p>${desc}</p>`
 }
 
-getCasts()
+$(document).ready(async function () {
+    loadProducts()
+})

@@ -1,40 +1,42 @@
 document.title = 'Home Page'
 
-function getCasts(){
-    const PRODUCTS = '/products'
-    const url = 'http://127.0.0.1:8080/future-medan/api'
-    const api = axios.create({
-        baseURL: url,
-        timeout: 5000
-    })
+async function getCasts(){
+    try {
+        const response = await api.get('/products')
+        const data = response.data.data
 
-    const response = api.get(PRODUCTS)
-    const data = response.data
-    const newReleaseProducts = data
-        .filter(product => product.newRelease)
-        .map(i => {
-            return {
-                name: i.name,
-                image: i.image,
-                price: i.price
-            }
-        })
+        const newReleaseProducts = data
+            .filter(product => product.newRelease)
+            .map(i => {
+                return {
+                    name: i.name,
+                    image: i.image,
+                    price: i.price
+                }
+            })
+        
+        const bestSellerProducts = data
+            .filter(product => product.bestSeller)
+            .map(i => {
+                return {
+                    name: i.name,
+                    image: i.image,
+                    price: i.price
+                }
+            })
     
-    const bestSellerProducts = data
-        .filter(product => product.bestSeller)
-        .map(i => {
-            return {
-                name: i.name,
-                image: i.image,
-                price: i.price
-            }
-        })
-    
-    const html = generateProductHtml(newReleaseProducts)
-    const html2 = generateProductHtml(bestSellerProducts)
+        const html = generateProductHtml(newReleaseProducts)
+        const html2 = generateProductHtml(bestSellerProducts)
 
-    $('new-release').innerHTML = html
-    $('best-seller').innerHTML = html2
+        $('new-release').innerHTML = html
+        $('best-seller').innerHTML = html2
+
+        // Book library
+        
+    }
+    catch (err) {
+
+    }
 }
 
 function generateProductHtml(list) {
@@ -53,4 +55,6 @@ function generateProductHtml(list) {
     })
 }
 
-getCasts()
+$(document).ready(async function () {
+    getCasts()
+})

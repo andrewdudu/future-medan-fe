@@ -1,25 +1,21 @@
-$("#forgot-pass-error-message").hide();
 document.title = 'Forgot Password'
 
 $('#btn-send-email').click(async email => {
     email.preventDefault();
 
-    const api = axios.create({
-        baseURL: "http://127.0.0.1:8080/future-medan/api",
-        timeout: 5000
-    })
-
     try {
         let email = $('#email').val()
-        let path = '' // path for forgot password
+        let path = '/forgot-password'
 
         const response = await api.post(path, email)
 
         startTime(30000)
-        window.location.href = "/";
+
+        $('#p-info-reset').text("A confirmation email has been sent to your email account. Click the link to reset your password.")
     }
     catch (err) {
-        $("#forgot-pass-error-message").show();
+        addErrorMsg("forgot-pass", emailWrong)
+        $("#forgot-pass-error").show();
     }
 })
 
