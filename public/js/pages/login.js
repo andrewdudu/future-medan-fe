@@ -85,24 +85,18 @@ $(document).ready(() => {
     $(":input[required]").each(function (i, requiredInput){
         $(requiredInput).on("keyup", function (e) {
             let inputGroup = $(requiredInput).parent()
-            let inputErrorMsg = inputGroup.parent()
             let lastElement = inputGroup.next()
 
-            if ($(requiredInput).val().trim() == '') {
-                if (lastElement.length == 0 && !lastElement.hasClass("invalid")){
-                    inputErrorMsg.append(`<span class="invalid-${i}" style="color: red; font-size: 12px">${$(requiredInput).attr("placeholder")} can't be empty</span>`)
-                    inputGroup.addClass('mb-1')
-                    inputGroup.css("border", "1px solid red")
-                }
-                else {
-                    $(`.invalid-${i}`).text(`${$(requiredInput).attr("placeholder")} can't be empty`)
-                    inputGroup.addClass('mb-1')
-                    inputGroup.css("border", "1px solid red")
-                }
+            if (lastElement.length == 0 && !lastElement.hasClass("invalid")){
+                inputGroup.parent().append(`<span class="invalid-${i}" style="color: red; font-size: 12px"></span>`)
             }
+
+            if ($(requiredInput).val().trim() == '') {
+                $(`.invalid-${i}`).text(`${$(requiredInput).attr("placeholder")} can't be empty`)
+                inputGroup.css("border", "1px solid red")
+            } 
             else {
                 $(`.invalid-${i}`).empty()
-                inputGroup.removeClass('mb-1')
                 inputGroup.css("border", "1px solid #CCC")
             }
         })
