@@ -58,3 +58,16 @@ function changeIcon(){
       
     icon.classList.toggle('icon ion-android-checkbox-outline')
 }
+
+$("#show-password").click(e => {
+    let passwordInput = $("#login-password");
+
+    if (passwordInput.attr('type') == "password") {
+        passwordInput.attr('type', 'text');
+        $("#show-password").css("color", "#278ACB")
+    }
+    else {
+        passwordInput.attr('type', 'password');
+        $("#show-password").css("color", "#A7A7A7")
+    }
+})

@@ -1,16 +1,10 @@
 document.title = 'Cart'
 
-function getCasts(){
+async function loadUserCart(){
     const CART_BY_USER_ID = `/carts/${user_id}`
     const PRODUCTS = `/products/${product_id}`
-    const url = 'http://127.0.0.1:8080/future-medan/api'
 
-    const api = axios.create({
-        baseURL: url,
-        timeout: 5000
-    })
-
-    const data = api.get(CART_BY_USER_ID, {user_id}).data
+    const data = await api.get(CART_BY_USER_ID, {user_id}).data
     const productInCart = data.map(i => i.productId)
     
     const html = generateProductHtml(productInCart)
@@ -37,4 +31,6 @@ function generateProductHtml (list) {
     })
 }
 
-getCasts()
+$(document).ready({
+    loadUserCart()
+})

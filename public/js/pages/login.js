@@ -81,15 +81,24 @@ $("#register-button").click(async e => {
     }
 })
 
-$("#show-password").click(e => {
-    let passwordInput = $("#login-password");
+$(document).ready(() => {
+    $(":input[required]").each(function (i, requiredInput){
+        $(requiredInput).on("keyup", function (e) {
+            let inputGroup = $(requiredInput).parent()
+            let lastElement = inputGroup.next()
 
-    if (passwordInput.attr('type') == "password") {
-        passwordInput.attr('type', 'text');
-        $("#show-password").css("color", "#278ACB")
-    }
-    else {
-        passwordInput.attr('type', 'password');
-        $("#show-password").css("color", "#A7A7A7")
-    }
+            if (lastElement.length == 0 && !lastElement.hasClass("invalid")){
+                inputGroup.parent().append(`<span class="invalid-${i}" style="color: red; font-size: 12px"></span>`)
+            }
+
+            if ($(requiredInput).val().trim() == '') {
+                $(`.invalid-${i}`).text(`${$(requiredInput).attr("placeholder")} can't be empty`)
+                inputGroup.css("border", "1px solid red")
+            } 
+            else {
+                $(`.invalid-${i}`).empty()
+                inputGroup.css("border", "1px solid #CCC")
+            }
+        })
+    })
 })
