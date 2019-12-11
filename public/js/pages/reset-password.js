@@ -11,12 +11,15 @@ $('#btn-submit-pass').click(async () => {
             addErrorMsg("reset-pass", passwordWrong)
         }
 
-        if (newPassword !== retypeNewPassword) {
+        else if (newPassword !== retypeNewPassword) {
             addErrorMsg("reset-pass", passwordWrong)
         }
-        
+        else {
+            const response = await api.post(path, newPassword)
+            
+        }
 
-        const response = await api.post(path, )
+        window.location.href = "/login"
     }
     catch (err) {
 

@@ -28,8 +28,8 @@ async function getCasts(){
         const html = generateProductHtml(newReleaseProducts)
         const html2 = generateProductHtml(bestSellerProducts)
 
-        $('new-release').innerHTML = html
-        $('best-seller').innerHTML = html2
+        $('new-release').append(html)
+        $('best-seller').append(html2)
 
         // Book library
         
