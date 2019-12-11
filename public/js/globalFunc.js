@@ -1,7 +1,7 @@
-let inputWrong = "Make sure your username or email and password correct."
-let somethingWrong = "Something went wrong, please try again."
-let passwordWrong = "Password does not match."
-let emailWrong = "The email you entered did not match our records. Please double-check and try again."
+inputWrong = "Make sure your username or email and password correct."
+somethingWrong = "Something went wrong, please try again."
+passwordWrong = "Password does not match."
+emailWrong = "The email you entered did not match our records. Please double-check and try again."
 
 function addErrorMsg(event, msg) {
     $(`#${event}-error`).empty()
@@ -58,3 +58,16 @@ function changeIcon(){
       
     icon.classList.toggle('icon ion-android-checkbox-outline')
 }
+
+$("#show-password").click(e => {
+    let passwordInput = $("#login-password");
+
+    if (passwordInput.attr('type') == "password") {
+        passwordInput.attr('type', 'text');
+        $("#show-password").css("color", "#278ACB")
+    }
+    else {
+        passwordInput.attr('type', 'password');
+        $("#show-password").css("color", "#A7A7A7")
+    }
+})
