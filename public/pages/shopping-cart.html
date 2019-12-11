@@ -49,7 +49,7 @@
                             <p style="color: #919191;margin: 0;">Total</p>
                             <p id="total-price" class="font-weight-bolder" style="margin: 0;color: #DF5F1D;"></p>
                         </div>
-                        <button class="btn btn-primary shadow" type="button" style="font-weight: bolder;padding: 0 12px;">Checkout</button>
+                        <button id="checkout-button" onclick="checkout()" class="btn btn-primary shadow" type="button" style="font-weight: bolder;padding: 0 12px;" disabled>Checkout</button>
                     </div>
                 </div>
             </nav>
@@ -57,7 +57,7 @@
                 <div>
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="col m-1">
-                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck"><label class="form-check-label" for="formCheck">Select All Books</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="checkbox-all" onclick="checkAll()"><label class="form-check-label" for="formCheck">Select All Books</label></div>
                         </div>
                     </div>
                     <div class="col-to-row d-flex" id="product-in-cart">
