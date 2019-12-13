@@ -531,3 +531,9 @@ section.clean-info {
   height: 200px;
 }
 
+@media (min-width: 576px) {
+  #reject-order-container {
+    padding-bottom: 8px;
+  }
+}
+
