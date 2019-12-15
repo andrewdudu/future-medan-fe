@@ -3,7 +3,7 @@ let currentPassword = ""
 
 $('#btn-submit-pass').click(async () => {
     try {
-        let path = '/reset-password'
+        let path = `${APP_URL}/api/reset-password`
         let newPassword = $('#input-new-password').val().trim()
         let retypeNewPassword = $('#input-retype-new-password').val().trim()
 

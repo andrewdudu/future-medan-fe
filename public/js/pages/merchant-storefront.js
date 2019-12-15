@@ -6,7 +6,7 @@ $(document).ready(async (e) => {
 
     $(".product-new").css("cursor", "pointer")
 
-    const response = await api.get(`/users/${id}`)
+    const response = await api.get(`${APP_URL}/api/users/${id}`)
 })
 
 $(".product-new").click(async () => {

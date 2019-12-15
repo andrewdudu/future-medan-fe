@@ -7,7 +7,7 @@ $('#login-button').click(async e => {
         let usernameOrEmail = $("#username-email").val();
         let password = $("#login-password").val();
 
-        const response = await api.post('/login', {
+        const response = await api.post(`${APP_URL}/api/login`, {
             usernameOrEmail,
             password
         })
