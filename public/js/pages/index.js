@@ -3,7 +3,7 @@ validateUserToken(getCookie('access-token'), (err) => $("#library").hide())
 
 async function getCasts(){
     try {
-        const response = await api.get('/products')
+        const response = await api.get(`${APP_URL}/api/products`)
         const data = response.data.data
 
         const newReleaseProducts = data

@@ -3,7 +3,7 @@ validateUserToken(getCookie('access-token'), (err) => window.location.href = '/l
 
 async function loadProfile() {
     try {
-        const response = await api.get(`/users/${id}`,{
+        const response = await api.get(`${APP_URL}/api/users/${id}`,{
             headers: {
                 "Authorization": "Bearer " + getCookie("access-token")
             }

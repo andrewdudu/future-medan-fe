@@ -26,6 +26,8 @@ $( ".form-control" ).focusout(function() {
     $(this).next('.input-group-addon-focus').removeClass().addClass('input-group-addon');
 });
 
+
+
 function readMore(){
     var link = document.getElementById('link')
     var more = document.getElementById('more')
@@ -63,7 +65,7 @@ function addEmptyPict(id, src) {
     $(`#${id}`).empty()
 
     let pageName = id.replace('-', ' ')
-    $(`#${id}`).append(alternativeHTML(src, `Your ${pageName} is Empty!`))
+    $(`#${id}`).html(alternativeHTML(src, `Your ${pageName} is Empty!`))
 }
 
 // <div class="row h-75 flex-lg-row">
@@ -75,10 +77,15 @@ function addEmptyPict(id, src) {
 //     </div>
 // </div>
 
+function addReloadPict(id){
+    $(`${id}`).empty()
+    $(`${id}`).append(alternativeHTML("assets/img/illustration/refresh.png", "Oops! Something went wrong. Please reload this page"))
+}
+
 function alternativeHTML(src, message) {
-    return `<div id="empty" style="left: 50%;margin-left: -50px;top: 50%;margin-top: -50px;">
-                <img src=${src} alt="empty" width="25%">
-                <p class="text-center" style="color: #278ACB;font-family: 'Montserrat Alternates', sans-serif;font-size: 20px;">
+    return `<div id="empty" class="flex-center justify-content-center flex-column w-100 h-100 centered" >
+                <img class="w-100 mt-5" src="${src}" style="max-width: 600px;">
+                <p class="text-center mt-3" style="color: #278ACB;font-family: 'Montserrat Alternates', sans-serif;font-size: 20px;">
                     ${message}
                 </p>
             </div>`

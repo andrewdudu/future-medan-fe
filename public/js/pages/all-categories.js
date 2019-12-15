@@ -1,29 +1,35 @@
 document.title = "All Categories"
 
 $(document).ready(async () => {
-    const path = ''
-
-    const data = await api.get(path).data
+    try {
+        const response = await api.get(`${APP_URL}/api/categories`)
+        const data = response.data.data
     
-    if (!$.isArray(data) ||  !data.length ) {
-        // addEmptyPict("all-categories", "assets/img/illustration/books.png")
-    }
+        console.log(data)
 
-    else {
-        const html = generateProductHTML(productInCart)
-        $("#all-categories").append(html)
+        if (!$.isArray(data) ||  !data.length) {
+            addEmptyPict("all-categories", "assets/img/illustration/empty.png")
+            console.log("empty")
+        }
+
+        else {
+            const html = generateProductHTML(data)
+            $("#all-categories").removeClass("bg-white")
+            $("#all-categories").html(html)
+            console.log("fill")
+        }
+    }
+    catch (err){
+        addReloadPict(".all-categories")
     }
 })
 
-function generateProductHTML(list) {
-    list.map(i => {
-        return `<a id="product-link" href="#" style="background-color: white!important;">
-                    <div id="product-home">
-                        <img id="product-image-home" src="${i.image}">
-                        <div id="product-details-home">
-                            <span id="product-name-home">${i.name}</span>
-                            <span id="product-price-home">${new Intl.NumberFormat('ID').format(i.price)}</span>
-                        </div>
+function generateProductHTML(categories) {
+    return categories.map(category => {
+        return `<a id="category-link" href="a">
+                    <div id="category-group" class="flex-column p-2 flex-center">
+                        <img id="category-image" src="${APP_URL}${category.image}">
+                        <span id="category-name">${category.name}</span>
                     </div>
                 </a>`
     })

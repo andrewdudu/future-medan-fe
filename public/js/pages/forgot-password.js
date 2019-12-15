@@ -5,9 +5,8 @@ $('#btn-send-email').click(async email => {
 
     try {
         let email = $('#email').val()
-        let path = '/forgot-password'
 
-        const response = await api.post(path, email)
+        const response = await api.post(`${APP_URL}/api/forgot-password`, email)
 
         startTime(30000)
 
