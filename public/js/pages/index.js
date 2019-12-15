@@ -1,4 +1,5 @@
 document.title = 'Home Page'
+validateUserToken(getCookie('access-token'), (err) => $("#library").hide())
 
 async function getCasts(){
     try {
@@ -28,11 +29,13 @@ async function getCasts(){
         const html = generateProductHtml(newReleaseProducts)
         const html2 = generateProductHtml(bestSellerProducts)
 
-        $('new-release').append(html)
-        $('best-seller').append(html2)
+        $('#new-release').append(html)
+        $('#best-seller').append(html2)
 
         // Book library
-        
+        if (!$("#library").is(":hidden")){
+                
+        }
     }
     catch (err) {
 

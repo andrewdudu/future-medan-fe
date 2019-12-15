@@ -1,4 +1,5 @@
 document.title = "Storefront"
+validateMerchantToken(getCookie('access-token'), (err) => $("#btn-edit").hide())
 
 $(document).ready(async (e) => {
     e.preventDefault();
@@ -6,11 +7,6 @@ $(document).ready(async (e) => {
     $(".product-new").css("cursor", "pointer")
 
     const response = await api.get(`/users/${id}`)
-    
-    $("#btn-edit").hide()
-    if (response.data.data.role === "Merchant"){
-        $("#btn-edit").show()
-    }
 })
 
 $(".product-new").click(async () => {
@@ -25,5 +21,5 @@ $('#btn-close').click(() => {
 })
 
 $('#btn-add').click(async () => {
-
+    
 })

@@ -42,10 +42,10 @@ function readMore(){
 
 $(window).scroll(function () {
     if ($(this).scrollTop() >= 50) {
-        $('#back-to-top').fadeIn()
+        $('#back-to-top').css("display", "block")
     } 
     else {
-        $('#back-to-top').fadeOut()
+        $('#back-to-top').css("display", "none")
     }
 })
 
@@ -59,15 +59,27 @@ function changeIcon(){
     icon.classList.toggle('icon ion-android-checkbox-outline')
 }
 
-$("#show-password").click(e => {
-    let passwordInput = $("#login-password");
+function addEmptyPict(id, src) {
+    $(`#${id}`).empty()
 
-    if (passwordInput.attr('type') == "password") {
-        passwordInput.attr('type', 'text');
-        $("#show-password").css("color", "#278ACB")
-    }
-    else {
-        passwordInput.attr('type', 'password');
-        $("#show-password").css("color", "#A7A7A7")
-    }
-})
+    let pageName = id.replace('-', ' ')
+    $(`#${id}`).append(alternativeHTML(src, `Your ${pageName} is Empty!`))
+}
+
+// <div class="row h-75 flex-lg-row">
+//     <div class="col-sm-12 my-auto">
+//         <img class="w-75 h-100 mx-auto d-block" src="${src}" style="max-width: 600px;">
+//         <p class="text-center" style="color: #278ACB;font-family: 'Montserrat Alternates', sans-serif;font-size: 20px;">
+//             Your ${pageName} is Empty!
+//         </p>
+//     </div>
+// </div>
+
+function alternativeHTML(src, message) {
+    return `<div id="empty" style="left: 50%;margin-left: -50px;top: 50%;margin-top: -50px;">
+                <img src=${src} alt="empty" width="25%">
+                <p class="text-center" style="color: #278ACB;font-family: 'Montserrat Alternates', sans-serif;font-size: 20px;">
+                    ${message}
+                </p>
+            </div>`
+}
