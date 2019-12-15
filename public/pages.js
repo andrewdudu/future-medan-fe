@@ -10,6 +10,8 @@ const ForgotPasswordPage = () => $('#main').load('./pages/forgot-password.html')
 const ResetPasswordPage = () => $('#main').load('./pages/reset-password.html')
 const ReviewProductPage = () => $('#main').load('./pages/review-product.html')
 const WishlistPage = () => $('#main').load('./pages/wishlist.html')
+const AllCategoriesPage = () => $('#main').load('./pages/all-categories.html')
+const ProductByCategoriesPage = () => $('#main').load('./pages/product-by-categories.html')
 
 const MerchantStorefrontPage = () => $('#main').load('./pages/merchant-storefront.html')
 const MerchantIncomingOrderPage = () => $('#main').load('./pages/merchant-incoming-order.html')

@@ -1,4 +1,5 @@
 document.title = 'Profile'
+validateUserToken(getCookie('access-token'), (err) => window.location.href = '/login')
 
 async function loadProfile() {
     try {

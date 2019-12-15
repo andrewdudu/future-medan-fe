@@ -97,8 +97,8 @@ async function deleteCartProduct(id) {
         })
 
         $('#' + id).remove();
-    } catch (err) {
-
+    }
+    catch (err) {
     }
 }
 
