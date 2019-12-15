@@ -1,31 +1,42 @@
-document.title = 'Book Library'
-validateUserToken(getCookie('access-token'), (err) => window.location.href = '/login')
+document.title = 'Book Library';
 
-$(document).ready(async () => {
-    const path = ''
+async function loadMyProduct() {
+    try {
+        let response = await api.get(`${APP_URL}/api/my-products`, {
+            headers: {
+                "Authorization": "Bearer " + getCookie('access-token')
+            }
+        })
 
-    const data = await api.get(path).data
-    
-    if (!$.isArray(data) ||  !data.length ) {
-        addEmptyPict("book-library", "assets/img/illustration/books.png")
-    }
+        let purchases = response.data.data;
 
-    else {
-        const html = generateProductHTML(productInCart)
-        $("#book-library").append(html)
-    }
-})
-
-function generateProductHTML(list) {
-    list.map(i => {
-        return `<a id="product-link" href="#" style="background-color: white!important;">
-                    <div id="product-home">
-                        <img id="product-image-home" src="${i.image}">
-                        <div id="product-details-home">
-                            <span id="product-name-home">${i.name}</span>
-                            <span id="product-price-home">${new Intl.NumberFormat('ID').format(i.price)}</span>
+        purchases.forEach(purchase => {
+            let status = 'approved'
+            if (purchase.status !== 'APPROVED') status = 'pending'
+            $(`#${status}-book`).append(`
+                <div id="product-details" class="d-flex justify-content-between pt-2 pb-2">
+                    <div class="d-flex">
+                        <div class="p-1 d-flex align-items-center"><a href="/product-page?id=${purchase.product.id}"><img id="product-image" class="shadow" src="${APP_URL}${purchase.product.image}"></a></div>
+                        <div class="pl-3 d-flex align-items-center flex-column">
+                            <div>
+                                <a href="/product-page?id=${purchase.product.id}">
+                                    <p id="book-title" style="margin: 0;">${purchase.product.name}&nbsp;</p>
+                                </a>
+                                <p id="book-writer" style="font-size: 50%;">${purchase.merchant.name}</p>
+                            </div>
+                            <p id="book-price" class="m-0"><strong>Rp ${purchase.product.price.format(2, 3, ',', '.')}</strong></p>
                         </div>
                     </div>
-                </a>`
-    })
+                    
+                    ${status === 'approved' ? '<div class="d-flex align-items-end flex-column justify-content-between"><a href="#"></a><button class="btn btn-primary pt-2" type="button">Read</button></div>' : ''}
+                </div>
+            `)
+        })
+    } catch (err) {
+
+    }
 }
+
+$(document).ready(function () {
+    loadMyProduct();
+})

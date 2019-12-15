@@ -1,11 +1,22 @@
 let accessToken;
 
+const APP_URL = 'http://127.0.0.1:8080/future-medan'
+
 const api = axios.create({
-    baseURL: 'http://127.0.0.1:8080/future-medan/api',
+    baseURL: `${APP_URL}/api`,
     timeout: 5000
 })
 
-const APP_URL = 'http://localhost:8080/future-medan'
+function goBack() {
+    window.history.back();
+}
+
+Number.prototype.format = function(n, x, s, c) {
+    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
+        num = this.toFixed(Math.max(0, ~~n));
+    
+    return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
+};
 
 async function validateAdminToken(token, callback) {
     if (getCookie() !== null) {
@@ -22,13 +33,31 @@ async function validateAdminToken(token, callback) {
     }
 }
 
-async function validateUserToken(token) {
+async function validateMerchantToken(token, callback) {
     if (getCookie() !== null) {
         try {
-            let response = await api.post('/validate-user-token', token);
+            let response = await api.post('/validate-merchant-token', {}, {
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            });
+        } catch (err) {
+            callback(err)
+        }
+    }
+}
+
+async function validateUserToken(token, callback) {
+    if (getCookie() !== null) {
+        try {
+            let response = await api.post('/validate-user-token', {}, {
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            });
     
         } catch (err) {
-            window.location.href = '/login'
+            callback(err)
         }
     }
 }

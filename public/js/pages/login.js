@@ -12,9 +12,9 @@ $('#login-button').click(async e => {
             password
         })
     
-        appState = response.data.accessToken;
+        setCookie('access-token', response.data.accessToken, 1)
 
-        window.location.href = "/";
+        window.location.href = "/"
     }
     catch (err) {
         addErrorMsg("login", inputWrong);
