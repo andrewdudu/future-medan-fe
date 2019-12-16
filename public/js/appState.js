@@ -7,8 +7,15 @@ const api = axios.create({
     timeout: 5000
 })
 
+// GO BACK PAGE
 function goBack() {
     window.history.back();
+}
+
+// GET REQUEST PARAMETER
+function get(name){
+    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+       return decodeURIComponent(name[1]);
 }
 
 Number.prototype.format = function(n, x, s, c) {
@@ -18,6 +25,7 @@ Number.prototype.format = function(n, x, s, c) {
     return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
 };
 
+// CHECK ADMIN
 async function validateAdminToken(token, callback) {
     if (getCookie() !== null) {
         try {
@@ -33,6 +41,7 @@ async function validateAdminToken(token, callback) {
     }
 }
 
+// CHECK MERCHANT
 async function validateMerchantToken(token, callback) {
     if (getCookie() !== null) {
         try {
@@ -47,6 +56,7 @@ async function validateMerchantToken(token, callback) {
     }
 }
 
+// CHECK USER
 async function validateUserToken(token, callback) {
     if (getCookie() !== null) {
         try {
@@ -62,6 +72,7 @@ async function validateUserToken(token, callback) {
     }
 }
 
+// ADD COOKIE
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -69,6 +80,7 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+// GET COOKIE
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -84,6 +96,7 @@ function getCookie(cname) {
     return "";
 }
 
+// CHECK COOKIE
 function checkCookie() {
     var user = getCookie("username");
     if (user != "") {
