@@ -1,6 +1,6 @@
 document.title = "Storefront"
 validateMerchantToken(getCookie('access-token'), (err) => $("#btn-edit").hide())
-let productIsValid = false
+var productIsValid = false, it;
 
 function getUser (name) {
     if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
@@ -18,87 +18,94 @@ $(document).ready(async (e) => {
         })
         
         const data = response.data.data
-        const html = generateProductHTML(data) + (check_if_merchant? newProductHTML() : '')
+        const htmlProducts = generateProductHTML(data)
+        const html = htmlProducts + (check_if_merchant? newProductHTML() : '')
+
+        $("#post-count").text(htmlProducts.length)
+
         $("#merchant-storefront").html(html)
 
         // Check if a merchant is logged in
         if (check_if_merchant) {
             
         }
-
-        let it = 0;
-        $(":input[required]").each(function (i, requiredInput){
-            $(requiredInput).on("keyup", function (e) {
-                let inputGroup = $(requiredInput).parent()
-                let lastElement = inputGroup.next()
-
-                if (lastElement.length == 0 && !lastElement.hasClass("invalid")){
-                    inputGroup.parent().append(`<span class="invalid-${i}" style="color: red; font-size: 12px"></span>`)
-                }
-
-                if ($(requiredInput).val().trim() == '') {
-                    $(`.invalid-${i}`).text(`${$(requiredInput).attr("placeholder")} can't be empty`)
-                    inputGroup.css("border", "1px solid red")
-                } 
-                else {
-                    $(`.invalid-${i}`).empty()
-                    inputGroup.css("border", "1px solid #CCC")
-                    it++;
-                }
-            })
-        })
-
-        productIsValid = it === $(":input[required]").length
-        $("#btn-add").attr("disabled", !productIsValid)
     }
     catch (err) {
 
     }
 })
 
-$(".product-new").click(async () => {
-    $("#add-products").modal("show")
-})
-
-$('#btn-close').click(() => {
-    $(".modal-body:input").each(function (i, id) {
-        $(id).val("")
+$('#add-products').on('shown.bs.modal', async function (e) {
+    $('#btn-close').click(() => {
+        $(".modal-body:input").each(function (i, id) {
+            $(id).val("")
+            $(id).css("border", "1px solid #CCC")
+        })
+        $("#add-products").modal("hide")
     })
-    $("#add-products").modal("hide")
-})
-
-$('#btn-add').click(async () => {
-    let newBookTitle = $("#new-book-title").val().trim()
-    let newBookAuthor = $("#new-book-author").val().trim()
-    let newBookPrice = $("#new-book-price").val().trim()
-    let newBookISBN = $("#new-book-ISBN").val().trim()
-    let newBookDescription = $("#new-book-description").val().trim()
-    let newBookCategory = $("#new-book-category").val()
-    let newBookImage = $("#new-book-image").val().trim()
-    let newBookPDF = $("#new-book-PDF").val().trim()
     
-    try {
-        const response = await api.post(`${APP_URL}/api/products`, {
-            newBookTitle, 
-            newBookDescription,
-            newBookPrice,
-            newBookAuthor,
-            newBookISBN,
-            newBookCategory,
-            newBookPDF,
-            newBookImage
-        }, {
-            headers: {
-                "Authorization": "Bearer " + getCookie('access-token')
+    $('#btn-add').click(async () => {
+        it = 0;
+        $(":input[required]").each(function (i, requiredInput){
+            let lastElement = $(requiredInput).next()
+
+            if (lastElement.length == 0 && !lastElement.hasClass("invalid")){
+                $(requiredInput).parent().append(`<span class="invalid-${i}" style="color: red; font-size: 12px"></span>`)
+            }
+
+            if ($(requiredInput).val().trim() == '') {
+                $(`.invalid-${i}`).text(`${$(requiredInput).attr("placeholder")} can't be empty`)
+                $(requiredInput).css("border", "1px solid red")
+            } 
+            else {
+                $(`.invalid-${i}`).empty()
+                $(requiredInput).css("border", "1px solid #CCC")
+                it++;
             }
         })
 
-        console.log(response)
-        window.location.href = `/merchant-storefront`;
-    }
-    catch (err) {
-        console.log(err.response)
-    }
+        if (it !== $(":input[required]").length) return;
+
+        let newBookTitle = $("#new-book-title").val().trim()
+        let newBookAuthor = $("#new-book-author").val().trim()
+        let newBookPrice = $("#new-book-price").val().trim()
+        let newBookISBN = $("#new-book-ISBN").val().trim()
+        let newBookDescription = $("#new-book-description").val().trim()
+        let newBookCategory = $("#new-book-category").val()
+        let newBookImage = $("#new-book-image").val().trim()
+        let newBookPDF = $("#new-book-PDF").val().trim()
+        
+        try {
+            const response = await api.post(`${APP_URL}/api/products`, {
+                newBookTitle, 
+                newBookDescription,
+                newBookPrice,
+                newBookAuthor,
+                newBookISBN,
+                newBookCategory,
+                newBookPDF,
+                newBookImage
+            }, {
+                headers: {
+                    "Authorization": "Bearer " + getCookie('access-token')
+                }
+            })
+    
+            console.log(response)
+            window.location.href = `/merchant-storefront`;
+        }
+        catch (err) {
+            console.log(err.response)
+        }
+    })
+});
+
+$(".product-new").click(async () => {
+    await $("#add-products").modal("show")
+})
+
+$("#btn-edit").click(async() => {
+    window.location.href = await '/profile'
 })
 
 function generateProductHTML(products) {
