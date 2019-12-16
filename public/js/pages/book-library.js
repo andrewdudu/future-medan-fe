@@ -1,4 +1,9 @@
 document.title = 'Book Library';
+validateUserToken(getCookie('access-token'), () => window.location.href = '/login')
+
+async function getPdf(filePath, productId) {
+    window.location.href = `/pdf-viewer?file-path=%2f${filePath}&product-id=${productId}`
+}
 
 async function loadMyProduct() {
     try {
@@ -28,7 +33,7 @@ async function loadMyProduct() {
                         </div>
                     </div>
                     
-                    ${status === 'approved' ? '<div class="d-flex align-items-end flex-column justify-content-between"><a href="#"></a><button class="btn btn-primary pt-2" type="button">Read</button></div>' : ''}
+                    ${status === 'approved' ? `<div class="d-flex align-items-end flex-column justify-content-between"><a></a><button onclick="getPdf('${purchase.product.pdf}', '${purchase.product.id}')" class="btn btn-primary pt-2" type="button">Read</button></div>` : ''}
                 </div>
             `)
         })
