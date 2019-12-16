@@ -62,18 +62,22 @@
             <div class="container" style="padding: 5px 15px;">
                 <div class="mb-3">
                     <h2 class="text-info" id="merchant-posts" style="color: #278acb;text-align: left;font-size: 1.5em;display: flex;padding: 10px 0;">Posts (<strong>1</strong>)</h2>
-                    <ul class="product-list">
-                        <li id="product-item"><a id="product-link" class="p-0" href="#"></a>
-                            <div id="product-home" class="flex-center"><a id="product-link" class="p-0" href="#"><img id="product-image-home" src="assets/img/rubberplant2.jpeg"></a>
-                                <div id="product-details-home" class="text-left"><a id="product-link" class="p-0" href="#"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></a>
-                                    <div class="d-flex justify-content-between"><a id="product-link" class="p-0" href="#"><span class="pt-2"></span></a><a id="product-categories" href="#">Plants</a></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li id="product-item"><a id="product-link" href="#"></a>
-                            <div id="product-home" class="flex-center"><a id="product-link" href="#"><img id="product-image-home" src="assets/img/meeting.jpg"></a>
-                                <div id="product-details-home"><a id="product-link" href="#"><span id="product-name-home">Meeting yang Bermanfaat</span><span id="product-price-home">Rp30.000</span></a>
-                                    <div class="d-flex justify-content-between"><a id="product-link" href="#"><span class="pt-2"></span></a><a id="product-categories" href="#">Others</a></div>
+                    <ul class="product-list" id="merchant-storefront">
+                        <li id="product-item">
+                            <a id="product-link" href="#"></a>
+                            <div id="product-home" class="flex-center">
+                                <a id="product-link" href="#">
+                                    <img id="product-image-home" src="assets/img/meeting.jpg">
+                                </a>
+                                <div id="product-details-home">
+                                    <a id="product-link" href="#">
+                                        <span id="product-name-home">Meeting yang Bermanfaat</span>
+                                        <span id="product-price-home">Rp30.000</span>
+                                    </a>
+                                    <div class="d-flex justify-content-between">
+                                        <a id="product-link" href="#"><span class="pt-2"></span></a>
+                                        <a id="product-categories" href="#">Others</a>
+                                    </div>
                                 </div>
                             </div>
                         </li>
@@ -113,18 +117,28 @@
                             <input class="form-control w-100 p-1" type="text" id="new-book-title" placeholder="Title" required>
                         </div>
                         <div class="pb-2">
-                            <label for="new-book-author">Author</label><input class="form-control w-100 p-1" type="text" id="new-book-author" placeholder="Author" required></div>
+                            <label for="new-book-author">Author</label>
+                            <input class="form-control w-100 p-1" type="text" id="new-book-author" placeholder="Author" required>
+                        </div>
                         <div class="pb-2">
                             <label for="new-book-price">Price</label>
                             <input class="form-control w-100 p-1" type="number" id="new-book-price" placeholder="Price, ex 30000" required>
                         </div>
                         <div class="pb-2">
+                            <label for="new-book-ISBN">ISBN</label>
+                            <input class="form-control w-100 p-1" type="text" id="new-book-ISBN" placeholder="ISBN, ex 978-3-16-148410-0" required>
+                        </div>
+                        <div class="pb-2">
                             <label for="new-book-description">Book Description / Synopsis</label>
-                            <textarea class="form-control w-100 p-1" id="new-book-description" placeholder="Add book description"></textarea>
+                            <textarea class="form-control w-100 p-1" id="new-book-description" placeholder="Add book description" required></textarea>
                         </div>
                         <div class="pb-2">
                             <label for="new-book-image">Upload Book Image</label>
-                            <input type="file" id="new-book-image" for="new-book-description" required accept="image/*">
+                            <input type="file" id="new-book-image" for="new-book-image" required accept="image/*">
+                        </div>
+                        <div class="pb-2">
+                            <label for="new-book-PDF">Upload Book PDF</label>
+                            <input type="file" id="new-book-PDF" for="new-book-PDF" required accept="application/pdf">
                         </div>
                     </form>
                 </div>

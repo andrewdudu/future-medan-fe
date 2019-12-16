@@ -47,7 +47,7 @@ function generateProductHTML(list) {
                                 <div class="pl-3 d-flex align-items-center flex-column">
                                     <div>
                                         <a href="/product-page?id=${product.id}">
-                                            <p id="book-title" style="margin: 0;">${product.title}&nbsp;</p>
+                                            <p id="book-title" style="margin: 0;">${product.name}&nbsp;</p>
                                         </a>
                                         <p id="book-writer" style="font-size: 50%;">by ${product.author}</p>
                                     </div>
