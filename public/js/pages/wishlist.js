@@ -3,7 +3,7 @@ validateUserToken(getCookie('access-token'), (err) => window.location.href = '/l
 
 $(document).ready(async () => {
     try {
-        const response = await api.get(`${APP_URL}/api/wishlists/${user_id}`,{
+        const response = await api.get(`${APP_URL}/api/my-wishlists`,{
             headers: {
                 "Authorization": "Bearer " + getCookie("access-token")
             }
@@ -47,7 +47,7 @@ function generateProductHTML(list) {
                                 <div class="pl-3 d-flex align-items-center flex-column">
                                     <div>
                                         <a href="/product-page?id=${product.id}">
-                                            <p id="book-title" style="margin: 0;">${product.title}&nbsp;</p>
+                                            <p id="book-title" style="margin: 0;">${product.name}&nbsp;</p>
                                         </a>
                                         <p id="book-writer" style="font-size: 50%;">by ${product.author}</p>
                                     </div>
@@ -66,4 +66,34 @@ function generateProductHTML(list) {
                     </div>
                 </div>`
     })
+}
+
+async function deleteWishlistProduct(id) {
+    try {
+        const response = await api.delete(`${APP_URL}/api/wishlists`, {
+            headers: {
+                "Authorization": "Bearer " + getCookie('access-token')
+            },
+            data: {
+                "product_id": id
+            }
+        })
+
+        $(`#${id}`).remove();
+    }
+    catch (err) {
+    }
+}
+
+async function addToCart(id) {
+    try {
+        const response = await api.post(`${APP_URL}/api/carts`, { id }, {
+            headers: {
+                "Authorization": "Bearer " + getCookie('access-token')
+            }
+        })
+    }
+    catch (err) {
+
+    }
 }
