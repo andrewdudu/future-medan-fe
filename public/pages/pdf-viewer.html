@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="assets/css/pdf-viewer.css" />
+<div id="app">
+  <div id="toolbar">
+    <div id="pager">
+      <button data-pager="prev">prev</button>
+      <button data-pager="next">next</button>
+    </div>
+    <div id="page-mode">
+      <label>Page Mode <input type="number" value="1" min="1"/></label>
+    </div>
+  </div>
+  <div id="viewport" role="main"></div>
+</div>
+
+<script src="js/pages/pdf-viewer.js"></script>
+<script>
+  initPDFViewer('/HEA-0005.pdf', 'd2cc5693-d448-46e0-9b2a-fd5c016f2d6e')
+</script>

@@ -1,40 +1,131 @@
 document.title = 'Cart'
+validateUserToken(getCookie('access-token'), () => window.location.href = "/login")
+totalPrice = 0;
+products = [];
+selected = [];
+productLength = 0;
 
-function getCasts(){
-    const CART_BY_USER_ID = `/carts/${user_id}`
-    const PRODUCTS = `/products/${product_id}`
-    const url = 'http://127.0.0.1:8080/future-medan/api'
-
-    const api = axios.create({
-        baseURL: url,
-        timeout: 5000
-    })
-
-    const data = api.get(CART_BY_USER_ID, {user_id}).data
-    const productInCart = data.map(i => i.productId)
+async function loadUserCart(){
+    try {
+        const response = await api.get(`${APP_URL}/api/carts`, {
+            headers: {
+                "Authorization": "Bearer " + getCookie('access-token')
+            }
+        });
+        
+        products = response.data.data.products;
     
-    const html = generateProductHtml(productInCart)
-    $('product-in-cart').innerHTML = html
+        const html = generateProductHtml(products);
+    
+        $("#total-price").text('Rp ' + totalPrice.format(2, 3, ',', '.'));
+        $('#product-in-cart').append(html);
+    } catch (err) {
+
+    }
 }
 
-$('.')
+function checkout() {
+    setCookie('selected-product', selected, 1)
+    setCookie('total-price', totalPrice, 1)
+    window.location.assign('/payment-page')
+}
+
+function disableButton() {
+    $("#checkout-button").attr("disabled", true)
+}
+
+function enableButton() {
+    $("#checkout-button").attr("disabled", false)
+}
+
+function checkSelected() {
+    if (selected.length === 0) disableButton();
+    else enableButton();
+}
+
+function checkAll() {
+    let checked = $("#checkbox-all").prop("checked");
+
+    if (checked) {
+        products.forEach((product) => {
+            selected.push(product.id);
+            $("#checkbox-" + product.id).prop("checked", true);
+        })
+    } else {
+        products.forEach((product) => {
+            $("#checkbox-" + product.id).prop("checked", false);
+        })
+        selected = []
+    }
+
+    checkSelected()
+}
+
+function addSelected(id) {
+    let checked = $("#checkbox-" + id).prop("checked");
+    if (checked) {
+        selected.push(id);
+        products.forEach(product => {
+            if (product.id === id) totalPrice += product.price
+        })
+    } else {
+        selected = selected.filter(selectedId => selectedId !== id)
+        products.forEach(product => {
+            if (product.id === id) totalPrice -= product.price;
+        })
+    }
+    $("#total-price").text('Rp ' + totalPrice.format(2, 3, ',', '.'))
+
+    if (productLength == selected.length) {
+        $("#checkbox-all").prop("checked", true);
+    } else {
+        $("#checkbox-all").prop("checked", false);
+    }
+
+    checkSelected()
+}
+
+async function deleteCartProduct(id) {
+    try {
+        const response = await api.delete(`${APP_URL}/api/carts`, {
+            headers: {
+                "Authorization": "Bearer " + getCookie('access-token')
+            },
+            data: {
+                "product_id": id
+            }
+        })
+
+        $('#' + id).remove();
+    }
+    catch (err) {
+    }
+}
 
 function generateProductHtml (list) {
-    return list.map(i => {
-            return `<div class="row shadow-1 product-cart">
-                        <div class="col col-3 flex-center" style="padding-right: 0;"><input type="checkbox" style="width: 500px;">
-                            <div><a href="#product-page.html"><img id="product-image" class="shadow" style="border-radius: 50%;" src="${i.image}"></a></div>
-                        </div>
-                        <div class="col col-sm-7">
-                            <a href="#product-page.html">
-                                <p id="book-title" style="margin: 0;">${i.name}</p>
+    return list.map(product => {
+        productLength++;
+        return `<div class="row shadow-1 product-cart" id="${product.id}">
+                    <div class="col col-3 flex-center" style="padding-right: 0;">
+                        <input id="checkbox-${product.id}" onclick="addSelected('${product.id}')" type="checkbox" style="width: 500px;">
+                        <div>
+                            <a href="/product-page?id=${product.id}">
+                                <img id="product-image" class="shadow" src="${APP_URL}${product.image}">
                             </a>
-                            <p id="book-writer" style="font-size: 50%;">by Andrew Wijaya</p>
-                            <p id="book-price"><strong>Rp30.000</strong></p>
                         </div>
-                        <div class="col col-sm-1 flex-center justify-content-end"><a href="#"><i class="icon ion-android-delete" style="color: #5d5d5d;font-size: xx-large;"></i></a></div>
-                    </div>`
+                    </div>
+                    <div class="col col-sm-7">
+                        <a href="/product-page?id=${product.id}">
+                            <p id="book-title" style="margin: 0;">${product.name}</p>
+                        </a>
+                        <p id="book-writer" style="font-size: 50%;">by ${product.author}</p>
+                        <p id="book-price"><strong>Rp ${product.price.format(2, 3, ',', '.')}</strong></p>
+                    </div>
+                    <div onclick="deleteCartProduct('${product.id}')" class="col col-sm-1 flex-center justify-content-end"><a ><i class="icon ion-android-delete" style="color: #5d5d5d;font-size: xx-large;"></i></a></div>
+                </div>`
     })
 }
 
-getCasts()
+$(document).ready(async function() {
+    loadUserCart()
+})

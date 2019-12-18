@@ -27,32 +27,48 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md navbar-2 shadow d-flex align-items-center">
-        <div class="container-fluid">
+        <div class="container-fluid flex-center">
             <div class="col col-1" style="padding: 0;">
                 <a href="#">
                     <div><i class="icon ion-chevron-left" style="color: #5d5d5d;"></i></div>
                 </a>
             </div>
-            <div class="col col-8" style="padding: 0;">
+            <div class="col col-11" style="padding: 0;">
                 <div id="menu-name" style="text-align: initial;">
                     <p style="margin: 0;color: #278acb;">My Library</p>
                 </div>
-            </div><a href="#" style="color: #333;"><i class="la la-search" style="font-size: xx-large;"></i></a><a href="#"><i class="material-icons" style="color: #333;font-size: xx-large;">more_vert</i></a></div>
+            </div>
+            <a class="p-0" href="/search" style="color: #333;"><i class="la la-search" style="font-size: x-large;"></i></a>
+            <a href="#"><i class="la la-ellipsis-v" style="color: #333;font-size: x-large;"></i></a></div>
     </nav>
     <main class="page shopping-cart-page" style="background-color: #EDECEC;">
         <section class="clean-block clean-cart dark" style="background-color: white;">
-            <div class="container pt-2 pb-2">
-                <div class="d-flex">
-                    <a id="product-link" href="#" style="background-color: white!important;">
-                        <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/rubberplant2.jpeg">
-                            <div id="product-details-home" class="text-left"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></div>
+            <div id="order-list" class="tab-pane" role="tab-panel" style="padding: 10px">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="pt-1 pb-1" style="color: #2CBC6F;"><i class="fa fa-check-square-o pr-2"></i><span>Approved</span></div>
+                        <div class="row bg-white">
+                            <div class="col col-12 border-ccc">
+                                <div class="store mt-2 mb-1"><i class="fas fa-store pr-2" style="color: #278acb;"></i><span class="store-name" style="font-size: smaller;">Your Books</span></div>
+                            </div>
                         </div>
-                    </a>
-                    <a id="product-link" href="#">
-                        <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/rubberplant2.jpeg">
-                            <div id="product-details-home" class="text-left"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></div>
+                        <div class="row shadow-1 bg-white">
+                            <div class="col" id="approved-book">
+                            </div>
                         </div>
-                    </a>
+                    </div>
+                    <div class="col col-md-5">
+                        <div class="pt-1 pb-1" style="color: #707070;"><i class="far fa-clock pr-2"></i><span>Pending</span></div>
+                        <div class="row bg-white">
+                            <div class="col col-12 border-ccc">
+                                <div class="store mt-2 mb-1"><i class="fas fa-store pr-2" style="color: #278acb;"></i><span class="store-name" style="font-size: smaller;">Your Pending Books</span></div>
+                            </div>
+                        </div>
+                        <div class="row shadow-1 bg-white">
+                            <div class="col" id="pending-book">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -63,6 +79,8 @@
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+    <script src="js/globalFunc.js"></script>
+    <script src="js/pages/book-library.js"></script>
 </body>
 
 </html>

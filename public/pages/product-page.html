@@ -30,7 +30,7 @@
         <nav class="navbar navbar-light navbar-expand-md navbar-2 shadow">
             <div class="container-fluid">
                 <div class="col col-1" style="padding: 0;">
-                    <a href="#">
+                    <a onclick="goBack()">
                         <div><i class="icon ion-chevron-left" style="color: #5d5d5d;"></i></div>
                     </a>
                 </div>
@@ -44,11 +44,20 @@
         <section class="clean-block clean-product dark" style="background-color: #EDECEC;">
             <nav class="navbar navbar-light navbar-expand-md fixed-bottom" style="background-color: #FFF;padding: 5px;display: flex;justify-content: center;">
                 <div class="container-fluid" style="display: flex;justify-content: center;">
-                    <div class="navbar-button"><button class="btn btn-primary" type="button" style="padding: 10px;font-weight: bolder;width: 52%;"><i class="icon ion-android-cart"></i>Purchase Now</button><button class="btn btn-primary" type="button" style="padding: 10px;background-color: white;color: #278ACB;width: 46%;"><i class="icon-basket"></i>Add to Cart</button></div>
-                    <div
-                        class="collapse navbar-collapse" id="navcol-2">
+                    <div class="navbar-button">
+                        <button class="btn btn-primary" type="button" style="padding: 10px;font-weight: bolder;width: 52%;">
+                            <i class="icon ion-android-cart"></i>Purchase Now
+                        </button>
+                        <button class="btn btn-primary" type="button" style="padding: 10px;background-color: white;color: #278ACB;width: 46%;">
+                            <i class="icon-basket"></i>Add to Cart
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navcol-2">
                         <ul class="nav navbar-nav" style="margin: 5px 10px;width: 100%;background-color: white;">
-                            <li class="nav-item" role="presentation" style="border: 1px solid #999999;border-radius: 5px;padding: 2px 10px;display: flex;align-items: center;width: 100%;justify-content: center;"><i class="la la-gittip" style="color: #999999;font-size: xx-large;"></i><a class="nav-link active" href="#" style="display: inline-flex;color: #999999;">Add to Wishlist</a></li>
+                            <li class="nav-item" role="presentation" style="border: 1px solid #999999;border-radius: 5px;padding: 2px 10px;display: flex;align-items: center;width: 100%;justify-content: center;">
+                                <i class="la la-gittip" style="color: #999999;font-size: xx-large;"></i>
+                                <a class="nav-link active" href="#" style="display: inline-flex;color: #999999;">Add to Wishlist</a>
+                            </li>
                         </ul>
                 </div>
                 </div>
@@ -74,8 +83,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div><a href="#"></a>
-                                <div class="m-2 d-flex align-items-center justify-content-center btn btn-outline-primary p-0"><i class="la la-gittip" style="font-size: xx-large;"></i><span>Add to Wishlist</span></div>
+                                </div>
+                                <div id="btn-add-to-wishlist" class="m-2 d-flex align-items-center justify-content-center btn btn-outline-primary p-0">
+                                    <i class="la la-gittip" style="font-size: xx-large;"></i>
+                                    <span>Add to Wishlist</span>
+                                </div>
                             </div>
                             <div class="col">
                                 <div><img class="w-100 img-fluid" src="assets/img/rubberplant.jpeg"></div>
@@ -199,6 +211,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="js/globalFunc.js"></script>
 </body>
 
 </html>

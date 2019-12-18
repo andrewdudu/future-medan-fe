@@ -31,25 +31,16 @@
             <div class="navbar-button" style="padding: 0 10px;">
                 <div>
                     <p style="color: #919191;margin: 0;">Total</p>
-                    <p id="total" class="font-weight-bolder" style="margin: 0;color: #DF5F1D;">Rp 30.000</p>
-                </div><button class="btn btn-primary shadow" type="button" style="font-weight: bolder;padding: 0 12px;">Buy Now</button></div>
+                    <p id="total-price" class="font-weight-bolder" style="margin: 0;color: #DF5F1D;"></p>
+                </div><button id="buy-now-button" onclick="onBuyNowClicked()" class="btn btn-primary shadow" type="button" style="font-weight: bolder;padding: 0 12px;" disabled>Buy Now</button></div>
         </div>
     </nav>
     <main class="page payment-page">
-        <section class="clean-block payment-form dark">
-            <nav class="navbar navbar-light navbar-expand-md navbar-2 p-0">
-                <div class="container-fluid">
-                    <ul class="nav nav-tabs" style="width: 90%;">
-                        <li class="nav-item purchase-menu w-50"><a class="nav-link active" href="#purchase" role="tab" data-toggle="tab">Purchase</a></li>
-                        <li class="nav-item purchase-menu w-50"><a class="nav-link" href="#order-list" data-toggle="tab" role="tab">Order List</a></li>
-                    </ul>
-                    <div class="bg-white" style="width: 10%;text-align: center;"><i class="fas fa-ellipsis-v p-2" style="font-size: x-large;color: #5d5d5d;"></i></div>
-                </div>
-            </nav>
+        <section class="clean-block payment-form">
             <div class="container mt-4 tab-content">
                 <div id="purchase" class="tab-pane active" role="tab-panel">
                     <div class="row">
-                        <div class="col-md-6 mb-3">
+                        <!-- <div class="col-md-6 mb-3">
                             <div class="mb-2" style="color: #707070;"><i class="fas fa-file-invoice-dollar pr-2"></i><span>Your Order</span></div>
                             <div class="row bg-white">
                                 <div class="col col-12 border-ccc">
@@ -75,21 +66,23 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col col-md-5 p-0">
                             <div class="mb-2" style="color: #707070;padding: 0 15px;"><i class="far fa-credit-card pr-2"></i><span>Payment Method</span></div>
                             <div class="payment-method bg-white shadow-1">
                                 <div class="dropdown payment-method" style="border-bottom: 1px solid #CCC;">
-                                    <div class="btn dropdown-toggle w-100 d-flex align-items-center justify-content-between" data-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn dropdown-toggle w-100 d-flex align-items-center justify-content-between" data-toggle="collapse" data-target="#bank" aria-expanded="false">
                                         <div><i class="fa fa-bank pr-3"></i><span>Bank Transfer</span></div>
+                                    </button>
+                                    <div id="bank" class="collapse in" role="menu">
                                     </div>
-                                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" href="#" role="presentation">Link</a><a class="dropdown-item" href="#" role="presentation">Link</a><a class="dropdown-item" href="#" role="presentation">Link</a></div>
                                 </div>
                                 <div class="dropdown payment-method">
-                                    <div class="btn dropdown-toggle w-100 d-flex align-items-center justify-content-between" data-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn dropdown-toggle w-100 d-flex align-items-center justify-content-between" data-toggle="collapse" data-target="#virtual-bank" aria-expanded="false">
                                         <div><i class="fa fa-bank pr-3"></i><span>Bank Virtual Account</span></div>
+                                    </button>
+                                    <div id="virtual-bank" class="collapse in" role="menu">
                                     </div>
-                                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" href="#" role="presentation">Link</a><a class="dropdown-item" href="#" role="presentation">Link</a><a class="dropdown-item" href="#" role="presentation">Link</a></div>
                                 </div>
                             </div>
                         </div>
@@ -161,6 +154,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="js/globalFunc.js"></script>
+    <script src="js/pages/payment-page.js"></script>
 </body>
 
 </html>

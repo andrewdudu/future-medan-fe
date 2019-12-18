@@ -1,15 +1,69 @@
 document.title = "My Wishlist"
+validateUserToken(getCookie('access-token'), (err) => window.location.href = '/login')
 
-function getCasts() {
-    const api = axios.create({
-        baseURL: "http://127.0.0.1:8080/future-medan/api",
-        timeout: 5000
-    }) 
+$(document).ready(async () => {
+    try {
+        const response = await api.get(`${APP_URL}/api/wishlists/${user_id}`,{
+            headers: {
+                "Authorization": "Bearer " + getCookie("access-token")
+            }
+        })
+        
+        const myWishlist = response.data.data
+            .map(i => {
+                return {
+                    name: i.name,
+                    image: i.image,
+                    price: i.price
+                }
+            })
 
-    const path = '/wishlists'
-    const data = api.get(path)
+        if (!$.isArray(myWishlist) ||  !myWishlist.length ) {
+            addEmptyPict("wishlist", "assets/img/illustration/wishlist.png")
+        }
 
-    
+        else {
+            const html = generateProductHTML(myWishlist)
+            $("#wishlist").append(html)
+        }
+        
+    }
+    catch (err) {
+        
+    }
+})
+
+function generateProductHTML(list) {
+    return list.map(product => {
+        return `<div class="row shadow-1 product-cart bg-light-blue" id="${product.id}">
+                    <div class="col">
+                        <div id="product-details" class="d-flex justify-content-between pt-2 pb-2">
+                            <div class="d-flex">
+                                <div class="p-1 d-flex align-items-center">
+                                    <a href="/product-page?id=${product.id}">
+                                        <img id="product-image" class="shadow" src="${APP_URL}${product.image}">
+                                    </a>
+                                </div>
+                                <div class="pl-3 d-flex align-items-center flex-column">
+                                    <div>
+                                        <a href="/product-page?id=${product.id}">
+                                            <p id="book-title" style="margin: 0;">${product.title}&nbsp;</p>
+                                        </a>
+                                        <p id="book-writer" style="font-size: 50%;">by ${product.author}</p>
+                                    </div>
+                                    <p id="book-price" class="m-0"><strong>${new Intl.NumberFormat('ID').format(product.price)}</strong></p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-end flex-column justify-content-between">
+                                <div onclick="deleteWishlistProduct('${product.id}')">
+                                    <i class="icon ion-android-delete" style="color: #5d5d5d;font-size: x-large;"></i>
+                                </div>
+                                <button class="btn btn-primary pt-2" type="button" onclick=addToCart('${product.id}')>
+                                    &nbsp;<i class="fas fa-cart-plus" style="font-size: larger;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+    })
 }
-
-getCasts()
