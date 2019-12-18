@@ -3,7 +3,9 @@ validateUserToken(getCookie('access-token'), (err) => window.location.href = '/l
 
 async function loadProfile() {
     try {
-        const response = await api.get(`${APP_URL}/api/users/${id}`,{
+        $("#edit-error-message").hide()
+
+        const response = await api.get(`${APP_URL}/api/users`,{
             headers: {
                 "Authorization": "Bearer " + getCookie("access-token")
             }
@@ -28,7 +30,7 @@ $('#save-changes').click(async profile => {
         let phoneNumber = $('#phone-number').val()
         let address = $('#address').val()
 
-        const res = api.put(`/users/${id}`, {
+        const res = await api.put(`/users/${id}`, {
                 nickname, 
                 username,
                 phoneNumber, 
