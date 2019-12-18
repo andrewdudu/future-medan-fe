@@ -7,7 +7,7 @@ async function getPdf(filePath, productId) {
 
 async function loadMyProduct() {
     try {
-        let response = await api.get(`${APP_URL}/api/my-products`, {
+        let response = await api.get(`/my-products`, {
             headers: {
                 "Authorization": "Bearer " + getCookie('access-token')
             }

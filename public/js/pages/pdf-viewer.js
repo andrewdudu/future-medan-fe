@@ -4,11 +4,6 @@
     let cursorIndex = Math.floor(currentPageIndex / pageMode);
     let pdfInstance = null;
     let totalPagesCount = 0;
-
-    function get(name){
-        if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-           return decodeURIComponent(name[1]);
-    }
   
     const viewport = document.querySelector("#viewport");
     window.initPDFViewer = async function(filePath, productId) {
