@@ -1,8 +1,16 @@
 document.title = 'Home Page'
-validateUserToken(getCookie('access-token'), (err) => $("#library").hide())
+verifiedUserActive = validateUserToken(getCookie('access-token'), (err) => $("#library").hide())
+verifiedMerchantActive = validateMerchantToken(getCookie('access-token'), (err) => {})
 
-async function getCasts(){
+$(document).ready(async e => {
     try {
+        e.preventDefault()
+
+        if (verifiedMerchantActive) {
+            window.location.href = '/merchant-storefront';
+            return;
+        }
+
         const response = await api.get(`${APP_URL}/api/products`)
         const data = response.data.data
 
@@ -29,18 +37,33 @@ async function getCasts(){
         const html = generateProductHtml(newReleaseProducts)
         const html2 = generateProductHtml(bestSellerProducts)
 
-        $('#new-release').append(html)
-        $('#best-seller').append(html2)
+        $('#new-release').html(html)
+        $('#best-seller').html(html2)
 
         // Book library
-        if (!$("#library").is(":hidden")){
-                
+        if (verifiedUserActive){
+            try {
+                const response2 = await api.get(`${APP_URL}/api/products`)
+                const data2 = response.data.data
+
+                if (!$.isArray(data2) ||  !data2.length) {
+                    $('#book-library').hide()
+                    console.log("empty")
+                }
+                else {
+                    const library = generateProductHtml(data)
+                    $('#book-library').html(library)
+                }
+            }
+            catch (err) {
+
+            }
         }
     }
     catch (err) {
-
+        addReloadPict(".index-page")
     }
-}
+})
 
 function generateProductHtml(list) {
     return list.map(i => {
@@ -57,7 +80,3 @@ function generateProductHtml(list) {
                     </li>`
     })
 }
-
-$(document).ready(async function () {
-    getCasts()
-})

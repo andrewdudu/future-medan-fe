@@ -186,6 +186,81 @@ html, body {
   transform: translate(-50%, -50%);
 }
 
+.main-menu ul li {
+  list-style-type: none;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.main-menu a {
+  text-decoration: none;
+  color: black;
+  padding: 8px;
+  display: block;
+  transition: 0.3s;
+}
+
+.main-menu i {
+  font-size: 24px;
+  line-height: 24px;
+  padding-left: 20px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  transition: 0.3s;
+  padding-top: 20px;
+  position: fixed;
+  /* display: block; */
+}
+
+.main-menu {
+  /* top: 25%; */
+  position: relative;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.main-menu a:hover, #main-menu a:focus {
+  color: #278ACB;
+}
+
+.btn-close {
+  position: absolute;
+  font-size: 30px;
+  left: 15px;
+  top: 0;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+#profile-name {
+  font-size: large;
+  font-weight: bold;
+}
+
+@media screen and (max-height: 450px) {
+  .main-menu a {
+    font-size: 20px
+  }
+
+  .btn-close {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
 ::-webkit-scrollbar {
   display: none;
 }

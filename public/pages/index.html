@@ -25,20 +25,9 @@
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
-<body style="background-color: #E4E4E4;">
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white shadow clean-navbar">
-        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon" style="color: rgb(33,37,41);"></span></button><a class="navbar-brand logo" href="#">Brand</a>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="features.html">CATEGORIES</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="pricing.html">Pricing</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.html">About Us</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
-                </ul>
-        </div><i class="la la-search" style="font-size: xx-large;"></i></div>
-    </nav>
+<body class="index-page" style="background-color: #E4E4E4;">
+    <div id="header"></div>
+
     <main class="page landing-page">
         <div id="carousel" class="d-flex justify-content-center">
             <div class="carousel slide shadow-1" data-ride="carousel" id="carousel-1" style="margin: 30px 20px;">
@@ -65,9 +54,9 @@
                             Show All<i class="fas fa-chevron-circle-right" style="margin-left: 8px;font-size: 20px;color: #278acb;"></i>
                         </a>
                     </div>
-                    <div class="d-flex flex-wrap justify-content-between">
+                    <div class="d-flex flex-wrap">
                         <a id="category-link" href="#">
-                            <div id="category-group" class="flex-column p-2 flex-center"><img id="category-image" src="assets/img/star-empty.svg"><span id="category-name">Bintang dan Star</span></div>
+                            <div id="category-group" class="flex-column p-2 flex-center"><img id="category-image" src="assets/img/star-empty.svg"><span id="category-name">a</span></div>
                         </a>
                         <a id="category-link" href="#">
                             <div id="category-group" class="flex-column p-2 flex-center"><img id="category-image" src="assets/img/star-half-empty.svg"><span id="category-name">Star dan Bintang</span></div>
@@ -251,10 +240,8 @@
                 </div>
             </div>
         </section><a id="back-to-top" class="btn btn-primary rounded-circle shadow" href="#" role="button"><i class="fas fa-chevron-up m-0 pt-2"></i></a></main>
-    <footer class="page-footer p-3 text-center">
-        <p>Need help?&nbsp;<a href="#">Contact Us</a></p>
-        <p class="mb-0" style="font-size: 14px;"><strong>© 2019 Copyright FUTURE-Medan-blibli.com</strong><br>All Rights Reserved<br></p>
-    </footer>
+    
+        <div id="footer"></div>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -263,6 +250,7 @@
     <script src="assets/js/theme.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
     <script src="js/globalFunc.js"></script>
+    <script src="js/pages/construct-main.js"></script>
     <script src="js/pages/index.js"></script>
 </body>
 

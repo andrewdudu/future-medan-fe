@@ -1,7 +1,9 @@
 document.title = "All Categories"
 
-$(document).ready(async () => {
+$(document).ready(async e => {
     try {
+        e.preventDefault()
+
         const response = await api.get(`${APP_URL}/api/categories`)
         const data = response.data.data
     
