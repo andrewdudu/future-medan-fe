@@ -49,7 +49,7 @@ window.onscroll = function() {
     else {
         $('#back-to-top').css("display", "block");
     }
-    console.log(document.documentElement.scrollTop)
+    // console.log(document.documentElement.scrollTop)
 };
 
 function topFunction() {

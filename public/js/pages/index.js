@@ -18,11 +18,6 @@ $(document).ready(async e => {
     try {
         e.preventDefault()
 
-        if (merchant) {
-            window.location.href = '/merchant-storefront';
-            return;
-        }
-
         const response = await api.get(`${APP_URL}/api/products`)
         const data = response.data.data
 
@@ -59,12 +54,12 @@ $(document).ready(async e => {
                 const data2 = response.data.data
 
                 if (!$.isArray(data2) ||  !data2.length) {
-                    $('#book-library').hide()
+                    $('#user-library').hide()
                     console.log("empty")
                 }
                 else {
                     const library = generateProductHtml(data)
-                    $('#book-library').html(library)
+                    $('#user-library').html(library)
                 }
             }
             catch (err) {
