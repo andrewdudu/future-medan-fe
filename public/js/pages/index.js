@@ -1,12 +1,24 @@
 document.title = 'Home Page'
-verifiedUserActive = validateUserToken(getCookie('access-token'), (err) => $("#library").hide())
-verifiedMerchantActive = validateMerchantToken(getCookie('access-token'), (err) => {})
+var userPromise = validateUserToken(getCookie('access-token'), (err) => $("#library").hide())
+var merchantPromise = validateMerchantToken(getCookie('access-token'), (err) => {})
+var merchant, user;
+
+merchantPromise.then(function (value) {
+    console.log(`Merchant : ${value}`)
+    merchant = value
+})
+
+console.log(userPromise)
+userPromise.then(function (value) {
+    console.log(`User : ${value}`)
+    user = value
+})
 
 $(document).ready(async e => {
     try {
         e.preventDefault()
 
-        if (verifiedMerchantActive) {
+        if (merchant) {
             window.location.href = '/merchant-storefront';
             return;
         }
@@ -41,7 +53,7 @@ $(document).ready(async e => {
         $('#best-seller').html(html2)
 
         // Book library
-        if (verifiedUserActive){
+        if (user){
             try {
                 const response2 = await api.get(`${APP_URL}/api/products`)
                 const data2 = response.data.data
