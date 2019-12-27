@@ -1,0 +1,167 @@
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white shadow clean-navbar">
+    <div class="container">
+        <span id="btn-sidenav" class="btn btn-sidenav">
+            <i class="material-icons">menu</i>
+        </span>
+        
+        <a class="navbar-brand logo" href="#">Brand</a>
+
+        <div id="menu">
+            <a href="/shopping-cart" style="color: #333;">
+                <i class="la la-shopping-cart" style="font-size: xx-large;"></i>
+            </a>
+            <a href="/search" style="color: #333;">
+                <i class="la la-search" style="font-size: xx-large;"></i>
+            </a> 
+        </div>
+    </div>
+</nav>
+
+<aside id="sidenav" role="complementary" class="sidenav">
+    <div id="btn-close" class="btn btn-close"> 
+        <i class="icon ion-android-close" style="color: #707070;"></i>
+    </div>
+
+    <div id="user-profile" class="user-profile flex-center flex-column justify-content-center pt-5">
+        <img id="profile-pict" src="\assets\img\avatars\default-avatar.jpg" alt="user-profile" width="100px" height="100px" style="border-radius: 50%;">
+        <span id="profile-name" class="pt-3"></span>
+        <span id="edit-profile" style="color: #278acb;">Edit Profile</span>
+    </div>
+
+    <nav id="main-menu" class="main-menu" role="navigation">
+        <ul id="visitors" class="p-0">
+            <li id="menu-login">
+                <a href="/login" class="d-flex align-content-center">
+                    <i class="icon-login pr-3"></i> 
+                    <span>Login / Register</span>
+                </a>
+            </li>
+            <li id="menu-category">
+                <a href="/all-categories" class="d-flex align-content-center">
+                    <i class="icon-grid pr-3"></i>
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li id="menu-contact-us">
+                <a href="/about-us" class="d-flex align-content-center">
+                    <i class="icon-call-in pr-3"></i>
+                    <span>Contact Us</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul id="verified-user" class="p-0">
+            <li id="menu-category">
+                <a href="/all-categories" class="d-flex align-content-center">
+                    <i class="icon-grid pr-3"></i>
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li id="menu-wishlist">
+                <a href="/wishlist" class="d-flex align-content-center">
+                    <i class="icon ion-ios-heart-outline pr-3 pb-0 mb-0"></i>
+                    <span>My Wishlist</span>   
+                </a>
+            </li>
+            <li id="menu-book-library">
+                <a href="/book-library" class="d-flex align-content-center">
+                    <i class="icon ion-ios-book-outline pr-3 mb-0"></i>
+                    <span style="font-size: 16px;">My Library</span>    
+                </a>
+            </li>
+            <li id="menu-order-list">
+                <a href="/book-library" class="d-flex align-content-center">
+                    <i class="la la-list-alt pr-3"></i>
+                    <span>Order List</span>    
+                </a>
+            </l>
+            <li id="menu-contact-us">
+                <a href="/about-us" class="d-flex align-content-center">
+                    <i class="icon-call-in pr-3"></i>
+                    <span>Contact Us</span>
+                </a>
+            </li>
+            <li id="menu-log-out">
+                <a href="" class="d-flex align-content-center">
+                    <i class="icon-logout pr-3"></i>
+                    <span>Log Out</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul id="verified-merchant" class="p-0">
+            <li id="menu-category">
+                <a href="/all-categories" class="d-flex align-content-center">
+                    <i class="icon-grid pr-3"></i>
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li id="menu-merchant-incoming-order">
+                <a href="/merchant-incoming-order" class="d-flex align-content-center">
+                    <i class="la la-list-alt pr-3"></i>
+                    <span>Incoming Order</span>
+                </a>
+            </li>
+            <li id="menu-contact-us">
+                <a href="/about-us" class="d-flex align-content-center">
+                    <i class="icon-call-in pr-3"></i>
+                    <span>Contact Us</span>
+                </a>
+            </li>
+            <li id="menu-log-out">
+                <a href="" class="d-flex align-content-center">
+                    <i class="icon-logout pr-3"></i>
+                    <span>Log Out</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>
+
+<script src="js/pages/index.js"></script>
+<script>
+    $('#btn-sidenav').click(() => {
+        $('#sidenav').css("width", ($(window).width() < 768)? "100%" : "30%")
+        $(".navbar").removeClass("fixed-top")
+
+        if (user || merchant) {
+            $('#visitors').hide()
+
+            const response = await api.post(`${APP_URL}/api/users`, {
+                headers: {
+                    "Authorization": "Bearer " + getCookie('access-token')
+                }
+            })
+            const data = response.data.data
+
+            $('#profile-name').text(data.name)
+
+            if (data.image != null) {
+                $('#profile-img').attr("src", `${APP_URL}${data.image}`)
+            }
+        }
+
+        if (user) {
+            $('#verified-merchant').hide()
+        }
+        else if (merchant) {
+            $('#verified-user').hide()
+        }
+        else {
+            $('#verified-user').hide()
+            $('#verified-merchant').hide()
+            
+            $('#user-profile').hide()
+            $('#main-menu').addClass('pt-4')
+        }
+    })
+
+    $('#btn-close').click(() => {
+        $('#sidenav').css("width", "0")
+        $(".navbar").addClass("fixed-top")
+    })
+
+    $('#user-profile').click(() => {
+        window.location.href = '/profile'
+    })
+</script>
