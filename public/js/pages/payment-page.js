@@ -39,7 +39,7 @@ async function onBuyNowClicked() {
         
         window.location.href = '/book-library'
     } catch (err) {
-
+        Notify(err.response.data.message, null, null, 'danger');
     }
 }
 

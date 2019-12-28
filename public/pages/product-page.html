@@ -45,10 +45,10 @@
             <nav class="navbar navbar-light navbar-expand-md fixed-bottom" style="background-color: #FFF;padding: 5px;display: flex;justify-content: center;">
                 <div class="container-fluid" style="display: flex;justify-content: center;">
                     <div class="navbar-button">
-                        <button class="btn btn-primary" type="button" style="padding: 10px;font-weight: bolder;width: 52%;">
+                        <button onclick="onPurchaseNowClicked()" class="btn btn-primary" type="button" style="padding: 10px;font-weight: bolder;width: 52%;">
                             <i class="icon ion-android-cart"></i>Purchase Now
                         </button>
-                        <button class="btn btn-primary" type="button" style="padding: 10px;background-color: white;color: #278ACB;width: 46%;">
+                        <button onclick="onAddToCartClicked()" class="btn btn-primary" type="button" style="padding: 10px;background-color: white;color: #278ACB;width: 46%;">
                             <i class="icon-basket"></i>Add to Cart
                         </button>
                     </div>
@@ -69,11 +69,11 @@
                             <div class="col-md-6">
                                 <div class="info">
                                     <h4><strong id="book-title"></strong></h4>
-                                    <div><small><em id="book-title-author">by Andrew Wijaya</em></small></div>
+                                    <div><small><em id="book-title-author"></em></small></div>
                                     <div class="row" style="display: flex;">
                                         <div class="col">
                                             <div class="price" style="padding: 0;">
-                                                <p style="margin: 0;color: #DF5F1D;"><strong id="book-price">Rp 30.000</strong></p>
+                                                <p style="margin: 0;color: #DF5F1D;"><strong id="book-price"></strong></p>
                                             </div>
                                         </div>
                                         <!-- <div class="col" style="display: inline-flex;align-items: center;justify-content: flex-end;">
@@ -84,7 +84,7 @@
                                         </div> -->
                                     </div>
                                 </div>
-                                <div id="btn-add-to-wishlist" class="m-2 d-flex align-items-center justify-content-center btn btn-outline-primary p-0">
+                                <div onclick="onWishlistButtonClicked()" id="btn-add-to-wishlist" class="m-2 d-flex align-items-center justify-content-center btn btn-outline-primary p-0">
                                     <i class="la la-gittip" style="font-size: xx-large;"></i>
                                     <span>Add to Wishlist</span>
                                 </div>
@@ -134,7 +134,7 @@
                                 </div>
                                 <div
                                     class="tab-pane fade show" role="tabpanel" id="reviews">
-                                    <div class="reviews">
+                                    <!-- <div class="reviews">
                                         <div class="review-item">
                                             <div class="rating"><img src="assets/img/star.svg"><img src="assets/img/star.svg"><img src="assets/img/star.svg"><img src="assets/img/star.svg"><img src="assets/img/star-empty.svg"></div>
                                             <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
@@ -154,7 +154,7 @@
                                             <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                         </div>
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
                     </div>
