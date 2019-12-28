@@ -120,25 +120,26 @@
 
 <script src="js/pages/index.js"></script>
 <script>
-    $('#btn-sidenav').click(() => {
+    $('#btn-sidenav').click((e) => {
+        e.preventDefault();
+
         $('#sidenav').css("width", ($(window).width() < 768)? "100%" : "30%")
-        $(".navbar").removeClass("fixed-top")
 
         if (user || merchant) {
             $('#visitors').hide()
 
-            const response = await api.post(`${APP_URL}/api/users`, {
-                headers: {
-                    "Authorization": "Bearer " + getCookie('access-token')
-                }
-            })
-            const data = response.data.data
+            // const response = await api.post(`/users`, {
+            //     headers: {
+            //         "Authorization": "Bearer " + getCookie('access-token')
+            //     }
+            // })
+            // const data = response.data.data
 
-            $('#profile-name').text(data.name)
+            // $('#profile-name').text(data.name)
 
-            if (data.image != null) {
-                $('#profile-img').attr("src", `${APP_URL}${data.image}`)
-            }
+            // if (data.image != null) {
+            //     $('#profile-img').attr("src", `${APP_URL}${data.image}`)
+            // }
         }
 
         if (user) {
@@ -154,6 +155,8 @@
             $('#user-profile').hide()
             $('#main-menu').addClass('pt-4')
         }
+
+        $(".navbar").removeClass("fixed-top")
     })
 
     $('#btn-close').click(() => {
