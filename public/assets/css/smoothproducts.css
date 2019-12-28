@@ -194,7 +194,7 @@ html, body {
 
 .main-menu a {
   text-decoration: none;
-  color: black;
+  color: white;
   padding: 8px;
   display: block;
   transition: 0.3s;
@@ -212,17 +212,15 @@ html, body {
   z-index: 1000;
   top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: #278ACB;
   overflow-x: hidden;
   overflow-y: scroll;
   transition: 0.3s;
   padding-top: 20px;
   position: fixed;
-  /* display: block; */
 }
 
 .main-menu {
-  /* top: 25%; */
   position: relative;
   width: 100%;
   margin-top: 30px;
@@ -233,10 +231,7 @@ html, body {
 }
 
 .btn-close {
-  position: absolute;
   font-size: 30px;
-  left: 15px;
-  top: 0;
 }
 
 .flex-center {

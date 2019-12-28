@@ -13,8 +13,8 @@ $('#login-button').click(async e => {
         })
     
         setCookie('access-token', response.data.accessToken, 1)
-        console.log(response.data)
-        // window.location.href = "/"
+        
+        window.location.href = "/"
     }
     catch (err) {
         addErrorMsg("login", inputWrong);
