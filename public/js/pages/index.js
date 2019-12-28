@@ -1,24 +1,18 @@
 document.title = 'Home Page'
-var userPromise = validateUserToken(getCookie('access-token'), (err) => $("#library").hide())
-var merchantPromise = validateMerchantToken(getCookie('access-token'), (err) => {})
-var merchant, user;
-
-merchantPromise.then(function (value) {
-    console.log(`Merchant : ${value}`)
-    merchant = value
+merchant = true, user = true;
+var userPromise = validateUserToken(getCookie('access-token'), (err) => {
+    user = false
+    $("#library").hide()
 })
-
-console.log(userPromise)
-userPromise.then(function (value) {
-    console.log(`User : ${value}`)
-    user = value
+var merchantPromise = validateMerchantToken(getCookie('access-token'), (err) => {
+    merchant = false
 })
 
 $(document).ready(async e => {
     try {
         e.preventDefault()
 
-        const response = await api.get(`${APP_URL}/api/products`)
+        const response = await api.get(`/products`)
         const data = response.data.data
 
         const newReleaseProducts = data
@@ -50,7 +44,7 @@ $(document).ready(async e => {
         // Book library
         if (user){
             try {
-                const response2 = await api.get(`${APP_URL}/api/products`)
+                const response2 = await api.get(`/products`)
                 const data2 = response.data.data
 
                 if (!$.isArray(data2) ||  !data2.length) {

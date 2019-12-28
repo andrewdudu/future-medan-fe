@@ -1,16 +1,18 @@
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white shadow clean-navbar">
     <div class="container">
-        <span id="btn-sidenav" class="btn btn-sidenav">
-            <i class="material-icons">menu</i>
+        <span id="btn-sidenav" class="btn btn-sidenav">    
+            <i class="material-icons" style="color: #278acb;">menu</i>
         </span>
         
-        <a class="navbar-brand logo" href="#">Brand</a>
+        <a class="navbar-brand logo" href="#">
+            <img src="assets/img/logo/bookmart-logo-half-3.png" alt="bookmart-logo" id="bookmart-logo">
+        </a>
 
         <div id="menu">
-            <a href="/shopping-cart" style="color: #333;">
+            <a href="/shopping-cart" style="color: #278acb;">
                 <i class="la la-shopping-cart" style="font-size: xx-large;"></i>
             </a>
-            <a href="/search" style="color: #333;">
+            <a href="/search" style="color: #278acb;">
                 <i class="la la-search" style="font-size: xx-large;"></i>
             </a> 
         </div>
@@ -18,14 +20,14 @@
 </nav>
 
 <aside id="sidenav" role="complementary" class="sidenav">
-    <div id="btn-close" class="btn btn-close"> 
-        <i class="icon ion-android-close" style="color: #707070;"></i>
+    <div id="btn-close" class="btn btn-close w-100 text-left border-bottom-light"> 
+        <i class="icon ion-android-close" style="color: #fff;"></i>
     </div>
 
     <div id="user-profile" class="user-profile flex-center flex-column justify-content-center pt-5">
         <img id="profile-pict" src="\assets\img\avatars\default-avatar.jpg" alt="user-profile" width="100px" height="100px" style="border-radius: 50%;">
         <span id="profile-name" class="pt-3"></span>
-        <span id="edit-profile" style="color: #278acb;">Edit Profile</span>
+        <span id="edit-profile" style="color: #fff;">Edit Profile</span>
     </div>
 
     <nav id="main-menu" class="main-menu" role="navigation">
@@ -120,25 +122,35 @@
 
 <script src="js/pages/index.js"></script>
 <script>
-    $('#btn-sidenav').click(() => {
-        $('#sidenav').css("width", ($(window).width() < 768)? "100%" : "30%")
-        $(".navbar").removeClass("fixed-top")
+    $('#bookmart-logo').width(0.3 * $(window).width())
 
+    $(window).resize(() => {
+        $('#bookmart-logo').width(0.3 * $(window).width())
+    })
+
+    $('#btn-sidenav').click((e) => {
+        e.preventDefault();
+
+        $('#sidenav').css({
+            "width": `${($(window).width() < 768)? "100%" : "30%"}`,
+        })
+
+        $('#btn-close').css({
+            'top': `${$('#btn-sidenav').position().top}px`,
+            'left': `${$('#btn-sidenav').position().left}px`,
+            'position': 'absolute'
+        })
+    
         if (user || merchant) {
             $('#visitors').hide()
 
-            const response = await api.post(`${APP_URL}/api/users`, {
-                headers: {
-                    "Authorization": "Bearer " + getCookie('access-token')
-                }
-            })
-            const data = response.data.data
+            console.log(getCookie())
 
-            $('#profile-name').text(data.name)
+            // $('#profile-name').text(data.name)
 
-            if (data.image != null) {
-                $('#profile-img').attr("src", `${APP_URL}${data.image}`)
-            }
+            // if (data.image != null) {
+            //     $('#profile-img').attr("src", `${APP_URL}${data.image}`)
+            // }
         }
 
         if (user) {
@@ -154,11 +166,13 @@
             $('#user-profile').hide()
             $('#main-menu').addClass('pt-4')
         }
+
+        $(".navbar").removeClass("fixed-top")
     })
 
     $('#btn-close').click(() => {
         $('#sidenav').css("width", "0")
-        $(".navbar").addClass("fixed-top")
+        setTimeout(() => $(".navbar").addClass("fixed-top"), 290)
     })
 
     $('#user-profile').click(() => {
