@@ -15,9 +15,10 @@ const serializeForm = form => {
 
 const controllers = {
   '/': MainPage,
-  '/payment-page': PaymentPage,
+  '/about': AboutPage,
+  '/payment': PaymentPage,
   '/login': LoginPage,
-  '/product-page': ProductPage,
+  '/product': ProductPage,
   '/search': SearchPage,
   '/profile': ProfilePage,
   '/book-library': BookLibraryPage,
@@ -46,9 +47,10 @@ const route = pathname => {
 (() => {
   [
     '/',
-    '/payment-page',
+    '/about',
+    '/payment',
     '/login',
-    '/product-page',
+    '/product',
     '/search',
     '/profile',
     '/book-library',

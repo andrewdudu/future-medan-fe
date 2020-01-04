@@ -1,4 +1,5 @@
 const MainPage = () => $('#main').load('./pages/index.html')
+const AboutPage = () => $('#main').load('/pages/about-us.html')
 const PaymentPage = () => $('#main').load('./pages/payment-page.html')
 const LoginPage = () => $('#main').load('./pages/login.html')
 const ProductPage = () => $('#main').load('./pages/product-page.html')

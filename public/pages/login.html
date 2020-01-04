@@ -71,7 +71,7 @@
                                 </form>
                             </div>
                             <div class="tab-pane" role="tabpanel" id="signup">
-                                <form id="form-signup" style="margin: 0;border-top: none;" >
+                                <form id="form-signup" method="POST" style="margin: 0;border-top: none;" >
                                     <div id="signup-error">
 
                                     </div>
@@ -88,7 +88,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fas fa-user" style="margin: 6px 12px;font-size: 1.5em;color: #a7a7a7;"></i>
                                             </span>
-                                            <input class="form-control" type="text" id="username" placeholder="Username" style="border: 1px solid #CCC;border-left: none;border-radius: 0;" required>
+                                            <input class="form-control" type="text" name="Username" id="username" placeholder="Username" style="border: 1px solid #CCC;border-left: none;border-radius: 0;" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -96,7 +96,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fas fa-envelope" style="margin: 6px 12px;font-size: 1.5em;color: #a7a7a7;"></i>
                                             </span>
-                                            <input class="form-control" type="email" id="email" placeholder="Email" style="border: 1px solid #CCC;border-left: none;border-radius: 0;" required>
+                                            <input class="form-control" type="email" name="Email" id="email" placeholder="Email" style="border: 1px solid #CCC;border-left: none;border-radius: 0;" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -112,7 +112,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fas fa-lock" style="margin: 6px 12px;font-size: 1.5em;color: #a7a7a7;"></i>
                                             </span>
-                                            <input class="form-control" type="password" id="confirmpassword" placeholder="Re-type Password" style="border: 1px solid #CCC;border-left: none;border-radius: 0;" required>
+                                            <input class="form-control" type="password" id="confirm-password" placeholder="Re-type Password" style="border: 1px solid #CCC;border-left: none;border-radius: 0;" required>
                                         </div>
                                     </div>
                                     <div class="mb-3 p-2 d-flex align-items-center" style="border: 1px solid #CCC;">
