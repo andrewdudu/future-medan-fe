@@ -1,9 +1,18 @@
 document.title = 'Home Page'
-validateUserToken(getCookie('access-token'), (err) => $("#library").hide())
+merchant = true, user = true;
+var userPromise = validateUserToken(getCookie('access-token'), (err) => {
+    user = false
+    $("#library").hide()
+})
+var merchantPromise = validateMerchantToken(getCookie('access-token'), (err) => {
+    merchant = false
+})
 
-async function getCasts(){
+$(document).ready(async e => {
     try {
-        const response = await api.get(`${APP_URL}/api/products`)
+        e.preventDefault()
+
+        const response = await api.get(`/products`)
         const data = response.data.data
 
         const newReleaseProducts = data
@@ -29,18 +38,33 @@ async function getCasts(){
         const html = generateProductHtml(newReleaseProducts)
         const html2 = generateProductHtml(bestSellerProducts)
 
-        $('#new-release').append(html)
-        $('#best-seller').append(html2)
+        $('#new-release').html(html)
+        $('#best-seller').html(html2)
 
         // Book library
-        if (!$("#library").is(":hidden")){
-                
+        if (user){
+            try {
+                const response2 = await api.get(`/products`)
+                const data2 = response.data.data
+
+                if (!$.isArray(data2) ||  !data2.length) {
+                    $('#user-library').hide()
+                    console.log("empty")
+                }
+                else {
+                    const library = generateProductHtml(data)
+                    $('#user-library').html(library)
+                }
+            }
+            catch (err) {
+
+            }
         }
     }
     catch (err) {
-
+        addReloadPict(".index-page")
     }
-}
+})
 
 function generateProductHtml(list) {
     return list.map(i => {
@@ -57,7 +81,3 @@ function generateProductHtml(list) {
                     </li>`
     })
 }
-
-$(document).ready(async function () {
-    getCasts()
-})

@@ -34,11 +34,14 @@ async function validateAdminToken(token, callback) {
                     "Authorization": "Bearer " + token
                 }
             });
-    
-        } catch (err) {
+            return true;
+        }
+        catch (err) {
             callback(err)
+            return false;
         }
     }
+    return false;
 }
 
 // CHECK MERCHANT
@@ -50,10 +53,15 @@ async function validateMerchantToken(token, callback) {
                     "Authorization": "Bearer " + token
                 }
             });
-        } catch (err) {
+
+            return true;
+        }
+        catch (err) {
             callback(err)
+            return false;
         }
     }
+    return false;
 }
 
 // CHECK USER
@@ -66,10 +74,14 @@ async function validateUserToken(token, callback) {
                 }
             });
     
-        } catch (err) {
+            return false;
+        }
+        catch (err) {
             callback(err)
+            return false;
         }
     }
+    return false;
 }
 
 // ADD COOKIE
