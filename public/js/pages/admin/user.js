@@ -1,5 +1,5 @@
 document.title = 'Users'
-validateAdminToken(getCookie('access-token'))
+validateAdminToken(getCookie('access-token'), (err) => window.location.href = "/admin-login")
 
 async function onButtonClick(id) {
     try {

@@ -73,6 +73,50 @@ function addEmptyPict(id, src) {
     $(`#${id}`).html(alternativeHTML(src, `Your ${pageName} is Empty!`))
 }
 
+Notify = function(text, callback, close_callback, style) {
+
+	var time = '3000';
+	var $container = $('#notifications');
+	var icon = '<i class="fa fa-info-circle "></i>';
+ 
+	if (typeof style == 'undefined' ) style = 'warning'
+  
+	var html = $('<div class="alert alert-' + style + '  hide">' + icon +  " " + text + '</div>');
+  
+	$('<a>',{
+		text: '×',
+		class: 'button close',
+		style: 'padding-left: 10px;',
+		href: '#',
+		click: function(e){
+			e.preventDefault()
+			close_callback && close_callback()
+			remove_notice()
+		}
+	}).prependTo(html)
+
+	$container.prepend(html)
+	html.removeClass('hide').hide().fadeIn('slow')
+
+	function remove_notice() {
+		html.stop().fadeOut('slow').remove()
+	}
+	
+	var timer =  setInterval(remove_notice, time);
+
+	$(html).hover(function(){
+		clearInterval(timer);
+	}, function(){
+		timer = setInterval(remove_notice, time);
+	});
+	
+	html.on('click', function () {
+		clearInterval(timer)
+		callback && callback()
+		remove_notice()
+	});
+}
+
 // <div class="row h-75 flex-lg-row">
 //     <div class="col-sm-12 my-auto">
 //         <img class="w-75 h-100 mx-auto d-block" src="${src}" style="max-width: 600px;">
