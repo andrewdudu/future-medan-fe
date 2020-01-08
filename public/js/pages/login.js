@@ -13,7 +13,7 @@ $('#login-button').click(async e => {
         })
     
         setCookie('access-token', response.data.accessToken, 1)
-
+        
         window.location.href = "/"
     }
     catch (err) {
