@@ -1,7 +1,7 @@
 document.title = 'Categories'
 $('#add-error-message').hide()
-let size = 10
-let page = 0
+size = 10
+page = 0
 validateAdminToken(getCookie('access-token'), (err) => window.location.href = '/admin-login')
 
 function toDataUrl(url, callback) {

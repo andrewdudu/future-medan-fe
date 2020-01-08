@@ -6,11 +6,18 @@
         </a>
         <hr class="sidebar-divider my-0">
         <ul class="nav navbar-nav text-light" id="accordionSidebar">
-            <li class="nav-item" role="presentation"><a class="nav-link" href="/admin-login"><i class="fas fa-tachometer-alt"></i><span>Login</span></a></li>
-            <li class="nav-item" role="presentation"><a class="nav-link" href="/admin-user"><i class="fas fa-user"></i><span>User</span></a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" href="/admin"><i class="fas fa-user"></i><span>User</span></a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" href="/admin-merchant"><i class="fas fa-user"></i><span>Merchant</span></a></li>
             <li class="nav-item" role="presentation"><a class="nav-link" href="/admin-product"><i class="far fa-user-circle"></i><span>Product</span></a></li>
             <li class="nav-item" role="presentation"><a class="nav-link" href="/admin-category"><i class="far fa-user-circle"></i><span>Category</span></a></li>
-            <li class="nav-item" role="presentation"><a class="nav-link" href="404.html"><i class="fas fa-exclamation-circle"></i><span>Page Not Found</span></a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" onclick="logout()"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
         </ul>
     </div>
 </nav>
+
+<script>
+function logout() {
+    setCookie("access-token", "", 1);
+    window.location.href = "/admin-login"
+}
+</script>

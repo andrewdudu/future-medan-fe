@@ -39,7 +39,7 @@ function changePage(index) {
 
 async function getCategoriesData() {
     try {
-        const response = await api.get(`/users/paginate?size=${size}&page=${page}`, {
+        const response = await api.get(`/merchants/paginate?size=${size}&page=${page}`, {
             headers: {
                 "Authorization": "Bearer " + getCookie("access-token")
             }
