@@ -86,15 +86,36 @@ $(document).ready(() => {
         $(requiredInput).on("keyup", function (e) {
             let inputGroup = $(requiredInput).parent()
             let lastElement = inputGroup.next()
+            let input = $(requiredInput).val().trim()
 
             if (lastElement.length == 0 && !lastElement.hasClass("invalid")){
                 inputGroup.parent().append(`<span class="invalid-${i}" style="color: red; font-size: 12px"></span>`)
             }
 
-            if ($(requiredInput).val().trim() == '') {
+            if (input == '') {
                 $(`.invalid-${i}`).text(`${$(requiredInput).attr("placeholder")} can't be empty`)
                 inputGroup.css("border", "1px solid red")
-            } 
+            }
+            else if ($(requiredInput).attr('name') == 'Email') {
+                if (!emailRegrex.test(input)) {
+                    $(`.invalid-${i}`).text(`${$(requiredInput).attr("placeholder")} is invalid`)
+                    inputGroup.css("border", "1px solid red")
+                }
+                else {
+                    $(`.invalid-${i}`).empty()
+                    inputGroup.css("border", "1px solid #CCC")    
+                }
+            }
+            else if ($(requiredInput).attr('name') == 'Username') {
+                if (!/^[a-zA-Z_]+\w+[a-zA-Z0-9_]$/.test(input)) {
+                    $(`.invalid-${i}`).text(`${$(requiredInput).attr("placeholder")} is invalid`)
+                    inputGroup.css("border", "1px solid red")
+                }
+                else {
+                    $(`.invalid-${i}`).empty()
+                    inputGroup.css("border", "1px solid #CCC")    
+                }
+            }
             else {
                 $(`.invalid-${i}`).empty()
                 inputGroup.css("border", "1px solid #CCC")
