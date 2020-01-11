@@ -111,8 +111,10 @@
 @media (min-width: 768px) {
   #contact-info {
     background-image: url("../../assets/img/books.jpg");
-    object-fit: cover;
-    object-position: 100% 100%;
   }
 }
 
+.bg-white-transparent {
+  background-color: rgba(255,255,255,0.5)!important;
+  padding: 15px 10px 0 10px;
+}
