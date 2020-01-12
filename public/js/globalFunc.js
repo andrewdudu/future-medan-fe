@@ -3,6 +3,8 @@ somethingWrong = "Something went wrong, please try again."
 passwordWrong = "Password does not match."
 emailWrong = "The email you entered did not match our records. Please double-check and try again."
 
+emailRegrex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
+
 function addErrorMsg(event, msg) {
     $(`#${event}-error`).empty()
     $(`#${event}-error`).append(errorHTML(event, msg))
@@ -41,15 +43,20 @@ function readMore(){
         link.innerHTML = 'Read more'
     }
 }
-
-$(window).scroll(function () {
-    if ($(this).scrollTop() >= 50) {
-        $('#back-to-top').css("display", "block")
-    } 
-    else {
-        $('#back-to-top').css("display", "none")
+  
+window.onscroll = function() {
+    if (document.documentElement.scrollTop > 20) {
+        $('#back-to-top').css("display", "block");
     }
-})
+    else {
+        $('#back-to-top').css("display", "block");
+    }
+    // console.log(document.documentElement.scrollTop)
+};
+
+function topFunction() {
+  document.documentElement.scrollTop = 0;
+}
 
 $('#formCheck').click( function() {
     $('input:checkbox').not(this).prop('checked', this.checked)
@@ -66,6 +73,50 @@ function addEmptyPict(id, src) {
 
     let pageName = id.replace('-', ' ')
     $(`#${id}`).html(alternativeHTML(src, `Your ${pageName} is Empty!`))
+}
+
+Notify = function(text, callback, close_callback, style) {
+
+	var time = '3000';
+	var $container = $('#notifications');
+	var icon = '<i class="fa fa-info-circle "></i>';
+ 
+	if (typeof style == 'undefined' ) style = 'warning'
+  
+	var html = $('<div class="alert alert-' + style + '  hide">' + icon +  " " + text + '</div>');
+  
+	$('<a>',{
+		text: '×',
+		class: 'button close',
+		style: 'padding-left: 10px;',
+		href: '#',
+		click: function(e){
+			e.preventDefault()
+			close_callback && close_callback()
+			remove_notice()
+		}
+	}).prependTo(html)
+
+	$container.prepend(html)
+	html.removeClass('hide').hide().fadeIn('slow')
+
+	function remove_notice() {
+		html.stop().fadeOut('slow').remove()
+	}
+	
+	var timer =  setInterval(remove_notice, time);
+
+	$(html).hover(function(){
+		clearInterval(timer);
+	}, function(){
+		timer = setInterval(remove_notice, time);
+	});
+	
+	html.on('click', function () {
+		clearInterval(timer)
+		callback && callback()
+		remove_notice()
+	});
 }
 
 // <div class="row h-75 flex-lg-row">

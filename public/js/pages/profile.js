@@ -28,7 +28,7 @@ $('#save-changes').click(async profile => {
         let phoneNumber = $('#phone-number').val()
         let address = $('#address').val()
 
-        const res = api.put(`/users/${id}`, {
+        const res = await api.put(`/users/${id}`, {
                 nickname, 
                 username,
                 phoneNumber, 
@@ -45,6 +45,8 @@ $('#avatar').click(async function() {
     
 })
 
-$(document).ready(async function () {
+$('#menu-log-out').click(() => logOut())
+
+$(document).ready((e) => {
     loadProfile()
 })

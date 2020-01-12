@@ -26,56 +26,35 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md navbar-2 shadow d-flex align-items-center">
-        <div class="container-fluid flex-center">
-            <div class="col col-1" style="padding: 0;">
-                <a href="#">
-                    <div><i class="icon ion-chevron-left" style="color: #5d5d5d;"></i></div>
-                </a>
-            </div>
-            <div class="col col-8" style="padding: 0;">
-                <div id="menu-name" style="text-align: initial;">
-                    <p style="margin: 0;color: #278acb;">Categorinya</p>
-                </div>
-            </div><a class="p-0" href="#" style="color: #333;"><i class="la la-search" style="font-size: x-large;"></i></a><a href="#"><i class="la la-ellipsis-v" style="color: #333;font-size: x-large;"></i></a></div>
-    </nav>
-    <main class="page catalog-page">
-        <section class="clean-block clean-catalog dark">
+    <div id="header"></div>
+
+    <main class="page catalog-page" style="margin-top:30px">
+        <section class="clean-block clean-catalog">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-info">Nama Category</h2>
-                    <p>Kategori ini adalah ...</p>
+                    <h2 id="title" class="text-info">Nama Category</h2>
+                </div>
+                <div class="col" id="empty-image">
+                    <div><img id="book-image" class="w-100 img-fluid" src="assets/img/illustration/empty.png"></div>
                 </div>
                 <div id="products-by-category" class="content d-flex flex-wrap">
-                    <a id="product-link" href="#" style="background-color: white!important;">
-                        <div id="product-home"><img id="product-image-home" src="assets/img/rubberplant2.jpeg">
-                            <div id="product-details-home"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></div>
-                        </div>
-                    </a>
-                    <a id="product-link" href="#">
-                        <div id="product-home"><img id="product-image-home" src="assets/img/rubberplant2.jpeg">
-                            <div id="product-details-home" class="text-left"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></div>
-                        </div>
-                    </a>
-                    <a id="product-link" href="#">
-                        <div id="product-home"><img id="product-image-home" src="assets/img/rubberplant2.jpeg">
-                            <div id="product-details-home" class="text-left"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></div>
-                        </div>
-                    </a>
-                    <a id="product-link" href="#">
-                        <div id="product-home"><img id="product-image-home" src="assets/img/scenery/image6.jpg">
-                            <div id="product-details-home" class="text-left"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></div>
-                        </div>
-                    </a>
+                    
                 </div>
             </div>
-        </section><a id="back-to-top" class="btn btn-primary rounded-circle shadow" href="#" role="button"><i class="fas fa-chevron-up m-0 pt-2"></i></a></main>
+        </section>
+        
+        <a id="back-to-top" class="btn btn-primary rounded-circle shadow" href="#" role="button"><i class="fas fa-chevron-up m-0 pt-2"></i></a>
+    </main>
+    
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+    <script src="js/globalFunc.js"></script>
+    <script src="js/pages/product-by-categories.js"></script>
+    <script src="js/pages/construct-main.js"></script>
 </body>
 
 </html>

@@ -30,7 +30,13 @@
     <main class="page login-page">
         <section class="clean-block clean-form dark">
             <div class="container" style="max-width: 500px;">
-                <div class="block-heading" style="padding-top: 20px;"><i class="icon ion-android-close" style="display: flex;justify-content: flex-end;color: #999999;font-size: xx-large;"></i><img class="w-25" src="assets/img/blibli-bag.png" style="margin: 0 0 4rem;max-width: 100px;">
+                <div class="block-heading" style="padding-top: 20px;">
+                    <a href="javascript:goBack()">
+                        <i class="icon ion-android-close" style="display: flex;justify-content: flex-end;color: #999999;font-size: xx-large;"></i>
+                    </a>
+                    <a href="/">
+                        <img class="w-50" src="assets/img/logo/bookmart-logo-full-2.png" style="margin: 0 0 4rem;">
+                    </a>
                     <div>
                         <ul class="nav nav-tabs" style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif;border-bottom: 3px solid #EDECEC;">
                             <li class="nav-item w-50"><a class="nav-link active" role="tab" data-toggle="tab" href="#login"><strong>Log in</strong></a></li>
@@ -39,9 +45,8 @@
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="login">
                                 <form id="form-login" style="margin: 0;border-top: none;">
-                                    <div id="login-error">
+                                    <div id="login-error"></div>
 
-                                    </div>
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -61,12 +66,12 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <button id="login-button" type="submit" class="btn btn-primary btn-block">Log In</button>
+                                    <button id="login-button" type="submit" class="btn btn-primary btn-block" style="background-color: #278acb">Log In</button>
                                     <a href="#" style="text-align: right;justify-content: flex-end;margin: 0px;">Forgot Password?</a>
                                 </form>
                             </div>
                             <div class="tab-pane" role="tabpanel" id="signup">
-                                <form id="form-signup" style="margin: 0;border-top: none;" >
+                                <form id="form-signup" method="POST" style="margin: 0;border-top: none;" >
                                     <div id="signup-error">
 
                                     </div>
@@ -83,7 +88,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fas fa-user" style="margin: 6px 12px;font-size: 1.5em;color: #a7a7a7;"></i>
                                             </span>
-                                            <input class="form-control" type="text" id="username" placeholder="Username" style="border: 1px solid #CCC;border-left: none;border-radius: 0;" required>
+                                            <input class="form-control" type="text" name="Username" id="username" placeholder="Username" style="border: 1px solid #CCC;border-left: none;border-radius: 0;" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -91,7 +96,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fas fa-envelope" style="margin: 6px 12px;font-size: 1.5em;color: #a7a7a7;"></i>
                                             </span>
-                                            <input class="form-control" type="email" id="email" placeholder="Email" style="border: 1px solid #CCC;border-left: none;border-radius: 0;" required>
+                                            <input class="form-control" type="email" name="Email" id="email" placeholder="Email" style="border: 1px solid #CCC;border-left: none;border-radius: 0;" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -107,7 +112,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fas fa-lock" style="margin: 6px 12px;font-size: 1.5em;color: #a7a7a7;"></i>
                                             </span>
-                                            <input class="form-control" type="password" id="confirmpassword" placeholder="Re-type Password" style="border: 1px solid #CCC;border-left: none;border-radius: 0;" required>
+                                            <input class="form-control" type="password" id="confirm-password" placeholder="Re-type Password" style="border: 1px solid #CCC;border-left: none;border-radius: 0;" required>
                                         </div>
                                     </div>
                                     <div class="mb-3 p-2 d-flex align-items-center" style="border: 1px solid #CCC;">
@@ -132,7 +137,7 @@
                                             <a href="#">Privacy Policy</a>
                                         </label>
                                     </div>
-                                    <button id="register-button" type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                                    <button id="register-button" type="submit" class="btn btn-primary btn-block" style="background-color: #278acb">Sign Up</button>
                                 </form>
                             </div>
                         </div>

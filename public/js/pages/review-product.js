@@ -9,6 +9,17 @@ $(document).ready(() => {
     })
 });
 
+$('#submit').click(async () => {
+    const response = await api.post('/review', {
+        {
+            
+        },
+        headers: {
+            "Authorization": "Bearer " + getCookie("access-token")
+        }
+    })
+})
+
 function changeColor(color, index) {
     let colorDefault = '#BBBBBB'
     let k = 1
