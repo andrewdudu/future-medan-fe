@@ -4,7 +4,7 @@ $(document).ready(async e => {
     try {
         e.preventDefault()
 
-        const response = await api.get(`${APP_URL}/api/categories`)
+        const response = await api.get(`/categories`)
         const data = response.data.data
     
         console.log(data)
