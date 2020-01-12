@@ -6,8 +6,6 @@ $(document).ready(async e => {
 
         const response = await api.get(`/categories`)
         const data = response.data.data
-    
-        console.log(data)
 
         if (!$.isArray(data) ||  !data.length) {
             addEmptyPict("all-categories", "assets/img/illustration/empty.png")
@@ -28,7 +26,7 @@ $(document).ready(async e => {
 
 function generateProductHTML(categories) {
     return categories.map(category => {
-        return `<a id="category-link" href="a">
+        return `<a id="category-link" href="/product-by-categories?category=${category.id}&name=${category.name}>
                     <div id="category-group" class="flex-column p-2 flex-center">
                         <img id="category-image" src="${APP_URL}${category.image}">
                         <span id="category-name">${category.name}</span>

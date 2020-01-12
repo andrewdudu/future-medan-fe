@@ -9,7 +9,7 @@ $(document).ready(async e => {
 
         if (categoryId !== undefined) {
             response = await api.get(`/products/category/${categoryId}`)
-            $('#title').text(name ? name : '')
+            $('#title').text(categoryName ? categoryName : '')
         }
         else {
             response = await api.get(`/products`)
@@ -22,6 +22,7 @@ $(document).ready(async e => {
             console.log("empty")
         } else {
             const html = generateProductHTML(data)
+            $('#empty-image').hide()
             $("#all-categories").removeClass("bg-white")
             $("#products-by-category").html(html)
             console.log("fill")
