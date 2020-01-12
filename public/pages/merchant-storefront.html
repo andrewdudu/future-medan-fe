@@ -29,27 +29,31 @@
     <div id="header-back"></div>
     
     <main class="page">
-        <section class="clean-info dark shadow bg-white mt-2">
-            <div class="container d-flex justify-content-between align-items-center p-3" style="padding: 5px 15px;">
-                <div class="d-flex align-items-center"><img id="merchant-img">
-                    <div class="pl-2" style="margin: 0;font-size: smaller;"><a id="merchant-name" href="#">Andrew Store</a>
-                        <div id="ratings" class="rating-small d-flex" style="padding: 0;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                            <p style="margin: 0;font-size: smaller;">(<strong>5.0</strong>)</p>
-                        </div><a id="reviews" href="#" style="font-size: x-small;">3 reviews</a></div>
-                </div>
-                <div class="d-flex">
-                    <div id="btn-edit" class="btn btn-outline-primary"><span class="p-1">Edit</span></div>
-                </div>
+        <div class="container bg-white">
+            <h5 class="mt-4"><strong id="merchant-name">All Categories</strong></h5>
+            <div id="all-categories" class="mt-4 d-flex flex-wrap">
+                
             </div>
-        </section>
+            <button id="product-new" class="btn btn-primary" type="button" style="padding: 8px;">
+                <i class="fas fa-book-medical"></i>Add New
+            </button>
+        </div>
         <section class="clean-info dark shadow bg-white mt-2">
             <div class="container" style="padding: 5px 15px;">
                 <div class="mb-3">
-                    <h2 class="text-info" id="merchant-posts" style="color: #278acb;text-align: left;font-size: 1.5em;display: flex;padding: 10px 0;">
-                        Posts (<strong><span id="post-count">1</span></strong>)
-                    </h2>
+                    <div class="col-md-6 mb-3">
+                        <div class="row bg-white">
+                            <div class="col col-12 border-ccc">
+                                <div class="store mt-2 mb-1" style="color: #278acb"><i class="fas fa-store pr-2" style="color: #278acb;"></i><span class="store-name" style="font-size: smaller;">Products (<strong><span id="post-count">1</span></strong>)</span></div>
+                            </div>
+                        </div>
+                        <div class="row shadow-1 bg-white">
+                            <div class="col" id="merchant-storefront">
+                            </div>
+                        </div>
+                    </div>
                     <ul class="product-list" id="merchant-storefront">
-                        <li id="product-item">
+                        <!-- <li id="product-item">
                             <a id="product-link" href="#"></a>
                             <div id="product-home" class="flex-center">
                                 <a id="product-link" href="#">
@@ -66,19 +70,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li id="product-item">
-                            <div id="product-home" class="flex-center product-new">
-                                <i class="material-icons d-flex align-items-center justify-content-center" id="product-image-home">add_circle_outline</i>
-                                <div id="product-details-home">
-                                    <span id="product-name-home">Title</span>
-                                    <span id="product-price-home">Price</span>
-                                    <div class="d-flex justify-content-between">
-                                        <span class="pt-2"><a id="product-categories" href="#">Others</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                        </li> -->
                     </ul>
                     <div><a href="#">Show more</a></div>
                 </div>
@@ -111,6 +103,11 @@
                             <input class="form-control w-100 p-1" type="number" id="new-book-price" placeholder="Price, ex 30000" required>
                         </div>
                         <div class="pb-2">
+                            <label for="new-book-category">Category</label>
+                            <select class="form-control" id="category-select">
+                            </select>
+                        </div>
+                        <div class="pb-2">
                             <label for="new-book-ISBN">ISBN</label>
                             <input class="form-control w-100 p-1" type="text" id="new-book-ISBN" placeholder="ISBN, ex 978-3-16-148410-0" required>
                         </div>
@@ -120,11 +117,14 @@
                         </div>
                         <div class="pb-2">
                             <label for="new-book-image">Upload Book Image</label>
-                            <input type="file" id="new-book-image" for="new-book-image" required accept="image/*">
+                            <input type="text" id="image-base64" hidden>
+                            <input type="file" accept="image/png" class="form-control-file" id="image-file" onchange="previewImageFile()">
+                            <!-- <input type="file" id="new-book-image" for="new-book-image" required accept="image/*"> -->
                         </div>
                         <div class="pb-2">
                             <label for="new-book-PDF">Upload Book PDF</label>
-                            <input type="file" id="new-book-PDF" for="new-book-PDF" required accept="application/pdf">
+                            <input type="text" id="pdf-base64" hidden>
+                            <input type="file" id="pdf-file" for="pdf-file" required accept="application/pdf" onchange="previewPdfFile()">
                         </div>
                     </form>
                 </div>
