@@ -13,6 +13,7 @@ $('#login-button').click(async e => {
         })
     
         setCookie('access-token', response.data.accessToken, 1)
+        addUserCookie(response.data.username, response.data.name, response.data.email)
         
         window.location.href = "/"
     }
