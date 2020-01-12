@@ -107,3 +107,40 @@ function getCookie(cname) {
     }
     return "";
 }
+
+// DECODE TOKEN
+function decodeToken(cookie) {
+    let b64DecodeUnicode = str =>
+            decodeURIComponent(
+                Array.prototype.map.call(atob(str), c =>
+                '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+                ).join(''))
+
+    let parseJwt = token =>
+        JSON.parse(
+            b64DecodeUnicode(
+            token.split('.')[1].replace('-', '+').replace('_', '/')
+            )
+        )
+    
+    return JSON.parse(JSON.stringify(parseJwt(cookie)))
+}
+
+// CHECK COOKIE EXPIRES
+function checkCookie(cname) {
+    let cookie = getCookie(cname)
+    
+    if (cookie != null) {
+        let value = decodeToken(cookie)
+        console.log(value)
+
+        setCookie(cname,'',0)
+        window.location.href = '/'
+    }
+}
+
+// LOG OUT
+function logOut() {
+    setCookie('access-token','',0)
+    window.location.href = '/'
+}
