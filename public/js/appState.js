@@ -92,6 +92,13 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+// MORE COOKIE
+function setUserCookie(username, nickname, email) {
+    setCookie("username", username, 1)
+    setCookie("nickname", nickname, 1)
+    setCookie("email", email, 1)
+}
+
 // GET COOKIE
 function getCookie(cname) {
     var name = cname + "=";
@@ -134,13 +141,13 @@ function checkCookie(cname) {
         let value = decodeToken(cookie)
         console.log(value)
 
-        setCookie(cname,'',0)
-        window.location.href = '/'
+        logOut()
     }
 }
 
 // LOG OUT
 function logOut() {
-    setCookie('access-token','',0)
+    setUserCookie(null, null, null)
+    setCookie('access-token', null, 0)
     window.location.href = '/'
 }
