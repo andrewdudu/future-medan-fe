@@ -84,6 +84,7 @@ function getCookie(cname) {
     return "";
 }
 
+
 function checkCookie() {
     var user = getCookie("username");
     if (user != "") {
@@ -94,4 +95,55 @@ function checkCookie() {
         setCookie("username", user, 365);
         }
     }
+}
+
+// DECODE TOKEN
+function decodeToken(cookie) {
+    let b64DecodeUnicode = str =>
+            decodeURIComponent(
+                Array.prototype.map.call(atob(str), c =>
+                '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+                ).join(''))
+
+    let parseJwt = token =>
+        JSON.parse(
+            b64DecodeUnicode(
+            token.split('.')[1].replace('-', '+').replace('_', '/')
+            )
+        )
+    
+    return JSON.parse(JSON.stringify(parseJwt(cookie)))
+}
+
+// ADD COOKIE USER
+function addUserCookie(username, nickname, email) {
+    setCookie("nickname", nickname, 1)
+    setCookie("username", username, 1)
+    setCookie("email", email, 1)
+}
+
+// REMOVE ALL COOKIE
+function removeUserCookie() {
+    setCookie("nickname", null, 1)
+    setCookie("username", null, 1)
+    setCookie("email", null, 1)
+    setCookie("access-token", null, 0)
+}
+
+// CHECK COOKIE EXPIRES
+function checkCookie(cname) {
+    let cookie = getCookie(cname)
+    
+    if (cookie != '') {
+        let value = decodeToken(cookie)
+        console.log(value)
+
+        logOut()
+    }
+}
+
+// LOG OUT
+function logOut() {
+    removeUserCookie()
+    window.location.href = '/'
 }
