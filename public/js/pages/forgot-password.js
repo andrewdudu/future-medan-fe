@@ -1,5 +1,23 @@
 document.title = 'Forgot Password'
 
+$(document).ready(() => {
+    $("#email").on("keyup", function(e) {
+        let input = $('#email').val().trim()
+
+        if (input == '') {
+            $('#email').addClass('is-invalid')
+        }
+        else if (emailRegrex.test(input)) {
+            $('#email').addClass('is-valid')
+            $('#email').removeClass('is-invalid')
+        }
+        else {
+            $('#email').removeClass('is-valid')
+            $('#email').addClass('is-invalid')
+        }
+    })
+})
+
 $('#btn-send-email').click(async e => {
     e.preventDefault();
 
