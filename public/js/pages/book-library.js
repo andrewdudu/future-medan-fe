@@ -33,7 +33,9 @@ async function loadMyProduct() {
                         </div>
                     </div>
                     
-                    ${status === 'approved' ? `<div class="d-flex align-items-end flex-column justify-content-between"><a></a><button onclick="getPdf('${purchase.product.pdf}', '${purchase.product.id}')" class="btn btn-primary pt-2" type="button">Read</button></div>` : ''}
+                    ${status === 'approved' ? `<div class="d-flex align-items-end flex-column justify-content-between">
+                            <button onclick="getPdf('${purchase.product.pdf}', '${purchase.product.id}')" class="btn btn-primary pt-2" type="button">Read</button>` : ''}
+                            <button onclick="" class="btn pt-2" type="button">Review</button>
                 </div>
             `)
         })

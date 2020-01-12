@@ -93,7 +93,8 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 // MORE COOKIE
-function setUserCookie(username, nickname, email) {
+function setUserCookie(id, username, nickname, email) {
+    setCookie("user_id", id)
     setCookie("username", username, 1)
     setCookie("nickname", nickname, 1)
     setCookie("email", email, 1)
@@ -147,7 +148,7 @@ function checkCookie(cname) {
 
 // LOG OUT
 function logOut() {
-    setUserCookie(null, null, null)
+    setUserCookie(null, null, null, null)
     setCookie('access-token', null, 0)
     window.location.href = '/'
 }
