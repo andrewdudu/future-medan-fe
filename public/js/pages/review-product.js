@@ -10,15 +10,27 @@ $(document).ready(() => {
 });
 
 $('#submit').click(async () => {
+    let rating = $('#rating-count').text()[0]
+    let comment = $('#review-content').val().trim()
+
+    if (!(rating >= 1 && rating <= 5)) {
+        $("#rating-error").append(errorHTML("rating", "You haven't rate"))
+        return
+    }
+
     const response = await api.post('/review', {
-        {
-            
-        },
-        headers: {
-            "Authorization": "Bearer " + getCookie("access-token")
-        }
-    })
+            rating,
+            comment
+        }, {
+            headers: {
+                "Authorization": "Bearer " + getCookie("access-token")
+            }
+        })
+
+    window.location.href = '/book-library'
 })
+
+$('#cancel').click(() => goBack())
 
 function changeColor(color, index) {
     let colorDefault = '#BBBBBB'
