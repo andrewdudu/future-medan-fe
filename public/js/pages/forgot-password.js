@@ -1,21 +1,18 @@
 document.title = 'Forgot Password'
 
-$('#btn-send-email').click(async email => {
-    email.preventDefault();
+$('#btn-send-email').click(async e => {
+    e.preventDefault();
 
-    try {
-        let email = $('#email').val()
+    let email = $('#email').val()
 
-        const response = await api.post(`${APP_URL}/api/forgot-password`, email)
-
-        startTime(30000)
-
-        $('#p-info-reset').text("A confirmation email has been sent to your email account. Click the link to reset your password.")
-    }
-    catch (err) {
+    api.post(`${APP_URL}/api/forgot-password`, {email}).catch(err => {
         addErrorMsg("forgot-pass", emailWrong)
         $("#forgot-pass-error").show();
-    }
+    })
+
+    startTime(30000)
+
+    $('#p-info-reset').text("A confirmation email has been sent to your email account. Click the link to reset your password.")
 })
 
 function startTime(second) {
