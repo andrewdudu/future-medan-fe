@@ -28,7 +28,7 @@ $(document).ready(async e => {
                         "Authorization": "Bearer " + getCookie('access-token')
                     }
                 })
-                const myProductsData = myProducts.data.data
+                const myProductsData = myProducts.data.data.map(purchase => purchase.product)
 
                 if (!$.isArray(myProductsData) ||  !myProductsData.length || myProductsData.length === 0) {
                     $('#library').hide()
@@ -50,7 +50,7 @@ $(document).ready(async e => {
 
 function generateProductHtml(list) {
     return list.map(product => {
-            return `<li id="product-item">
+            return `<li id="product-item" class="col-4" style="margin:3px;padding:0">
                         <a id="product-link" href="/product?id=${product.id}">
                             <div id="product-home" class="flex-center">
                                 <img id="product-image-home" src="${APP_URL}${product.image}">
