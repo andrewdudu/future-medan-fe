@@ -30,11 +30,13 @@
     
     <main class="page">
         <div class="container bg-white">
-            <h5 class="mt-4"><strong id="merchant-name">All Categories</strong></h5>
+            <h5 class="mt-4"><strong id="merchant-name">Not Found</strong></h5>
             <div id="all-categories" class="mt-4 d-flex flex-wrap">
-                
+                <div class="col" id="empty-image">
+                    <div><img id="book-image" class="w-100 img-fluid" src="assets/img/illustration/empty.png"></div>
+                </div>
             </div>
-            <button id="product-new" class="btn btn-primary" type="button" style="padding: 8px;">
+            <button id="product-new" class="btn btn-primary" type="button" style="padding: 8px;display: none;">
                 <i class="fas fa-book-medical"></i>Add New
             </button>
         </div>
@@ -44,7 +46,7 @@
                     <div class="col-md-6 mb-3">
                         <div class="row bg-white">
                             <div class="col col-12 border-ccc">
-                                <div class="store mt-2 mb-1" style="color: #278acb"><i class="fas fa-store pr-2" style="color: #278acb;"></i><span class="store-name" style="font-size: smaller;">Products (<strong><span id="post-count">1</span></strong>)</span></div>
+                                <div id="product-title" class="store mt-2 mb-1" style="color: #278acb"><i class="fas fa-store pr-2" style="color: #278acb;"></i><span class="store-name" style="font-size: smaller;">Products (<strong><span id="post-count">0</span></strong>)</span></div>
                             </div>
                         </div>
                         <div class="row shadow-1 bg-white">
@@ -53,26 +55,7 @@
                         </div>
                     </div>
                     <ul class="product-list" id="merchant-storefront">
-                        <!-- <li id="product-item">
-                            <a id="product-link" href="#"></a>
-                            <div id="product-home" class="flex-center">
-                                <a id="product-link" href="#">
-                                    <img id="product-image-home" src="assets/img/meeting.jpg">
-                                </a>
-                                <div id="product-details-home">
-                                    <a id="product-link" href="#">
-                                        <span id="product-name-home">Meeting yang Bermanfaat</span>
-                                        <span id="product-price-home">Rp30.000</span>
-                                    </a>
-                                    <div class="d-flex justify-content-between">
-                                        <a id="product-link" href="#"><span class="pt-2"></span></a>
-                                        <a id="product-categories" href="#">Others</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li> -->
                     </ul>
-                    <div><a href="#">Show more</a></div>
                 </div>
             </div>
         </section><a id="back-to-top" class="btn btn-primary rounded-circle shadow" href="#" role="button"><i class="fas fa-chevron-up m-0 pt-2"></i></a>

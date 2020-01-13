@@ -1,11 +1,15 @@
 document.title = "Storefront"
-validateMerchantToken(getCookie('access-token'), (err) => $("#btn-edit").hide())
-var productIsValid = false, it;
-
+isMerchant = true;
+merchantId = get('id')
 categories = [];
 products = [];
 selectedId = '';
 addNew = true;
+validateMerchantToken(getCookie('access-token'), (err) => {
+    isMerchant = false;
+})
+var productIsValid = false, it;
+
 
 function getUser (name) {
     if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
@@ -27,7 +31,6 @@ function toDataUrl(url, callback) {
 }
 
 $(document).ready(async (e) => {
-    let merchantId = get('id')
 
     if (merchantId !== undefined) {
         try {
@@ -49,17 +52,21 @@ $(document).ready(async (e) => {
     
             $("#post-count").text(htmlProducts.length)
     
-            // $("#product-list").html(htmlProducts)
-            console.log(htmlProducts)
             $("#merchant-storefront").html(htmlProducts)
     
+            $("#empty-image").hide()
+
             // Check if a merchant is logged in
-            if (isMerchant) {
+            if (isMerchant && (merchantId === getCookie('user_id'))) {
+                $("#product-new").css("display", "block")
             }
         }
         catch (err) {
-    
+            $("#empty-image").show();
+            $("#product-title").css('display', 'none')
         }
+    } else {
+        $("#product-title").css('display', 'none')
     }
 })
 
@@ -95,7 +102,6 @@ function previewPdfFile() {
   
     reader.addEventListener("load", function () {
       preview.src = reader.result;
-      console.log('pdf', reader.result)
       $('#pdf-base64').val(reader.result.substr(reader.result.indexOf(',') + 1));
     }, false);
   
@@ -148,6 +154,7 @@ $('#add-products').on('shown.bs.modal', async function (e) {
             if (addNew) {
                 const response = await api.post(`/products`, {
                     name: title, 
+                    isbn: ISBN,
                     description,
                     price,
                     author,
@@ -161,7 +168,8 @@ $('#add-products').on('shown.bs.modal', async function (e) {
                 })
             } else {
                 const response = await api.put(`/products/${selectedId}`, {
-                    name: title, 
+                    name: title,
+                    isbn: ISBN, 
                     description,
                     price,
                     author,
@@ -175,7 +183,7 @@ $('#add-products').on('shown.bs.modal', async function (e) {
                 })
             }
     
-            // window.location.href = `/merchant-storefront`;
+            window.location.href = `/merchant-storefront?${getCookie('user_id')}`;
         }
         catch (err) {
             console.log(err.response)
@@ -193,7 +201,7 @@ function showEditForm(productId) {
         $("#new-book-title").val(editProduct.name)
         $("#new-book-author").val(editProduct.author)
         $("#new-book-price").val(editProduct.price)
-        // $("#new-book-ISBN").val(editProduct.isbn)
+        $("#new-book-ISBN").val(editProduct.isbn)
         $("#image-base64").val('')
         $("#pdf-base64").val('')
         $("#new-book-description").val(editProduct.description)
@@ -228,7 +236,7 @@ function generateProductHTML(products) {
                 </div>
             </div>
 
-        <div class="d-flex align-items-end flex-column justify-content-between"><a></a><button class="btn btn-primary pt-2" type="button" onclick="showEditForm('${product.id}')">Edit</button></div>
+        ${(isMerchant && (merchantId === getCookie('user_id'))) ? `<div class="d-flex align-items-end flex-column justify-content-between"><a></a><button class="btn btn-primary pt-2" type="button" onclick="showEditForm('${product.id}')">Edit</button></div>` : ''  }
     </div>
     `})
 }
