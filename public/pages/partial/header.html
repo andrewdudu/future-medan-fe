@@ -104,6 +104,12 @@
                     <span>Incoming Order</span>
                 </a>
             </li>
+            <li id="menu-merchant-storefront">
+                <a id="menu-merchant-storefront-href" href="/merchant-storefront" class="d-flex align-content-center">
+                    <i class="la la-list-alt pr-3"></i>
+                    <span>Incoming Order</span>
+                </a>
+            </li>
             <li id="menu-contact-us">
                 <a href="/faq" class="d-flex align-content-center">
                     <i class="icon-call-in pr-3"></i>
@@ -122,6 +128,8 @@
 
 <script src="js/pages/index.js"></script>
 <script>
+    
+    $('#menu-merchant-storefront-href').attr('href', `/merchant-storefront?id=${getCookie('user_id')}`)
     $('#bookmart-logo').width(0.3 * $(window).width())
 
     $(window).resize(() => {
@@ -144,7 +152,7 @@
         if (user || merchant) {
             $('#visitors').hide()
 
-            console.log(getCookie())
+            // console.log(getCookie())
 
             // $('#profile-name').text(data.name)
 
