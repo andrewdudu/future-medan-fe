@@ -12,7 +12,7 @@ $(document).ready(async e => {
             }
         })
 
-        $("#order-list").html(generateProductHTML(response.data.data))
+        if (response.data.data.length > 0) $("#order-list").html(generateProductHTML(response.data.data))
     }
     catch (err){
     }
