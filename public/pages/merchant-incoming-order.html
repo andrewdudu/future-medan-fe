@@ -33,71 +33,10 @@
             <div class="container" style="margin-top: 20px;padding: 0;">
                 <div class="mb-2 d-flex justify-content-between pl-2 pr-2" style="color: #707070;">
                     <div><i class="fa fa-list-alt pr-2"></i><span>Pending Order</span></div>
-                    <div id="approve-all"><a href="#">Approve All</a></div>
                 </div>
-                <div class="col-to-row d-flex">
-                    <div class="row product-cart shadow-1">
-                        <div class="col">
-                            <div id="product-details" class="d-flex justify-content-between pt-2 pb-2">
-                                <div class="d-flex">
-                                    <div class="p-1 d-flex align-items-center"><a class="pl-2" href="#product-page.html"><img id="product-image" class="shadow" src="assets/img/rubberplant2.jpeg"></a></div>
-                                    <div class="pl-3 d-flex align-items-center flex-column">
-                                        <div>
-                                            <a href="#product-page.html">
-                                                <p id="book-title" style="margin: 0;">Mountain&nbsp;</p>
-                                            </a>
-                                            <p id="book-writer" style="font-size: 50%;">ordered by&nbsp;<a href="#">Lee Ji-Eun</a></p>
-                                        </div>
-                                        <div id="approve-order" class="btn"><span style="color: #FFF;"><strong>Approve</strong></span></div>
-                                    </div>
-                                </div>
-                                <div id="reject-order-container" class="d-flex flex-column-reverse">
-                                    <div id="reject-order" class="btn"><span>Reject</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row product-cart shadow-1">
-                        <div class="col">
-                            <div id="product-details" class="d-flex justify-content-between pt-2 pb-2">
-                                <div class="d-flex">
-                                    <div class="p-1 d-flex align-items-center"><a class="pl-2" href="#product-page.html"><img id="product-image" class="shadow" src="assets/img/rubberplant2.jpeg"></a></div>
-                                    <div class="pl-3 d-flex align-items-center flex-column">
-                                        <div>
-                                            <a href="#product-page.html">
-                                                <p id="book-title" style="margin: 0;">Mountain&nbsp;</p>
-                                            </a>
-                                            <p id="book-writer" style="font-size: 50%;">ordered by&nbsp;<a href="#">Lee Ji-Eun</a></p>
-                                        </div>
-                                        <div id="approve-order" class="btn"><span style="color: #FFF;"><strong>Approve</strong></span></div>
-                                    </div>
-                                </div>
-                                <div id="reject-order-container" class="d-flex flex-column-reverse">
-                                    <div id="reject-order" class="btn"><span>Reject</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row product-cart shadow-1">
-                        <div class="col">
-                            <div id="product-details" class="d-flex justify-content-between pt-2 pb-2">
-                                <div class="d-flex">
-                                    <div class="p-1 d-flex align-items-center"><a class="pl-2" href="#product-page.html"><img id="product-image" class="shadow" src="assets/img/rubberplant2.jpeg"></a></div>
-                                    <div class="pl-3 d-flex align-items-center flex-column">
-                                        <div>
-                                            <a href="#product-page.html">
-                                                <p id="book-title" style="margin: 0;">Mountain&nbsp;</p>
-                                            </a>
-                                            <p id="book-writer" style="font-size: 50%;">ordered by&nbsp;<a href="#">Lee Ji-Eun</a></p>
-                                        </div>
-                                        <div id="approve-order" class="btn"><span style="color: #FFF;"><strong>Approve</strong></span></div>
-                                    </div>
-                                </div>
-                                <div id="reject-order-container" class="d-flex flex-column-reverse">
-                                    <div id="reject-order" class="btn"><span>Reject</span></div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-to-row d-flex" id="order-list">
+                    <div class="col" id="empty-image">
+                        <div><img id="book-image" class="w-100 img-fluid" src="assets/img/illustration/empty.png"></div>
                     </div>
                 </div>
             </div>
@@ -112,6 +51,7 @@
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+    <script src="js/pages/merchant-incoming-order.js"></script>
     <script src="js/pages/construct-back.js"></script>
 </body>
 

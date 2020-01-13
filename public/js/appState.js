@@ -92,6 +92,14 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+// MORE COOKIE
+function setUserCookie(id, username, nickname, email) {
+    setCookie("user_id", id)
+    setCookie("username", username, 1)
+    setCookie("nickname", nickname, 1)
+    setCookie("email", email, 1)
+}
+
 // GET COOKIE
 function getCookie(cname) {
     var name = cname + "=";
@@ -167,6 +175,8 @@ function checkCookie(cname) {
 
 // LOG OUT
 function logOut() {
-    removeUserCookie()
+    setUserCookie(null, null, null, null)
+    setCookie('access-token', null, 0)
+
     window.location.href = '/'
 }
