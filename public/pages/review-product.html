@@ -26,22 +26,12 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md navbar-2 shadow">
-        <div class="container-fluid">
-            <div class="col col-1" style="padding: 0;">
-                <a href="#">
-                    <div><i class="icon ion-chevron-left" style="color: #5d5d5d;"></i></div>
-                </a>
-            </div>
-            <div class="col col-11" style="padding: 0;">
-                <div id="menu-name" style="text-align: initial;">
-                    <p style="margin: 0;color: #278acb;">Write a Review&nbsp;</p>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div id="header-back"></div>
+
     <section>
         <main>
+            <div id="rating-error"></div>
+            
             <div id="ratings" class="m-4">
                 <p style="color: #707070;"><strong>Rate this book</strong></p>
                 <div class="rating-group flex-md-row text-center flex-nowrap" style="padding: 0;">
@@ -59,7 +49,7 @@
             </div>
             <div class="row d-flex flex-md-row-reverse">
                 <div class="col-md-6 d-flex justify-content-center" style="padding: 10px 30px;">
-                    <button class="btn btn-primary w-100" id="submit" type="button"><strong>Submit</strong></button>
+                    <button class="btn btn-primary w-100" style="background-color: #278ACB;" id="submit" type="submit"><strong>Submit</strong></button>
                 </div>
                 <div class="col-md-6 d-flex justify-content-center" style="padding: 10px 30px;">
                     <div class="btn w-100 shadow-1" id="cancel" type="button">
@@ -69,6 +59,7 @@
             </div>
         </main>
     </section>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="js/review-product.js"></script>
@@ -77,6 +68,8 @@
     <script src="assets/js/theme.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
     <script src="js/globalFunc.js"></script>
+    <script src="js/pages/review-product.js"></script>
+    <script src="js/pages/construct-back.js"></script>
 </body>
 
 </html>

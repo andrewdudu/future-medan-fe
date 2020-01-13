@@ -15,9 +15,10 @@ const serializeForm = form => {
 
 const controllers = {
   '/': MainPage,
-  '/payment-page': PaymentPage,
+  '/faq': AboutPage,
+  '/payment': PaymentPage,
   '/login': LoginPage,
-  '/product-page': ProductPage,
+  '/product': ProductPage,
   '/search': SearchPage,
   '/profile': ProfilePage,
   '/book-library': BookLibraryPage,
@@ -32,6 +33,7 @@ const controllers = {
   '/merchant-storefront': MerchantStorefrontPage,
   '/merchant-incoming-order': MerchantIncomingOrderPage,
   '/admin': AdminUserTablePage,
+  '/admin-merchant': AdminMerchantTablePage,
   '/admin-login': AdminLoginPage,
   '/admin-table': AdminTablePage,
   '/admin-product': AdminProductTablePage,
@@ -46,9 +48,10 @@ const route = pathname => {
 (() => {
   [
     '/',
-    '/payment-page',
+    '/faq',
+    '/payment',
     '/login',
-    '/product-page',
+    '/product',
     '/search',
     '/profile',
     '/book-library',
@@ -63,6 +66,7 @@ const route = pathname => {
     '/merchant-storefront',
     '/merchant-incoming-order',
     '/admin',
+    '/admin-merchant',
     '/admin-login',
     '/admin-table',
     '/admin-product',

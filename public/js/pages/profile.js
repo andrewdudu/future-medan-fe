@@ -28,8 +28,8 @@ $('#avatar').click(async function() {
     
 })
 
+$('#menu-log-out').click(() => logOut())
+
 $(document).ready(function () {
     loadProfile()
 })
-
-$('#menu-log-out').click(() => logOut())

@@ -3,33 +3,33 @@ validateUserToken(getCookie('access-token'), (err) => window.location.href = '/l
 
 $(document).ready(async () => {
     try {
-        const response = await api.get(`${APP_URL}/api/wishlists/${user_id}`,{
+        const response = await api.get(`/my-wishlists`,{
             headers: {
                 "Authorization": "Bearer " + getCookie("access-token")
             }
         })
         
-        const myWishlist = response.data.data
-            .map(i => {
+        const myWishlist = response.data.data.products
+            .map(product => {
                 return {
-                    name: i.name,
-                    image: i.image,
-                    price: i.price
+                    id: product.id,
+                    name: product.name,
+                    image: product.image,
+                    price: product.price,
+                    author: product.author
                 }
             })
 
         if (!$.isArray(myWishlist) ||  !myWishlist.length ) {
             addEmptyPict("wishlist", "assets/img/illustration/wishlist.png")
-        }
-
-        else {
+        } else {
             const html = generateProductHTML(myWishlist)
             $("#wishlist").append(html)
         }
         
     }
     catch (err) {
-        
+         console.log(err)
     }
 })
 
@@ -47,11 +47,11 @@ function generateProductHTML(list) {
                                 <div class="pl-3 d-flex align-items-center flex-column">
                                     <div>
                                         <a href="/product-page?id=${product.id}">
-                                            <p id="book-title" style="margin: 0;">${product.title}&nbsp;</p>
+                                            <p id="book-title" style="margin: 0;">${product.name}&nbsp;</p>
                                         </a>
                                         <p id="book-writer" style="font-size: 50%;">by ${product.author}</p>
                                     </div>
-                                    <p id="book-price" class="m-0"><strong>${new Intl.NumberFormat('ID').format(product.price)}</strong></p>
+                                    <p id="book-price" class="m-0"><strong>Rp ${new Intl.NumberFormat('ID').format(product.price)}.00</strong></p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-end flex-column justify-content-between">
@@ -66,4 +66,39 @@ function generateProductHTML(list) {
                     </div>
                 </div>`
     })
+}
+
+async function deleteWishlistProduct(id) {
+    try {
+        const response = await api.delete(`${APP_URL}/api/wishlists`, {
+            headers: {
+                "Authorization": "Bearer " + getCookie('access-token')
+            },
+            data: {
+                "product_id": id
+            }
+        })
+
+        $(`#${id}`).remove();
+        Notify('Wishlist is deleted', null, null, 'info')
+    }
+    catch (err) {
+    }
+}
+
+async function addToCart(id) {
+    try {
+        const response = await api.post(`${APP_URL}/api/carts`, { 
+            product_id: id
+         }, {
+            headers: {
+                "Authorization": "Bearer " + getCookie('access-token')
+            }
+        })
+
+        Notify('Added to cart', null, null, 'info')
+    }
+    catch (err) {
+
+    }
 }

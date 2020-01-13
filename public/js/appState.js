@@ -7,8 +7,15 @@ const api = axios.create({
     timeout: 5000
 })
 
+// GO BACK PAGE
 function goBack() {
     window.history.back();
+}
+
+// GET REQUEST PARAMETER
+function get(name){
+    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+       return decodeURIComponent(name[1]);
 }
 
 Number.prototype.format = function(n, x, s, c) {
@@ -18,6 +25,7 @@ Number.prototype.format = function(n, x, s, c) {
     return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
 };
 
+// CHECK ADMIN
 async function validateAdminToken(token, callback) {
     if (getCookie() !== null) {
         try {
@@ -26,13 +34,17 @@ async function validateAdminToken(token, callback) {
                     "Authorization": "Bearer " + token
                 }
             });
-    
-        } catch (err) {
+            return true;
+        }
+        catch (err) {
             callback(err)
+            return false;
         }
     }
+    return false;
 }
 
+// CHECK MERCHANT
 async function validateMerchantToken(token, callback) {
     if (getCookie() !== null) {
         try {
@@ -41,12 +53,18 @@ async function validateMerchantToken(token, callback) {
                     "Authorization": "Bearer " + token
                 }
             });
-        } catch (err) {
+
+            return true;
+        }
+        catch (err) {
             callback(err)
+            return false;
         }
     }
+    return false;
 }
 
+// CHECK USER
 async function validateUserToken(token, callback) {
     if (getCookie() !== null) {
         try {
@@ -56,12 +74,17 @@ async function validateUserToken(token, callback) {
                 }
             });
     
-        } catch (err) {
+            return false;
+        }
+        catch (err) {
             callback(err)
+            return false;
         }
     }
+    return false;
 }
 
+// ADD COOKIE
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -69,6 +92,15 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+// MORE COOKIE
+function setUserCookie(id, username, nickname, email) {
+    setCookie("user_id", id)
+    setCookie("username", username, 1)
+    setCookie("nickname", nickname, 1)
+    setCookie("email", email, 1)
+}
+
+// GET COOKIE
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -83,7 +115,6 @@ function getCookie(cname) {
     }
     return "";
 }
-
 
 function checkCookie() {
     var user = getCookie("username");
@@ -144,6 +175,8 @@ function checkCookie(cname) {
 
 // LOG OUT
 function logOut() {
-    removeUserCookie()
+    setUserCookie(null, null, null, null)
+    setCookie('access-token', null, 0)
+
     window.location.href = '/'
 }

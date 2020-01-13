@@ -1,56 +1,62 @@
 document.title = 'Home Page'
-validateUserToken(getCookie('access-token'), (err) => $("#library").hide())
+merchant = true, user = true;
+var userPromise = validateUserToken(getCookie('access-token'), (err) => {
+    user = false
+    $("#library").hide()
+})
+var merchantPromise = validateMerchantToken(getCookie('access-token'), (err) => {
+    merchant = false
+})
 
-async function getCasts(){
+$(document).ready(async e => {
     try {
-        const response = await api.get(`${APP_URL}/api/products`)
+        const response = await api.get(`/products`)
+        const categories = await api.get(`/categories`)
         const data = response.data.data
-
-        const newReleaseProducts = data
-            .filter(product => product.newRelease)
-            .map(i => {
-                return {
-                    name: i.name,
-                    image: i.image,
-                    price: i.price
-                }
-            })
         
-        const bestSellerProducts = data
-            .filter(product => product.bestSeller)
-            .map(i => {
-                return {
-                    name: i.name,
-                    image: i.image,
-                    price: i.price
-                }
-            })
-    
-        const html = generateProductHtml(newReleaseProducts)
-        const html2 = generateProductHtml(bestSellerProducts)
-
-        $('#new-release').append(html)
-        $('#best-seller').append(html2)
+        const html = generateProductHtml(data.slice(0,3))
+        $('#new-release').html(html)
+        
+        const categoriesHtml = generateCategoriesHtml(categories.data.data.slice(0, 8))
+        $('#category-list').html(categoriesHtml)
 
         // Book library
-        if (!$("#library").is(":hidden")){
-                
+        if (user) {
+            try {
+                const myProducts = await api.get(`/my-products`, {
+                    headers: {
+                        "Authorization": "Bearer " + getCookie('access-token')
+                    }
+                })
+                const myProductsData = myProducts.data.data.map(purchase => purchase.product)
+
+                if (!$.isArray(myProductsData) ||  !myProductsData.length || myProductsData.length === 0) {
+                    $('#library').hide()
+                    console.log("empty")
+                } else {
+                    const library = generateProductHtml(myProductsData.slice(0, 3))
+                    $('#user-library').html(library)
+                }
+            }
+            catch (err) {
+
+            }
         }
     }
     catch (err) {
-
+        addReloadPict(".index-page")
     }
-}
+})
 
 function generateProductHtml(list) {
-    return list.map(i => {
-            return `<li id="product-item">
-                        <a id="product-link" href="#">
+    return list.map(product => {
+            return `<li id="product-item" class="col-4" style="margin:3px;padding:0">
+                        <a id="product-link" href="/product?id=${product.id}">
                             <div id="product-home" class="flex-center">
-                                <img id="product-image-home" src="${i.image}">
+                                <img id="product-image-home" src="${APP_URL}${product.image}">
                                 <div id="product-details-home" class="text-left">
-                                    <span id="product-name-home">${i.name}</span>
-                                    <span id="product-price-home">Rp${new Intl.NumberFormat('ID').format(i.price)}</span>
+                                    <span id="product-name-home">${product.name}</span>
+                                    <span id="product-price-home">Rp${new Intl.NumberFormat('ID').format(product.price)}</span>
                                 </div>
                             </div>
                         </a>
@@ -58,6 +64,12 @@ function generateProductHtml(list) {
     })
 }
 
-$(document).ready(async function () {
-    getCasts()
-})
+function generateCategoriesHtml(list) {
+    return list.map(category => {
+        return `
+            <a id="category-link" href="/product-by-categories?category=${category.id}&name=${category.name}">
+                <div id="category-group" class="flex-column p-2 flex-center"><img id="category-image" src="${APP_URL}${category.image}"><span id="category-name">${category.name}</span></div>
+            </a>
+        `   
+    })
+}

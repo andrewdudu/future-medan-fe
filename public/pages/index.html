@@ -25,21 +25,10 @@
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
-<body style="background-color: #E4E4E4;">
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white shadow clean-navbar">
-        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon" style="color: rgb(33,37,41);"></span></button><a class="navbar-brand logo" href="#">Brand</a>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="features.html">CATEGORIES</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="pricing.html">Pricing</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.html">About Us</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
-                </ul>
-        </div><i class="la la-search" style="font-size: xx-large;"></i></div>
-    </nav>
-    <main class="page landing-page">
+<body class="index-page">
+    <div id="header"></div>
+
+    <main class="page landing-page" style="margin-top: 50px">
         <div id="carousel" class="d-flex justify-content-center">
             <div class="carousel slide shadow-1" data-ride="carousel" id="carousel-1" style="margin: 30px 20px;">
                 <div class="carousel-inner" role="listbox">
@@ -65,71 +54,9 @@
                             Show All<i class="fas fa-chevron-circle-right" style="margin-left: 8px;font-size: 20px;color: #278acb;"></i>
                         </a>
                     </div>
-                    <div class="d-flex flex-wrap justify-content-between">
-                        <a id="category-link" href="#">
-                            <div id="category-group" class="flex-column p-2 flex-center"><img id="category-image" src="assets/img/star-empty.svg"><span id="category-name">Bintang dan Star</span></div>
-                        </a>
-                        <a id="category-link" href="#">
-                            <div id="category-group" class="flex-column p-2 flex-center"><img id="category-image" src="assets/img/star-half-empty.svg"><span id="category-name">Star dan Bintang</span></div>
-                        </a>
-                        <a id="category-link" href="#">
-                            <div id="category-group" class="flex-column p-2 flex-center"><img id="category-image" src="assets/img/star.svg"><span id="category-name">Bintang atau Star</span></div>
-                        </a>
-                        <a id="category-link" href="#">
-                            <div id="category-group" class="flex-column p-2 flex-center"><img id="category-image" src="assets/img/star.svg"><span id="category-name">Star atau Bintang</span></div>
-                        </a>
-                        <a id="category-link" href="#">
-                            <div id="category-group" class="flex-column p-2 flex-center"><img id="category-image" src="assets/img/star-half-empty.svg"><span id="category-name">Bintang dan/atau Star</span></div>
-                        </a>
-                        <a id="category-link" href="#">
-                            <div id="category-group" class="flex-column p-2 flex-center"><img id="category-image" src="assets/img/star-empty.svg"><span id="category-name">Star dan/atau Bintang</span></div>
-                        </a>
+                    <div class="d-flex flex-wrap" id="category-list">
+                    
                     </div>
-                </div>
-            </div>
-        </section>
-        <section class="clean-info dark shadow bg-white">
-            <div class="container" style="padding: 5px 15px;">
-                <div class="mb-3">
-                    <h2 class="text-info" style="color: #278acb;text-align: left;font-size: 1.5em;display: flex;padding: 10px 0;">Best Seller in 2019</h2>
-                    <ul id="best-seller" class="d-flex overflow-auto align-items-stretch product-list-scroll">
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/rubberplant2.jpeg">
-                                    <div id="product-details-home" class="text-left"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/rubberplant2.jpeg">
-                                    <div id="product-details-home"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/meeting.jpg">
-                                    <div id="product-details-home"><span id="product-name-home">Meeting yang Bermanfaat</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/meeting.jpg">
-                                    <div id="product-details-home"><span id="product-name-home">Meeting yang bermanfaat</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/scenery/image4.jpg">
-                                    <div id="product-details-home"><span id="product-name-home">Fakta Air Terjun</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div><a href="#">Show more</a></div>
                 </div>
             </div>
         </section>
@@ -138,43 +65,8 @@
                 <div class="mb-3">
                     <h2 class="text-info" style="color: #278acb;text-align: left;font-size: 1.5em;display: flex;padding: 10px 0;">New Releases This Month</h2>
                     <ul id="new-release" class="d-flex overflow-auto align-items-stretch product-list-scroll">
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/rubberplant2.jpeg">
-                                    <div id="product-details-home" class="text-left"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/rubberplant2.jpeg">
-                                    <div id="product-details-home"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/meeting.jpg">
-                                    <div id="product-details-home"><span id="product-name-home">Meeting yang Bermanfaat</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/meeting.jpg">
-                                    <div id="product-details-home"><span id="product-name-home">Meeting yang bermanfaat</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/scenery/image4.jpg">
-                                    <div id="product-details-home"><span id="product-name-home">Fakta Air Terjun</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
                     </ul>
-                    <div><a href="#">Show more</a></div>
+                    <div><a href="/product-by-categories">Show more</a></div>
                 </div>
             </div>
         </section>
@@ -183,78 +75,19 @@
                 <div class="mb-3">
                     <h2 class="text-info" style="color: #278acb;text-align: left;font-size: 1.5em;display: flex;padding: 10px 0;">Your Library</h2>
                     <ul id="user-library" class="d-flex overflow-auto align-items-stretch product-list-scroll">
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/rubberplant2.jpeg">
-                                    <div id="product-details-home" class="text-left"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/rubberplant2.jpeg">
-                                    <div id="product-details-home"><span id="product-name-home">Cara menanam pohon</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/meeting.jpg">
-                                    <div id="product-details-home"><span id="product-name-home">Meeting yang Bermanfaat</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/meeting.jpg">
-                                    <div id="product-details-home"><span id="product-name-home">Meeting yang bermanfaat</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="product-item">
-                            <a id="product-link" href="#">
-                                <div id="product-home" class="flex-center"><img id="product-image-home" src="assets/img/scenery/image4.jpg">
-                                    <div id="product-details-home"><span id="product-name-home">Fakta Air Terjun</span><span id="product-price-home">Rp30.000</span></div>
-                                </div>
-                            </a>
-                        </li>
                     </ul>
-                    <div><a href="#">Show more</a></div>
+                    <div><a href="/product-by-categories">Show more</a></div>
                 </div>
             </div>
         </section>
-        <section class="clean-block about-us">
-            <div class="container">
-                <div class="block-heading">
-                    <h2 class="text-info">About Us</h2>
-                    <p>Developer Team from FUTURE Medan blibli.com</p>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/img/avatars/avatar1.jpg">
-                            <div class="card-body info">
-                                <h4 class="card-title">Andrew Wijaya</h4>
-                                <p class="card-text">Software Developer at blibli.com&nbsp;</p>
-                                <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/img/avatars/avatar3.jpg">
-                            <div class="card-body info">
-                                <h4 class="card-title">Syntia</h4>
-                                <p class="card-text">Software Developer at blibli.com</p>
-                                <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section><a id="back-to-top" class="btn btn-primary rounded-circle shadow" href="#" role="button"><i class="fas fa-chevron-up m-0 pt-2"></i></a></main>
-    <footer class="page-footer p-3 text-center">
-        <p>Need help?&nbsp;<a href="#">Contact Us</a></p>
-        <p class="mb-0" style="font-size: 14px;"><strong>© 2019 Copyright FUTURE-Medan-blibli.com</strong><br>All Rights Reserved<br></p>
-    </footer>
+        
+        <button id="back-to-top" class="btn btn-primary rounded-circle shadow" onclick="topFunction()" role="button">
+            <i class="fas fa-chevron-up m-0 pt-2"></i>
+        </button>
+    
+    </main>
+
+    <div id="footer"></div>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -264,6 +97,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
     <script src="js/globalFunc.js"></script>
     <script src="js/pages/index.js"></script>
+    <script src="js/pages/construct-main.js"></script>
 </body>
 
 </html>

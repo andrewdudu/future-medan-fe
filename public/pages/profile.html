@@ -26,25 +26,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md navbar-2 shadow">
-        <div class="container-fluid">
-            <div class="col col-1" style="padding: 0;">
-                <a href="#">
-                    <div><i class="icon ion-chevron-left" style="color: #5d5d5d;"></i></div>
-                </a>
-            </div>
-            <div class="col col-10" style="padding: 0;">
-                <div id="menu-name" style="text-align: initial;">
-                    <p style="margin: 0;color: #278acb;">Edit Profile</p>
-                </div>
-            </div>
-            <div class="col col-1 text-right" style="padding: 0;">
-                <a href="#">
-                    <div><i class="material-icons" style="color: #5d5d5d;">done</i></div>
-                </a>
-            </div>
-        </div>
-    </nav>
+    <div id="header-back"></div>
+    
     <div class="container" style="max-width: 500px;">
         <form style="margin-top: 50px;border-top: none;">
             <div id="edit-error-message" class="alert alert-danger alert-dismissible fade show">
@@ -103,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary btn-block" type="submit" style="margin-top: 50px;"><strong>Log Out</strong></button></form>
+            <button id="menu-log-out" class="btn btn-primary btn-block" type="submit" style="margin-top: 50px;"><strong>Log Out</strong></button></form>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -111,6 +94,8 @@
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="js/globalFunc.js"></script>
+    <script src="js/pages/profile.js"></script>
+    <script src="js/pages/construct-back.js"></script>
 </body>
 
 </html>

@@ -49,15 +49,18 @@ function checkAll() {
     if (checked) {
         products.forEach((product) => {
             selected.push(product.id);
+            totalPrice += product.price;
             $("#checkbox-" + product.id).prop("checked", true);
         })
     } else {
         products.forEach((product) => {
             $("#checkbox-" + product.id).prop("checked", false);
         })
+        totalPrice = 0;
         selected = []
     }
 
+    $("#total-price").text('Rp ' + totalPrice.format(2, 3, ',', '.'))
     checkSelected()
 }
 
