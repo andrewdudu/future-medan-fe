@@ -263,3 +263,19 @@ html, body {
 #bookmart-logo {
   max-width: 160px;
 }
+
+@media screen and (min-width: 426px) {
+  #review-btn {
+    text-align: right;
+  }
+
+  .review {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .review {
+    display: none;
+  }
+}
