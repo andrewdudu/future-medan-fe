@@ -38,7 +38,7 @@ $('#submit').click(async () => {
     }
 
     try {
-        const response = await api.post('/addReview', {
+        const response = await api.post('/review', {
             productId,
             rating,
             comment
@@ -47,12 +47,12 @@ $('#submit').click(async () => {
                 "Authorization": "Bearer " + getCookie("access-token")
             }
         })
+
+        window.location.href = '/book-library'
     }
     catch (err) {
         $("#rating-error").append(errorHTML("rating", "Bad request to save rating, please try again."))
     }
-
-    window.location.href = '/book-library'
 })
 
 $('#cancel').click(() => goBack())

@@ -1,5 +1,9 @@
 document.title = 'Profile'
-validateUserToken(getCookie('access-token'), (err) => window.location.href = '/login')
+validateUserToken(getCookie('access-token'), (err) => {
+    validateMerchantToken(getCookie('access-token'), (err) => {
+        window.location.href = '/login'
+    })
+})
 
 function loadProfile() {
     $("#edit-error-message").hide()
@@ -12,11 +16,15 @@ function loadProfile() {
 $('#save-changes').click(async profile => {
     try {
         let nickname = $('#nickname').val().trim()
-        let username = $('#username').val().trim()
+        let description = $('#description').val().trim()
 
-        const res = await api.put(`/users/${id}`, {
+        const res = await api.put(`/users`, {
                 name: nickname, 
-                username
+                description
+            }, {
+                headers: {
+                    "Authorization": "Bearer " + getCookie('access-token')
+                }
             })
     }
     catch (err) {
