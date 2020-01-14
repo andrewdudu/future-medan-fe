@@ -83,7 +83,7 @@ async function onPurchaseNowClicked() {
     } catch (err) {
         
     }
-    window.location.href = '/payment-page';
+    window.location.href = '/payment';
 }
 
 async function onAddToCartClicked() {
