@@ -63,10 +63,12 @@ $(document).ready(async (e) => {
         }
         catch (err) {
             $("#empty-image").show();
+            $("#merchant-name").css('display', 'none');
             $("#product-title").css('display', 'none')
         }
     } else {
         $("#product-title").css('display', 'none')
+        $("#merchant-name").css('display', 'none')
     }
 })
 

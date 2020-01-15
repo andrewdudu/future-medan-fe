@@ -28,7 +28,7 @@ $("#register-button").click(async e => {
 
     let username = $("#username").val();
     let password = $("#password").val();
-    let confirmPassword = $("#confirmpassword").val();
+    let confirmPassword = $("#confirm-password").val();
     let name = $("#nickname").val();
     let email = $("#email").val();
     let radio = $("input[type='radio']:checked").val();
@@ -50,11 +50,9 @@ $("#register-button").click(async e => {
                 name
             })
     
-            console.log(response)
             window.location.href = "/login";
         }
         catch (err) {
-            console.log(err.response)
 
             if (err.response === undefined) {
                 addErrorMsg("signup", somethingWrong)
