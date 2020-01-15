@@ -25,20 +25,27 @@ async function loadMyProduct() {
                         <div class="pl-3 d-flex align-items-center flex-column">
                             <div>
                                 <a href="/product?id=${purchase.product.id}">
-                                    <p id="book-title" style="margin: 0;">${purchase.product.name}&nbsp;</p>
+                                    <p id="book-title" style="margin: 0;font-size: 90%;">${purchase.product.name}&nbsp;</p>
                                 </a>
-                                <p id="book-writer" style="font-size: 50%;">${purchase.merchant.name}</p>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <p id="book-writer" style="font-size: 50%;margin-bottom: 0px">${purchase.merchant.name}</p>
+                                        <p id="book-order-id" style="font-size: 60%;font-weight: bold;margin-top: 5px;margin-bottom:0">${purchase.order_id}</p>
+                                    </div>
+                                    <div class="col-4">
+                                        ${status !== 'approved' ? `<p id="book-status" style="font-size: 60%;font-weight: bold;margin-top: 5px;color: ${purchase.status === 'PENDING' ? 'tomato' : 'grey'}">${purchase.status === 'PENDING' ? 'NOT PAID' : "WAITING APPROVAL"}</p>` : ''}
+                                    </div>
+                                </div>
+                                <p id="book-price" class="m-0"><strong>Rp ${purchase.product.price.format(2, 3, ',', '.')}</strong></p>
                             </div>
-                            <p id="book-price" class="m-0"><strong>Rp ${purchase.product.price.format(2, 3, ',', '.')}</strong></p>
                         </div>
                     </div>
                     
                     ${status === 'approved' ? `<div class="d-flex align-items-end flex-column justify-content-between">
                             <button onclick="getPdf('${purchase.product.pdf}', '${purchase.product.id}')" class="btn btn-primary pt-2" type="button">Read</button>
 
-                    <div class="flex-center justify-content-between p-2" style="border-top: 1px solid #CCC;">
-                        <span class="review" style="color: #707070;">Review</span>
-                        <button id="review-btn" class="w-100 border-0 bg-white" onclick="reviewProduct('${purchase.product.id}')" style="color: #278acb;">Review Product</button>
+                    <div class="flex-center justify-content-between p-2">
+                        <button id="review-btn" class="w-100 border-0 bg-white" onclick="reviewProduct('${purchase.product.id}')" style="color: #278acb;font-size: 13px;">Review</button>
                     </div>`: ''}
                 </div>
             `)
