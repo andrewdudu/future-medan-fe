@@ -263,3 +263,7 @@ html, body {
 #bookmart-logo {
   max-width: 160px;
 }
+
+.mt-100 {
+  margin-top: 100px;
+}

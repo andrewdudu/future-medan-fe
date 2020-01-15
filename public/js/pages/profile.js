@@ -14,7 +14,7 @@ $('#save-changes').click(async profile => {
         let nickname = $('#nickname').val().trim()
         let username = $('#username').val().trim()
 
-        const res = await api.put(`/users/${id}`, {
+        const res = await api.put(`/users/{id}`, getCookie('user_id'), {
                 name: nickname, 
                 username
             })
