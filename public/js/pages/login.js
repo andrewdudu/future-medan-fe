@@ -7,13 +7,20 @@ $('#login-button').click(async e => {
         let usernameOrEmail = $("#username-email").val();
         let password = $("#login-password").val();
 
-        const response = await api.post(`${APP_URL}/api/login`, {
+        const response = await api.post(`/login`, {
             usernameOrEmail,
             password
         })
+
+        const userData = await api.get(`/users/${response.data.id}`)
     
         setCookie('access-token', response.data.accessToken, 1)
-        setUserCookie(response.data.id, response.data.username, response.data.name, response.data.email)
+        setUserCookie(response.data.id, 
+            response.data.username, 
+            response.data.name, 
+            response.data.email,
+            userData.data.data.image,
+            userData.data.data.description)
         
         window.location.href = "/"
     }
