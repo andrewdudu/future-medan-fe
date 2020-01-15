@@ -18,6 +18,7 @@ async function loadUserCart(){
     
         $("#total-price").text('Rp ' + totalPrice.format(2, 3, ',', '.'));
         $('#product-in-cart').append(html);
+        $('#empty-image').css('display', 'none')
     } catch (err) {
 
     }

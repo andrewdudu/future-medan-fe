@@ -26,8 +26,8 @@ function loadProfile() {
     $('#nickname').val(getCookie('nickname'))
     $('#username').val(getCookie('username'))
     $('#email').val(getCookie('email'))
-    if (getCookie('image') !== null) $('#avatar-image').attr('src', APP_URL + getCookie('image'))
-    if (getCookie('description') !== null) $('#description').val(getCookie('description'))
+    if (getCookie('image') !== "null") $('#avatar-image').attr('src', APP_URL + getCookie('image'))
+    if (getCookie('description') !== "null") $('#description').val(getCookie('description'))
 }
 
 $('#save-changes').click(async e => {

@@ -34,12 +34,12 @@ async function loadMyProduct() {
                     </div>
                     
                     ${status === 'approved' ? `<div class="d-flex align-items-end flex-column justify-content-between">
-                            <button onclick="getPdf('${purchase.product.pdf}', '${purchase.product.id}')" class="btn btn-primary pt-2" type="button">Read</button>` : ''}
+                            <button onclick="getPdf('${purchase.product.pdf}', '${purchase.product.id}')" class="btn btn-primary pt-2" type="button">Read</button>
 
                     <div class="flex-center justify-content-between p-2" style="border-top: 1px solid #CCC;">
                         <span class="review" style="color: #707070;">Review</span>
                         <button id="review-btn" class="w-100 border-0 bg-white" onclick="reviewProduct('${purchase.product.id}')" style="color: #278acb;">Review Product</button>
-                    </div>
+                    </div>`: ''}
                 </div>
             `)
         })
