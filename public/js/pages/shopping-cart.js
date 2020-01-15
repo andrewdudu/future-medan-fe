@@ -1,5 +1,4 @@
 document.title = 'Cart'
-validateUserToken(getCookie('access-token'), () => window.location.href = "/login")
 totalPrice = 0;
 products = [];
 selected = [];

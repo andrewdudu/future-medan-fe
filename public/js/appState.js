@@ -4,7 +4,7 @@ const APP_URL = 'http://127.0.0.1:8080/future-medan'
 
 const api = axios.create({
     baseURL: `${APP_URL}/api`,
-    timeout: 5000
+    timeout: 100000
 })
 
 // GO BACK PAGE

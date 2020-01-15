@@ -38,6 +38,7 @@ $('#save-changes').click(async e => {
         let description = $('#description').val().trim()
         let image = $('#add-avatar-base64').val();
 
+        $('#loading-animation').css('display', 'block')
         const res = await api.put(`/users`, {
                 name: nickname, 
                 description,
@@ -47,6 +48,7 @@ $('#save-changes').click(async e => {
                     "Authorization": "Bearer " + getCookie('access-token')
                 }
             })
+        $('#loading-animation').css('display', 'none')
 
         setCookie('description', description)
         setCookie('image', res.data.data.image)

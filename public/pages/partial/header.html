@@ -9,7 +9,7 @@
         </a>
 
         <div id="menu">
-            <a href="/shopping-cart" style="color: #278acb;">
+            <a id="shopping-cart-btn" href="/shopping-cart" style="color: #278acb;">
                 <i class="la la-shopping-cart" style="font-size: xx-large;"></i>
             </a>
             <a href="/search" style="color: #278acb;">
@@ -136,6 +136,7 @@
         $('#bookmart-logo').width(0.3 * $(window).width())
     })
 
+
     $('#btn-sidenav').click((e) => {
         e.preventDefault();
 
@@ -158,6 +159,7 @@
             $('#verified-merchant').hide()
         }
         else if (merchant) {
+            $('#shopping-cart-btn').hide()
             $('#verified-user').hide()
         }
         else {
@@ -166,6 +168,7 @@
             
             $('#user-profile').hide()
             $('#main-menu').addClass('pt-4')
+            $('#shopping-cart-btn').hide()
         }
         
         if (getCookie('image') !== null) $('#profile-pict').attr('src', APP_URL + getCookie('image'))
