@@ -11,8 +11,11 @@ $(document).ready(async e => {
                 "Authorization": "Bearer " + getCookie("access-token")
             }
         })
+        console.log(response.data)
 
-        if (response.data.data.length > 0) $("#order-list").html(generateProductHTML(response.data.data))
+        if (response.data.data.length > 0) {
+            $("#order-list").html(generateProductHTML(response.data.data))
+        } 
     }
     catch (err){
     }

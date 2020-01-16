@@ -35,7 +35,7 @@ $(document).ready(async () => {
 
 function generateProductHTML(list) {
     return list.map(product => {
-        return `<div class="row shadow-1 product-cart bg-light-blue" id="${product.id}">
+        return `<div class="row product-cart border-bottom" id="${product.id}">
                     <div class="col">
                         <div id="product-details" class="d-flex justify-content-between pt-2 pb-2">
                             <div class="d-flex">
@@ -44,7 +44,7 @@ function generateProductHTML(list) {
                                         <img id="product-image" class="shadow" src="${APP_URL}${product.image}">
                                     </a>
                                 </div>
-                                <div class="pl-3 d-flex align-items-center flex-column">
+                                <div class="pl-3 d-flex flex-column">
                                     <div>
                                         <a href="/product?id=${product.id}">
                                             <p id="book-title" style="margin: 0;">${product.name}&nbsp;</p>
@@ -54,12 +54,12 @@ function generateProductHTML(list) {
                                     <p id="book-price" class="m-0"><strong>Rp ${new Intl.NumberFormat('ID').format(product.price)}.00</strong></p>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-end flex-column justify-content-between">
-                                <div onclick="deleteWishlistProduct('${product.id}')">
+                            <div class="d-flex align-items-end flex-column">
+                                <div onclick="deleteWishlistProduct('${product.id}')" class="p-0 m-0">
                                     <i class="icon ion-android-delete" style="color: #5d5d5d;font-size: x-large;"></i>
                                 </div>
-                                <button class="btn btn-primary pt-2" type="button" onclick=addToCart('${product.id}')>
-                                    &nbsp;<i class="fas fa-cart-plus" style="font-size: larger;"></i>
+                                <button class="btn btn-primary" type="button" style="background-color: #278ACB;" onclick=addToCart('${product.id}')>
+                                    <i class="fas fa-cart-plus p-0"></i>
                                 </button>
                             </div>
                         </div>

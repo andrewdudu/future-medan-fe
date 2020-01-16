@@ -1,5 +1,4 @@
 document.title = 'Cart'
-validateUserToken(getCookie('access-token'), () => window.location.href = "/login")
 totalPrice = 0;
 products = [];
 selected = [];
@@ -19,6 +18,8 @@ async function loadUserCart(){
     
         $("#total-price").text('Rp ' + totalPrice.format(2, 3, ',', '.'));
         $('#product-in-cart').append(html);
+        
+        if (products.length !== 0) $('#empty-image').css('display', 'none')
     } catch (err) {
 
     }

@@ -185,10 +185,9 @@ $('#add-products').on('shown.bs.modal', async function (e) {
                 })
             }
     
-            window.location.href = `/merchant-storefront?${getCookie('user_id')}`;
+            window.location.href = `/merchant-storefront?id=${getCookie('user_id')}`;
         }
         catch (err) {
-            console.log(err.response)
         }
     })
 });
