@@ -28,25 +28,29 @@
 <body>
     <div id="header-back"></div>
 
+    <nav class="navbar navbar-expand-md fixed-bottom d-flex justify-content-center" style="background-color: #FFF;padding: 5px;border-top: 1px solid #CCC;">
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="navbar-button" style="padding: 0 8px;">
+                <div>
+                    <p style="color: #919191;margin: 0;">Total</p>
+                    <p id="total-price" class="font-weight-bolder" style="margin: 0;color: #DF5F1D;">Rp 0,00</p>
+                </div>
+                <button id="checkout-button" onclick="checkout()" class="p-2 mr-2 border-0" type="button" style="font-weight: bolder;background-color: #278ACB;color: #FFF;border-radius: 5px;" disabled>Checkout</button>
+            </div>
+        </div>
+    </nav>
     <main class="page shopping-cart-page" style="background-color: #EDECEC;">
         <section class="clean-block clean-cart dark" style="background-color: white;">
-            <nav class="navbar navbar-light navbar-expand-md fixed-bottom" style="background-color: #FFF;padding: 5px;display: flex;justify-content: center;border: 1px solid #999;">
-                <div class="container-fluid" style="display: flex;justify-content: center;">
-                    <div class="navbar-button" style="padding: 0 10px;">
-                        <div>
-                            <p style="color: #919191;margin: 0;">Total</p>
-                            <p id="total-price" class="font-weight-bolder" style="margin: 0;color: #DF5F1D;"></p>
-                        </div>
-                        <button id="checkout-button" onclick="checkout()" class="btn btn-primary shadow" type="button" style="font-weight: bolder;padding: 0 12px;" disabled>Checkout</button>
-                    </div>
-                </div>
-            </nav>
             <div class="container" style="margin-top: 20px;padding: 0;">
                 <div id="shopping-cart">
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="col m-1">
                             <div class="form-check"><input class="form-check-input" type="checkbox" id="checkbox-all" onclick="checkAll()"><label class="form-check-label" for="formCheck">Select All Books</label></div>
                         </div>
+                    </div>
+                    <div class="col" id="empty-image">
+                        <div><img id="book-image" class="w-100 img-fluid" src="assets/img/illustration/empty-cart.png"></div>
+                        <p class="text-center" style="color: #278ACB;font-family: 'Montserrat Alternates', sans-serif;font-size: 20px;">No Item in Cart!</p>
                     </div>
                     <div class="col-to-row d-flex" id="product-in-cart">
                     </div>

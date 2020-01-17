@@ -387,7 +387,8 @@ section.clean-info {
 }
 
 .page-footer {
-  background-color: rgba(39, 138, 203, .5);
+  background-color: #278ACB;
+  color: #fff;
 }
 
 .tab-pane.active {
