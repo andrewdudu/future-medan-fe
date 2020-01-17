@@ -101,12 +101,12 @@
                         <div class="pb-2">
                             <label for="new-book-image">Upload Book Image</label>
                             <input type="text" id="image-base64" hidden>
-                            <input type="file" accept="image/png" class="form-control-file" id="image-file" onchange="previewImageFile()">
+                            <input type="file" required accept="image/png" class="form-control-file" id="image-file" placeholder="Image" onchange="previewImageFile()">
                         </div>
                         <div class="pb-2">
                             <label for="new-book-PDF">Upload Book PDF</label>
                             <input type="text" id="pdf-base64" hidden>
-                            <input type="file" id="pdf-file" for="pdf-file" required accept="application/pdf" onchange="previewPdfFile()">
+                            <input type="file" id="pdf-file" for="pdf-file" required accept="application/pdf" placeholder="Pdf" onchange="previewPdfFile()">
                         </div>
                     </form>
                 </div>
