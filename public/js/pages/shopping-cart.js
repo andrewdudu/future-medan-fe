@@ -1,5 +1,4 @@
 document.title = 'Cart'
-validateUserToken(getCookie('access-token'), () => window.location.href = "/login")
 totalPrice = 0;
 products = [];
 selected = [];
@@ -19,6 +18,8 @@ async function loadUserCart(){
     
         $("#total-price").text('Rp ' + totalPrice.format(2, 3, ',', '.'));
         $('#product-in-cart').append(html);
+        
+        if (products.length !== 0) $('#empty-image').css('display', 'none')
     } catch (err) {
 
     }
@@ -27,7 +28,7 @@ async function loadUserCart(){
 function checkout() {
     setCookie('selected-product', selected, 1)
     setCookie('total-price', totalPrice, 1)
-    window.location.assign('/payment-page')
+    window.location.assign('/payment')
 }
 
 function disableButton() {
@@ -112,13 +113,13 @@ function generateProductHtml (list) {
                     <div class="col col-3 flex-center" style="padding-right: 0;">
                         <input id="checkbox-${product.id}" onclick="addSelected('${product.id}')" type="checkbox" style="width: 500px;">
                         <div>
-                            <a href="/product-page?id=${product.id}">
+                            <a href="/product?id=${product.id}">
                                 <img id="product-image" class="shadow" src="${APP_URL}${product.image}">
                             </a>
                         </div>
                     </div>
                     <div class="col col-sm-7">
-                        <a href="/product-page?id=${product.id}">
+                        <a href="/product?id=${product.id}">
                             <p id="book-title" style="margin: 0;">${product.name}</p>
                         </a>
                         <p id="book-writer" style="font-size: 50%;">by ${product.author}</p>
