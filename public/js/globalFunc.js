@@ -3,7 +3,7 @@ somethingWrong = "Something went wrong, please try again."
 passwordWrong = "Password does not match."
 emailWrong = "The email you entered did not match our records. Please double-check and try again."
 
-emailRegrex = /^[a-zA-Z._0-9]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
+emailRegrex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
 
 function addErrorMsg(event, msg) {
     $(`#${event}-error`).empty()

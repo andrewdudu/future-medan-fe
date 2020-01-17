@@ -38,7 +38,6 @@ const controllers = {
   '/admin-table': AdminTablePage,
   '/admin-product': AdminProductTablePage,
   '/admin-category': AdminCategoryTablePage,
-  '/admin-wishlist': AdminWishlistTablePage,
   '*': AdminNotFoundPage
 }
 
@@ -72,7 +71,6 @@ const route = pathname => {
     '/admin-table',
     '/admin-product',
     '/admin-category',
-    '/admin-wishlist',
     '*'
   ].forEach(
     path => page(path, controllers[path])
