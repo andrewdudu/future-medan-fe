@@ -36,7 +36,8 @@ function generateProductHTML(products) {
     return products.map(product => {
         return `
             <a id="product-link" href="/product?id=${product.id}" style="background-color: white!important;">
-                <div id="product-home"><img id="product-image-home" src="${APP_URL}${product.image}">
+                <div id="product-home">
+                    <img id="product-image-home" class="img-product-size" src="${APP_URL}${product.image}">
                     <div id="product-details-home"><span id="product-name-home">${product.name}</span><span id="product-price-home">Rp ${new Intl.NumberFormat('ID').format(product.price)}</span></div>
                 </div>
             </a>`

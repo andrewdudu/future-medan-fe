@@ -28,8 +28,6 @@ $( ".form-control" ).focusout(function() {
     $(this).next('.input-group-addon-focus').removeClass().addClass('input-group-addon');
 });
 
-
-
 function readMore(){
     var link = document.getElementById('link')
     var more = document.getElementById('more')
@@ -108,15 +106,6 @@ Notify = function(text, callback, close_callback, style) {
 		remove_notice()
 	});
 }
-
-// <div class="row h-75 flex-lg-row">
-//     <div class="col-sm-12 my-auto">
-//         <img class="w-75 h-100 mx-auto d-block" src="${src}" style="max-width: 600px;">
-//         <p class="text-center" style="color: #278ACB;font-family: 'Montserrat Alternates', sans-serif;font-size: 20px;">
-//             Your ${pageName} is Empty!
-//         </p>
-//     </div>
-// </div>
 
 function addReloadPict(id){
     $(`${id}`).empty()
