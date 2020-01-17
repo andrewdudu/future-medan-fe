@@ -17,15 +17,15 @@
             <div id="content">
             <div id="header"></div>
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">User</h3>
+                <h3 class="text-dark mb-4">Wishlist</h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">User Info</p>
+                        <p class="text-primary m-0 font-weight-bold">Wishlist Info</p>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 text-nowrap">
-                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select id="show-user" class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
+                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select id="show-product" class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
                             </div>
                         </div>
                         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -70,22 +70,18 @@
                             <table class="table dataTable my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Username</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>User Email</th>
+                                        <th>Product Name</th>
+                                        <th>Product Sku</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td><strong>Name</strong></td>
-                                        <td><strong>Email</strong></td>
-                                        <td><strong>Username</strong></td>
-                                        <td><strong>Status</strong></td>
-                                        <td><strong>Action</strong></td>
+                                        <td><strong>User Email</strong></td>
+                                        <td><strong>Product Name</strong></td>
+                                        <td><strong>Product Sku</strong></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -113,7 +109,7 @@
     <script src="assets/admin/js/bs-charts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/admin/js/theme.js"></script>
-    <script src="js/pages/admin/user.js"></script>
+    <script src="js/pages/admin/wishlist.js"></script>
     <script src="js/pages/admin/construct.js"></script>
 </body>
 

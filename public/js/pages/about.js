@@ -30,7 +30,6 @@ $(document).ready(() => {
                 $(requiredInput).addClass('is-valid')
                 errorMsg.hide()
             }
-            console.log(errorMsg)
         })
     })
 })

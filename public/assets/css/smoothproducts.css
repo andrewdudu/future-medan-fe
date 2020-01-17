@@ -186,6 +186,10 @@ html, body {
   transform: translate(-50%, -50%);
 }
 
+.border-bottom-ddd {
+  border-bottom: 1px solid #ddd;
+}
+
 .main-menu ul li {
   list-style-type: none;
   padding: 10px;
@@ -262,4 +266,24 @@ html, body {
 
 #bookmart-logo {
   max-width: 160px;
+}
+
+.mt-100 {
+  margin-top: 100px;
+}
+
+@media screen and (min-width: 426px) {
+  #review-btn {
+    text-align: right;
+  }
+
+  .review {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .review {
+    display: none;
+  }
 }

@@ -4,7 +4,7 @@ const APP_URL = 'http://127.0.0.1:8080/future-medan'
 
 const api = axios.create({
     baseURL: `${APP_URL}/api`,
-    timeout: 5000
+    timeout: 100000
 })
 
 // GO BACK PAGE
@@ -93,11 +93,13 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 // MORE COOKIE
-function setUserCookie(id, username, nickname, email) {
+function setUserCookie(id, username, nickname, email, image, description) {
     setCookie("user_id", id)
     setCookie("username", username, 1)
     setCookie("nickname", nickname, 1)
     setCookie("email", email, 1)
+    setCookie("image", image, 1)
+    setCookie("description", description, 1)
 }
 
 // GET COOKIE
@@ -159,6 +161,8 @@ function removeUserCookie() {
     setCookie("username", null, 1)
     setCookie("email", null, 1)
     setCookie("access-token", null, 0)
+    setCookie("image", null, 0)
+    setCookie("description", null, 0)
 }
 
 // CHECK COOKIE EXPIRES
@@ -175,7 +179,7 @@ function checkCookie(cname) {
 
 // LOG OUT
 function logOut() {
-    setUserCookie(null, null, null, null)
+    setUserCookie(null, null, null, null, null, null)
     setCookie('access-token', null, 0)
 
     window.location.href = '/'
