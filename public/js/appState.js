@@ -179,7 +179,7 @@ function checkCookie(cname) {
 
 // LOG OUT
 function logOut() {
-    setUserCookie(null, null, null, null, null, null)
+    setUserCookie(null, null, null, null)
     setCookie('access-token', null, 0)
 
     window.location.href = '/'
