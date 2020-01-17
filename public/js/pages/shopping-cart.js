@@ -101,6 +101,16 @@ async function deleteCartProduct(id) {
         })
 
         $('#' + id).remove();
+        let deletedProduct;
+        products.forEach(product => {
+            if (product.id === id) {
+                totalPrice -= product.price
+                deletedProduct = product
+                $("#total-price").text('Rp ' + totalPrice.format(2, 3, ',', '.'))
+            }
+        })
+        products.splice(products.indexOf(deletedProduct), 1);
+
     }
     catch (err) {
     }
@@ -118,7 +128,7 @@ function generateProductHtml (list) {
                             </a>
                         </div>
                     </div>
-                    <div class="col col-sm-7">
+                    <div class="col col-7">
                         <a href="/product?id=${product.id}">
                             <p id="book-title" style="margin: 0;">${product.name}</p>
                         </a>
