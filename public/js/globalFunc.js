@@ -124,7 +124,7 @@ function addReloadPict(id){
 }
 
 function alternativeHTML(src, message) {
-    return `<div id="empty" class="flex-center justify-content-center flex-column w-100 h-100 centered" >
+    return `<div id="empty" class="flex-center justify-content-center flex-column w-100 h-100 centered" style="z-index:-1">
                 <img class="w-100 mt-5" src="${src}" style="max-width: 600px;">
                 <p class="text-center mt-3" style="color: #278ACB;font-family: 'Montserrat Alternates', sans-serif;font-size: 20px;">
                     ${message}
