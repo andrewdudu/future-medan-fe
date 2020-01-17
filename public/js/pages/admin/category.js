@@ -93,10 +93,12 @@ function setEditFormValue(id) {
 }
 
 function addImageFile() {
+    var preview = document.querySelector('img');
     var file    = document.querySelector('#add-image-file').files[0];
     var reader  = new FileReader();
   
     reader.addEventListener("load", function () {
+      preview.src = reader.result;
       $('#add-image-base64').val(reader.result.substr(reader.result.indexOf(',') + 1));
     }, false);
   

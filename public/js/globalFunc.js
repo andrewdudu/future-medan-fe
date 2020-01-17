@@ -3,7 +3,7 @@ somethingWrong = "Something went wrong, please try again."
 passwordWrong = "Password does not match."
 emailWrong = "The email you entered did not match our records. Please double-check and try again."
 
-emailRegrex = /^[a-zA-Z._0-9]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
+emailRegrex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
 
 function addErrorMsg(event, msg) {
     $(`#${event}-error`).empty()
@@ -43,6 +43,16 @@ function readMore(){
         link.innerHTML = 'Read more'
     }
 }
+  
+window.onscroll = function() {
+    if (document.documentElement.scrollTop > 20) {
+        $('#back-to-top').css("display", "block");
+    }
+    else {
+        $('#back-to-top').css("display", "block");
+    }
+    // console.log(document.documentElement.scrollTop)
+};
 
 function topFunction() {
   document.documentElement.scrollTop = 0;

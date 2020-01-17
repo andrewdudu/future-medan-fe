@@ -27,30 +27,22 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="display: flex;align-items: center;">
-        <div class="container"><a href="#"><i onclick="goBack()" class="fas fa-chevron-left" style="color: #5d5d5d;font-size: xx-large;"></i></a>
-            <div class="form-inline" style="width: 90%;">
-                <input id="search-input" class="form-control" type="search" placeholder="Search book by id or title" style="border: 1px solid #B9C8D2;border-right: none;padding: 0 10px;background-color: #EAF1F6;border-radius: 25px 0 0 25px;font-size: smaller;width: 92%;">
-                <div style="width: 8%;">
+        <div class="container"><a href="#"><i class="fas fa-chevron-left" style="color: #5d5d5d;font-size: xx-large;"></i></a>
+            <div class="form-inline" style="width: 90%;"><input class="form-control" type="search" placeholder="Search book by id or title" style="border: 1px solid #B9C8D2;border-right: none;padding: 0 10px;background-color: #EAF1F6;border-radius: 25px 0 0 25px;font-size: smaller;width: 92%;">
+                <a onclick="goBack()" href="" style="width: 8%;">
                     <div class="input-group-append">
                         <span class="input-group-text" style="border: 1px solid #B9C8D2;border-left: none;border-radius: 0 25px 25px 0;padding: 4px 8px;">
-                            <i class="icon ion-android-search" style="background-color: #EAF1F6;color: #707070;" aria-hidden="true"></i>
+                            <i class="icon ion-android-search" style="background-color: #EAF1F6;color: #707070;" aria-hidden="true"></i onclick="goBack()">
                         </span>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </nav>
-    <div class="container"><strong style="margin: 20px;">Your Searches</strong></div>
-    <div class="row h-75 flex-lg-row"">
-        <div id="empty-image" class="col-sm-12 my-auto">
-            <img class="w-75 h-100 mx-auto d-block" src="assets/img/illustration/search.png" style="max-width: 600px;">
-            <p class="text-center" style="color: #278ACB;font-family: 'Montserrat Alternates', sans-serif;font-size: 20px;">No Item Found!</p>
-        </div>
-        <div class="col col-md-5" style="padding: 0px 40px 0px 40px">
-            <div class="row shadow-1 bg-white">
-                <div class="col" id="result-list">
-                </div>
-            </div>
+    <div class="container"><strong style="margin: 20px;">Recent Searches</strong></div>
+    <div class="row h-75 flex-lg-row">
+        <div class="col-sm-12 my-auto"><img class="w-75 h-100 mx-auto d-block" src="assets/img/illustration/search.png" style="max-width: 600px;">
+            <p class="text-center" style="color: #278ACB;font-family: 'Montserrat Alternates', sans-serif;font-size: 20px;">Your History is Empty!</p>
         </div>
     </div>
     <script src="assets/js/jquery.min.js"></script>
@@ -59,8 +51,6 @@
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/read-more.js"></script>
-    <script src="scripts/lodash.debounce/index.js"></script>
-    <script src="js/pages/search.js"></script>
     <script src="js/globalFunc.js"></script>
 </body>
 

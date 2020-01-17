@@ -7,20 +7,13 @@ $('#login-button').click(async e => {
         let usernameOrEmail = $("#username-email").val();
         let password = $("#login-password").val();
 
-        const response = await api.post(`/login`, {
+        const response = await api.post(`${APP_URL}/api/login`, {
             usernameOrEmail,
             password
         })
-
-        const userData = await api.get(`/users/${response.data.id}`)
     
         setCookie('access-token', response.data.accessToken, 1)
-        setUserCookie(response.data.id, 
-            response.data.username, 
-            response.data.name, 
-            response.data.email,
-            userData.data.data.image,
-            userData.data.data.description)
+        setUserCookie(response.data.id, response.data.username, response.data.name, response.data.email)
         
         window.location.href = "/"
     }
@@ -35,7 +28,7 @@ $("#register-button").click(async e => {
 
     let username = $("#username").val();
     let password = $("#password").val();
-    let confirmPassword = $("#confirm-password").val();
+    let confirmPassword = $("#confirmpassword").val();
     let name = $("#nickname").val();
     let email = $("#email").val();
     let radio = $("input[type='radio']:checked").val();
@@ -57,9 +50,11 @@ $("#register-button").click(async e => {
                 name
             })
     
+            console.log(response)
             window.location.href = "/login";
         }
         catch (err) {
+            console.log(err.response)
 
             if (err.response === undefined) {
                 addErrorMsg("signup", somethingWrong)
