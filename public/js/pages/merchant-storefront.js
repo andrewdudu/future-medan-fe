@@ -63,12 +63,10 @@ $(document).ready(async (e) => {
         }
         catch (err) {
             $("#empty-image").show();
-            $("#merchant-name").css('display', 'none');
             $("#product-title").css('display', 'none')
         }
     } else {
         $("#product-title").css('display', 'none')
-        $("#merchant-name").css('display', 'none')
     }
 })
 
@@ -185,9 +183,10 @@ $('#add-products').on('shown.bs.modal', async function (e) {
                 })
             }
     
-            window.location.href = `/merchant-storefront?id=${getCookie('user_id')}`;
+            window.location.href = `/merchant-storefront?${getCookie('user_id')}`;
         }
         catch (err) {
+            console.log(err.response)
         }
     })
 });

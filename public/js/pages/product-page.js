@@ -38,6 +38,7 @@ async function loadProducts(){
         })
         const reviewData = reviewResponse.data.data;
 
+        console.log(reviewData);
         let reviewDiv = $('#reviews')
 
         reviewData.forEach(review => {
@@ -63,6 +64,7 @@ async function loadProducts(){
             `)
         })
     } catch (err) {
+        console.log(err)
     }
 }
 
@@ -81,7 +83,7 @@ async function onPurchaseNowClicked() {
     } catch (err) {
         
     }
-    window.location.href = '/payment';
+    window.location.href = '/payment-page';
 }
 
 async function onAddToCartClicked() {
@@ -96,6 +98,7 @@ async function onAddToCartClicked() {
 
         Notify('Added to cart', null, null, 'info')
     } catch (err) {
+        console.log(err);
         if (err.response.status === 401) window.location.href = '/login';
     }
 }
@@ -112,6 +115,7 @@ async function onWishlistButtonClicked() {
 
         Notify('Added to wishlist', null, null, 'info')
     } catch (err) {
+        console.log(err)
     }
 }
 
