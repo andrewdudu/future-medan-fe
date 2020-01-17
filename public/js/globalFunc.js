@@ -43,16 +43,6 @@ function readMore(){
         link.innerHTML = 'Read more'
     }
 }
-  
-window.onscroll = function() {
-    if (document.documentElement.scrollTop > 20) {
-        $('#back-to-top').css("display", "block");
-    }
-    else {
-        $('#back-to-top').css("display", "block");
-    }
-    // console.log(document.documentElement.scrollTop)
-};
 
 function topFunction() {
   document.documentElement.scrollTop = 0;

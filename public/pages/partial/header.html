@@ -1,3 +1,13 @@
+<style>
+    a:hover {
+        text-decoration: none;
+        color: white;
+    }
+    a {
+        color: white;
+    }
+</style>
+
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white shadow clean-navbar">
     <div class="container">
         <span id="btn-sidenav" class="btn btn-sidenav">    
@@ -84,7 +94,7 @@
                 </a>
             </li>
             <li id="menu-log-out">
-                <a id="menu-log-out-user" class="d-flex align-content-center" style="color:white;">
+                <a id="menu-log-out-btn-user" class="d-flex align-content-center" style="color:white;">
                     <i class="icon-logout pr-3"></i>
                     <span>Log Out</span>
                 </a>
@@ -128,7 +138,6 @@
 
 <script src="js/pages/index.js"></script>
 <script>
-
     $('#menu-merchant-storefront-href').attr('href', `/merchant-storefront?id=${getCookie('user_id')}`)
     $('#bookmart-logo').width(0.3 * $(window).width())
 
